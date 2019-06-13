@@ -1,3 +1,7 @@
+# **Redoc Fork for [Kentico Cloud Documentation portal](https://docs.kenticocloud.com/)**
+
+***
+
 <div align="center">
   <img alt="ReDoc logo" src="https://raw.githubusercontent.com/Redocly/redoc/master/docs/images/redoc-logo.png" width="400px" />
 

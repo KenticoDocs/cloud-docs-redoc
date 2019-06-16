@@ -1,10 +1,10 @@
 {
-  "name": "redoc-cli",
+  "name": "kentico-cloud-redoc-cli",
   "version": "0.8.4",
   "description": "ReDoc's Command Line Interface",
   "main": "index.js",
   "bin": "index.js",
-  "repository": "https://github.com/Redocly/redoc",
+  "repository": "git://github.com/KenticoDocs/cloud-docs-redoc",
   "author": "Roman Hotsiy <gotsijroman@gmail.com>",
   "license": "MIT",
   "dependencies": {

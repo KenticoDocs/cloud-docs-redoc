@@ -31,7 +31,7 @@ interface Options {
   redocOptions?: any;
 }
 
-const BUNDLES_DIR = dirname(require.resolve('redoc'));
+const BUNDLES_DIR = dirname(require.resolve('kentico-cloud-redoc'));
 
 /* tslint:disable-next-line */
 YargsParser.command(

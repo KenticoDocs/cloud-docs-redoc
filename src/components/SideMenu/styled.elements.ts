@@ -18,7 +18,7 @@ export const OperationBadge = styled.span.attrs((props: { type: string }) => ({
   font-weight: 700;
   line-height: 1.675em;
   text-decoration: none;
-  margin: 0 .5em 0 0; 
+  margin: 0 .5em 0 0;
 
   &.get {
     background-color: ${props => props.theme.colors.http.get};

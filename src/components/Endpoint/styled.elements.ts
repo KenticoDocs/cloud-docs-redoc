@@ -36,8 +36,8 @@ export const EndpointInfo = styled.div<{ expanded?: boolean; inverted?: boolean 
 
 export const HttpVerb = styled.span.attrs((props: { type: string }) => ({
   className: `http-verb ${props.type}`,
-}))<{ type: string }>`
-  font-size: 0.929em;
+})) <{ type: string }>`
+  font-size: 1em;
   line-height: 20px;
   background-color: ${(props: any) => props.theme.colors.http[props.type] || '#999999'};
   color: #ffffff;

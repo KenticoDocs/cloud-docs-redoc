@@ -23,7 +23,7 @@ export const StyledDropdown = styled(Dropdown)`
   .Dropdown-control {
     font-family: ${props => props.theme.typography.headings.fontFamily};
     position: relative;
-    font-size: 0.929em;
+    font-size: 1em;
     width: 100%;
     line-height: 1.5em;
     vertical-align: middle;
@@ -97,7 +97,7 @@ export const StyledDropdown = styled(Dropdown)`
 export const SimpleDropdown = styled(StyledDropdown)`
   margin-left: 10px;
   text-transform: none;
-  font-size: 0.929em;
+  font-size: 1em;
 
   .Dropdown-control {
     font-size: 1em;
@@ -115,6 +115,6 @@ export const SimpleDropdown = styled(StyledDropdown)`
 export const MimeLabel = styled.span`
   margin-left: 10px;
   text-transform: none;
-  font-size: 0.929em;
+  font-size: 1em;
   color: black;
 `;

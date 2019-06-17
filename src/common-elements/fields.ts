@@ -71,7 +71,6 @@ export const PatternLabel = styled(FieldLabel)`
 `;
 
 export const ExampleValue = styled(FieldLabel)`
-  border-radius: 2px;
   ${({ theme }) => `
     background-color: ${transparentize(0.95, theme.colors.text.primary)};
     color: ${transparentize(0.1, theme.colors.text.primary)};
@@ -91,10 +90,9 @@ export const ExampleValue = styled(FieldLabel)`
 export const ExtensionValue = styled(ExampleValue)``;
 
 export const ConstraintItem = styled(FieldLabel)`
-  border-radius: 2px;
   ${({ theme }) => `
-    background-color: ${transparentize(0.95, theme.colors.primary.light)};
-    color: ${transparentize(0.1, theme.colors.primary.main)};
+    background-color: #f3f6f7;
+    color: #168cde;
 
     margin: 0 ${theme.spacing.unit}px;
     padding: 0 ${theme.spacing.unit}px;

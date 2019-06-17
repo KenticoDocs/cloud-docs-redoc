@@ -6,24 +6,19 @@ import styled, { css } from '../../styled-components';
 
 export const OperationBadge = styled.span.attrs((props: { type: string }) => ({
   className: `operation-type ${props.type}`,
-}))<{ type: string }>`
+})) <{ type: string }>`
   width: 32px;
   display: inline-block;
-  height: ${props => props.theme.typography.code.fontSize};
-  line-height: ${props => props.theme.typography.code.fontSize};
   background-color: #333;
-  border-radius: 3px;
   background-repeat: no-repeat;
-  background-position: 6px 4px;
-  font-size: 7px;
-  font-family: Verdana; // web-safe
+  font-size:10px;
   color: white;
   text-transform: uppercase;
   text-align: center;
-  font-weight: bold;
-  vertical-align: middle;
-  margin-right: 6px;
-  margin-top: 2px;
+  font-weight: 700;
+  line-height: 1.675em;
+  text-decoration: none;
+  margin: 0 .5em 0 0; 
 
   &.get {
     background-color: ${props => props.theme.colors.http.get};
@@ -62,22 +57,12 @@ export const OperationBadge = styled.span.attrs((props: { type: string }) => ({
   }
 `;
 
-function menuItemActiveBg(depth, { theme }): string {
-  if (depth > 1) {
-    return darken(0.1, theme.menu.backgroundColor);
-  } else if (depth === 1) {
-    return darken(0.05, theme.menu.backgroundColor);
-  } else {
-    return '';
-  }
-}
-
 export const MenuItemUl = styled.ul<{ expanded: boolean }>`
   margin: 0;
   padding: 0;
 
   & & {
-    font-size: 0.929em;
+    font-size: 1em;
   }
 
   ${props => (props.expanded ? '' : 'display: none;')};
@@ -101,7 +86,7 @@ export const menuItemDepth = {
     color: ${props => props.theme.menu.textColor};
   `,
   1: css`
-    font-size: 0.929em;
+    font-size: 1em;
     text-transform: ${({ theme }) => theme.menu.level1Items.textTransform};
     &:hover {
       color: ${props => props.theme.colors.primary.main};
@@ -124,23 +109,43 @@ export const MenuItemLabel = styled.label.attrs((props: MenuItemLabelType) => ({
   className: classnames('-depth' + props.depth, {
     active: props.active,
   }),
-}))<MenuItemLabelType>`
+})) <MenuItemLabelType>`
   cursor: pointer;
-  color: ${props => (props.active ? props.theme.colors.primary.main : props.theme.menu.textColor)};
+  color: #6B7C85;
+  font-weight: ${props => (props.active ? '700' : '400')};
   margin: 0;
-  padding: 12.5px ${props => props.theme.spacing.unit * 4}px;
+  padding: 0.5em 0 0.5em 1.5em;
+  line-height: 1.25em;
+  display: block;
   ${({ depth, type, theme }) =>
     (type === 'section' && depth > 1 && 'padding-left: ' + theme.spacing.unit * 8 + 'px;') || ''}
-  display: flex;
-  justify-content: space-between;
   font-family: ${props => props.theme.typography.headings.fontFamily};
   ${props => menuItemDepth[props.depth]};
-  background-color: ${props => (props.active ? menuItemActiveBg(props.depth, props) : '')};
+  background-color: transparent;
 
   ${props => (props.deprecated && deprecatedCss) || ''};
 
   &:hover {
-    background-color: ${props => menuItemActiveBg(props.depth, props)};
+    [class*=MenuItemTitle] {
+      color: ${props => props.theme.typography.links.color};
+      text-decoration: underline;
+    }
+
+    [class*=OperationBadge] {
+      text-decoration: none;
+    }
+  }
+
+  &.-depth1 {
+    font-size: 1.125em;
+  }
+
+  &.-depth2 {
+    padding: 0.5em 0 0.5em 3.5em;
+  }
+
+  &.-depth3 {
+    padding: 0.5em 0 0.5em 5em;
   }
 
   ${ShelfIcon} {

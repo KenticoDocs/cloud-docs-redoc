@@ -14,7 +14,7 @@ export const MimeLabel = styled.div`
 export const InvertedSimpleDropdown = styled(StyledDropdown)`
   margin-left: 10px;
   text-transform: none;
-  font-size: 0.929em;
+  font-size: 1em;
   border-bottom: 1px solid ${({ theme }) => theme.rightPanel.textColor};
   margin: 0 0 10px 0;
   display: block;

@@ -25,7 +25,86 @@ const specUrl =
   (userUrl && userUrl[1]) || (swagger ? 'swagger.yaml' : big ? 'big-openapi.json' : 'openapi.yaml');
 
 let store;
-const options: RedocRawOptions = { nativeScrollbars: false };
+const options: RedocRawOptions = {
+  nativeScrollbars: false,
+  disableSearch: true,
+  theme: {
+    spacing: {
+      unit: 4
+    },
+    colors: {
+      primary: {
+        main: '#2D373B'
+      },
+      responses: {
+        success: {
+          color: '#67B870'
+        },
+        error: {
+          color: '#ED6A56'
+        },
+        redirect: {
+          color: '#FBC15E',
+        },
+        info: {
+          color: '#007DCC'
+        }
+      },
+      http: {
+        get: '#67B870',
+        post: '#007DCC',
+        put: '#937AB4',
+        options: '#FBC15E',
+        patch: '#FBC15E',
+        delete: '#ED6A56',
+        basic: '#6B7C85',
+        link: '#6B7C85',
+        head: '#937AB4'
+      }
+    },
+    typography: {
+      fontFamily: 'Source Sans Pro, Helvetica, Arial, sans-serif',
+      fontSize: '1em',
+      fontWeightBold: '700',
+      headings: {
+        fontFamily: 'Source Sans Pro, Helvetica, Arial, sans-serif',
+        fontWeight: '400',
+        lineHeight: '1.25em'
+      },
+      links: {
+        color: '#007DCC'
+      },
+      code: {
+        fontFamily: 'Inconsolata, monospace',
+        fontSize: '.875em',
+        color: '#E73430',
+        backgroundColor: '#f3f6f7',
+      }
+    },
+    rightPanel: {
+      backgroundColor: '#2D373B',
+      width: '40%',
+      textColor: '#F3F6F7'
+    },
+    menu: {
+      width: '352px',
+      textColor: '#6B7C85',
+      backgroundColor: '#fff',
+      arrow: {
+        size: '1.25em',
+        color: '#008AE1'
+      }
+    },
+    schema: {
+      linesColor: '#AEBCC5',
+      typeNameColor: '#80939e',
+      typeTitleColor: '#F49300',
+      requireLabelColor: '#ED6A56',
+      labelsTextSize: '0.875em',
+      nestedBackground: '#f3f6f7'
+    }
+  }
+};
 
 async function init() {
   const spec = await loadAndBundleSpec(specUrl);

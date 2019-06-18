@@ -16,7 +16,7 @@ export const StyledResponseTitle = styled(ResponseTitle)`
   background-color: ${props => props.theme.colors.responses[props.type].backgroundColor};
 
   &:hover {
-    background-color: ${props => props.theme.colors.responses[props.type].hoverColor};
+    background-color: ${props => props.theme.colors.responses[props.type].backgroundColorHover};
   }
 
   span {

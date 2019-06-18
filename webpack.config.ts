@@ -105,7 +105,7 @@ export default (env: { standalone?: boolean } = {}, { mode }) => ({
                   'babel-plugin-styled-components',
                   {
                     minify: true,
-                    displayName: mode !== 'production',
+                    displayName: true,
                   },
                 ],
               ],

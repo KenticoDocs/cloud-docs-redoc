@@ -1,6 +1,6 @@
 {
   "name": "kentico-cloud-docs-redoc",
-  "version": "2.0.0-rc.8-5",
+  "version": "2.0.0-rc.8-6",
   "description": "ReDoc",
   "repository": {
     "type": "git",
@@ -156,12 +156,10 @@
     "swagger2openapi": "^5.2.3",
     "tslib": "^1.9.3"
   },
-  "bundlesize": [
-    {
-      "path": "./bundles/redoc.standalone.js",
-      "maxSize": "300 kB"
-    }
-  ],
+  "bundlesize": [{
+    "path": "./bundles/redoc.standalone.js",
+    "maxSize": "300 kB"
+  }],
   "jest": {
     "setupFilesAfterEnv": [
       "<rootDir>/src/setupTests.ts"

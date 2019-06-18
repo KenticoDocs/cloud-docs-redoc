@@ -43,7 +43,7 @@ const babelLoader = mode => ({
         'babel-plugin-styled-components',
         {
           minify: true,
-          displayName: mode !== 'production',
+          displayName: true,
         },
       ],
     ]),

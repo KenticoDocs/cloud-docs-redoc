@@ -11,9 +11,23 @@ export const StyledResponseTitle = styled(ResponseTitle)`
   line-height: 1.5em;
   background-color: #f2f2f2;
   cursor: pointer;
-
+  transition: 0.25s background-color;
   color: ${props => props.theme.colors.responses[props.type].color};
   background-color: ${props => props.theme.colors.responses[props.type].backgroundColor};
+
+  &:hover {
+    background-color: ${props => props.theme.colors.responses[props.type].hoverColor};
+  }
+
+  span {
+    p {
+      padding: 0;
+    }
+
+    ul {
+      padding: 1em 0.5em 0.5em 1.875em;
+    }
+  }
 
   ${props =>
     (props.empty &&
@@ -21,7 +35,7 @@ export const StyledResponseTitle = styled(ResponseTitle)`
 cursor: default;
 &::before {
   content: "—";
-  font-weight: bold;
+  font-weight: 700;
   width: 1.5em;
   text-align: center;
   display: inline-block;
@@ -31,7 +45,7 @@ cursor: default;
 `;
 
 export const ResponseDetailsWrap = styled.div`
-  padding: 10px;
+  padding: 0;
 `;
 
 export const HeadersCaption = styled(UnderlinedHeader.withComponent('caption'))`

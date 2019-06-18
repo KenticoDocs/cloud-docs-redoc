@@ -38,10 +38,14 @@ const options: RedocRawOptions = {
       },
       responses: {
         success: {
-          color: '#67B870',
+          color: '#00A54B',
+          backgroundColor: '#e3f0e1',
+          backgroundColorHover: '#C8E2C4',
         },
         error: {
-          color: '#ED6A56',
+          color: '#E73430',
+          backgroundColor: '#fdf0ec',
+          backgroundColorHover: '#FCE2D9',
         },
         redirect: {
           color: '#FBC15E',
@@ -73,6 +77,7 @@ const options: RedocRawOptions = {
       },
       links: {
         color: '#007DCC',
+        hover: '#e46952',
       },
       code: {
         fontFamily: 'Inconsolata, monospace',

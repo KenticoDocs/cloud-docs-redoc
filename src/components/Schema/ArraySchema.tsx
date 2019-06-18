@@ -6,7 +6,7 @@ import { ArrayClosingLabel, ArrayOpenningLabel } from '../../common-elements';
 import styled from '../../styled-components';
 
 const PaddedSchema = styled.div`
-  padding-left: ${({ theme }) => theme.spacing.unit * 2}px;
+  padding-left: 0;
 `;
 
 export class ArraySchema extends React.PureComponent<SchemaProps> {

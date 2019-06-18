@@ -31,7 +31,7 @@ export const jsonStyles = css`
   }
 
   .collapsible {
-    margin-left: 2em;
+    margin-left: 1em;
   }
 
   .hoverable {

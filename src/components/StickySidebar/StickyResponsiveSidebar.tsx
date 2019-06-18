@@ -52,8 +52,8 @@ const StyledStickySidebar = styled.div<{ open?: boolean }>`
 const FloatingButton = styled.div`
   outline: none;
   user-select: none;
-  background-color: #f2f2f2;
-  color: ${props => props.theme.colors.primary.main};
+  background-color: #f3f6f7;
+  color: ${props => props.theme.typography.links.color};
   display: none;
   cursor: pointer;
   position: fixed;
@@ -73,6 +73,10 @@ const FloatingButton = styled.div`
 
   @media print {
     display: none;
+  }
+
+  svg {
+    color: ${props => props.theme.typography.links.color};
   }
 `;
 

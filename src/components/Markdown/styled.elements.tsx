@@ -6,7 +6,8 @@ import { StyledComponent } from 'styled-components';
 
 export const linksCss = css`
   a {
-    text-decoration: none;
+    transition: 0.25s color;
+    text-decoration: underline;
     color: ${props => props.theme.typography.links.color};
 
     &:visited {
@@ -30,8 +31,22 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
   line-height: ${props => props.theme.typography.lineHeight};
 
   p {
+    padding: 0 0 1em;
+    margin: 0;
+
     &:last-child {
       margin-bottom: 0;
+    }
+  }
+
+  span {
+    p {
+      padding: 0;
+    }
+
+    ul {
+      padding-left: 1.875em;
+      padding-right: .5em;
     }
   }
 
@@ -61,6 +76,7 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
   h2 {
     ${headerCommonMixin(2)};
     color: ${props => props.theme.colors.text.primary};
+    padding: .375em 0;
   }
 
   code {
@@ -113,15 +129,29 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
     box-sizing: content-box;
   }
 
-  ul,
   ol {
-    padding-left: 2em;
+    padding: 0 0 1.125em;
     margin: 0;
-    margin-bottom: 1em;
+  }
 
-    ul, ol {
-      margin-bottom: 0;
-      margin-top: 0;
+  ul {
+    padding: 0 0 1.125em;
+    margin: 0;
+    list-style-type: none;
+
+    & > li {
+      padding: 0 0 0.25em 1.125em;
+      position: relative;
+
+      &:before {
+        content: '';
+        width: 0.375em;
+        height: 0.375em;
+        background-color: #008ae1;
+        position: absolute;
+        left: 0;
+        top: 0.6em;
+      }
     }
   }
 
@@ -137,24 +167,34 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
     margin-bottom: 1.5em;
   }
 
+  table tbody {
+    border-top: 0.125em solid #e4e9ec;
+    border-left: 0.125em solid #e4e9ec;
+  }
+
   table tr {
     background-color: #fff;
-    border-top: 1px solid #ccc;
-
-    &:nth-child(2n) {
-      background-color: ${({ theme }) => theme.schema.nestedBackground};
-    }
   }
 
   table th,
   table td {
-    padding: 6px 13px;
-    border: 1px solid #ddd;
+    padding: 0.5em 0.75em;
+    border-bottom: 0.125em solid #e4e9ec;
+    border-right: 0.125em solid #e4e9ec;
   }
 
   table th {
     text-align: left;
-    font-weight: bold;
+    font-weight: 400;
+    background-color: ${({ theme }) => theme.schema.nestedBackground};
+  }
+
+  table {
+    ul, ol {
+      p {
+        margin: 0;
+      }
+    }
   }
 
   ${linkifyMixin('.share-link')};

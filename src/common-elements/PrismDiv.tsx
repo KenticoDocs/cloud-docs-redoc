@@ -106,7 +106,7 @@ export const PrismDiv = styled.div`
 
   .token.important,
   .token.bold {
-    font-weight: bold;
+    font-weight: 700;
   }
   .token.italic {
     font-style: italic;

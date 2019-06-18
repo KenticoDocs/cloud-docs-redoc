@@ -97,7 +97,7 @@ const defaultTheme: ThemeInterface = {
     fontSize: '14px',
     lineHeight: '1.5em',
     fontWeightRegular: '400',
-    fontWeightBold: '600',
+    fontWeightBold: '700',
     fontWeightLight: '300',
     fontFamily: 'Roboto, sans-serif',
     smoothing: 'antialiased',
@@ -198,6 +198,7 @@ export interface ColorSetting {
 export interface HTTPResponseColos {
   color: string;
   backgroundColor: string;
+  backgroundColorHover: string;
 }
 
 export interface FontSettings {

@@ -28,7 +28,7 @@ export const Tabs = styled(ReactTabs)`
       border-radius: 5px;
       min-width: 60px;
       font-size: 0.9em;
-      font-weight: bold;
+      font-weight: 700;
 
       &.react-tabs__tab--selected {
         color: ${props => props.theme.colors.text.primary};
@@ -61,12 +61,12 @@ export const Tabs = styled(ReactTabs)`
     background: ${({ theme }) => theme.codeSample.backgroundColor};
     & > div,
     & > pre {
-      padding: ${props => props.theme.spacing.unit * 4}px;
+      padding: ${props => props.theme.spacing.unit * 1.25}px;
       margin: 0;
     }
 
     & > div > pre {
-      padding: 0;
+      padding: 1.25em;
     }
   }
 `;

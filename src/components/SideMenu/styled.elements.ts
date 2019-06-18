@@ -6,19 +6,21 @@ import styled, { css } from '../../styled-components';
 
 export const OperationBadge = styled.span.attrs((props: { type: string }) => ({
   className: `operation-type ${props.type}`,
-})) <{ type: string }>`
+}))<{ type: string }>`
   width: 32px;
   display: inline-block;
   background-color: #333;
   background-repeat: no-repeat;
-  font-size:10px;
+  font-size: 10px;
   color: white;
   text-transform: uppercase;
   text-align: center;
   font-weight: 700;
   line-height: 1.675em;
   text-decoration: none;
-  margin: 0 .5em 0 0;
+  margin: 0 0.5em 0 0;
+  display: inline;
+  padding: 0.245em 0.675em;
 
   &.get {
     background-color: ${props => props.theme.colors.http.get};
@@ -109,7 +111,7 @@ export const MenuItemLabel = styled.label.attrs((props: MenuItemLabelType) => ({
   className: classnames('-depth' + props.depth, {
     active: props.active,
   }),
-})) <MenuItemLabelType>`
+}))<MenuItemLabelType>`
   cursor: pointer;
   color: #6B7C85;
   font-weight: ${props => (props.active ? '700' : '400')};
@@ -158,7 +160,7 @@ export const MenuItemLabel = styled.label.attrs((props: MenuItemLabelType) => ({
 `;
 
 export const MenuItemTitle = styled.span<{ width?: string }>`
-  display: inline-block;
+  display: inline;
   vertical-align: middle;
   width: ${props => (props.width ? props.width : 'auto')};
   overflow: hidden;

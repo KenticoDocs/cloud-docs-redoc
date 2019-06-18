@@ -19,7 +19,7 @@ export const SearchInput = styled.input.attrs(() => ({
   border: 0;
   border-bottom: 1px solid ${({ theme }) => darken(0.1, theme.menu.backgroundColor)};
   font-family: ${({ theme }) => theme.typography.fontFamily};
-  font-weight: bold;
+  font-weight: 700;
   font-size: 13px;
   color: ${props => props.theme.menu.textColor};
   background-color: transparent;

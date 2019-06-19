@@ -20,19 +20,23 @@ export const OneOfButton = styled.li<{ active: boolean }>`
   margin-right: 10px;
   font-size: 0.8em;
   cursor: pointer;
-  border: 1px solid ${props => props.theme.colors.primary.main};
+  border: 2px solid ${props => props.theme.typography.links.color};
   padding: 2px 10px;
 
   ${props => {
     if (props.active) {
       return `
       color: white;
-      background-color: ${props.theme.colors.primary.main};
+      background-color: ${props.theme.typography.links.color};
       `;
     } else {
       return `
-        color: ${props.theme.colors.primary.main};
-        background-color: white;
+        color: ${props.theme.typography.links.color};
+        background-color: transparent;
+
+        &:hover {
+          background-color: #fff;
+        }
       `;
     }
   }}

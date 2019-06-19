@@ -44,12 +44,19 @@ export class OneOfSchema extends React.Component<SchemaProps> {
     }
     return (
       <div>
-        <OneOfLabel> {schema.oneOfType} </OneOfLabel>
-        <OneOfList>
-          {oneOf.map((subSchema, idx) => (
-            <OneOfButton key={subSchema.pointer} schema={schema} subSchema={subSchema} idx={idx} />
-          ))}
-        </OneOfList>
+        <div className="oneOf">
+          <OneOfLabel> {schema.oneOfType} </OneOfLabel>
+          <OneOfList>
+            {oneOf.map((subSchema, idx) => (
+              <OneOfButton
+                key={subSchema.pointer}
+                schema={schema}
+                subSchema={subSchema}
+                idx={idx}
+              />
+            ))}
+          </OneOfList>
+        </div>
         <Schema {...this.props} schema={oneOf[schema.activeOneOf]} />
       </div>
     );

@@ -28,6 +28,7 @@ let store;
 const options: RedocRawOptions = {
   nativeScrollbars: false,
   disableSearch: true,
+  pathInMiddlePanel: true,
   theme: {
     spacing: {
       unit: 4,

@@ -7,11 +7,9 @@ https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javasc
  */
 
 code[class*="language-"],
-pre[class*="language-"] {
+pre[class*="language-"],
+[class*="StyledPre"] {
   box-sizing: border-box;
-  color: black;
-  background: none;
-  text-shadow: 0 1px white;
   font-family: Inconsolata, Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
   font-size: 1em;
   text-align: left;
@@ -34,36 +32,14 @@ pre[class*="language-"] {
   hyphens: none;
 }
 
-pre[class*="language-"] {
+pre[class*="language-"],
+[class*="StyledPre"] {
   white-space: pre-wrap;
 }
 
-pre[class*="language-"]::-moz-selection,
-pre[class*="language-"] ::-moz-selection,
-code[class*="language-"]::-moz-selection,
-code[class*="language-"] ::-moz-selection {
-  text-shadow: none;
-  background: #b3d4fc;
-}
-
-pre[class*="language-"]::selection,
-pre[class*="language-"] ::selection,
-code[class*="language-"]::selection,
-code[class*="language-"] ::selection {
-  text-shadow: none;
-  background: #b3d4fc;
-}
-
-@media print {
-
-  code[class*="language-"],
-  pre[class*="language-"] {
-    text-shadow: none;
-  }
-}
-
 /* Code blocks */
-pre[class*="language-"] {
+pre[class*="language-"],
+[class*="StyledPre"] {
   padding: 1em;
   margin: .5em 0 1em;
   overflow: auto;
@@ -171,7 +147,7 @@ pre[class*="language-"] {
   cursor: help;
 }
 
-pre[class*="language-"].line-numbers {
+.line-numbers {
   position: relative;
   padding-left: 3.8em;
   counter-reset: linenumber;
@@ -179,7 +155,7 @@ pre[class*="language-"].line-numbers {
   margin-top: 0;
 }
 
-pre[class*="language-"].line-numbers>code {
+.line-numbers>pre {
   position: relative;
   white-space: inherit;
 }

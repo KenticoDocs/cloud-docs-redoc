@@ -51,11 +51,12 @@ export class Endpoint extends React.Component<EndpointProps, EndpointState> {
             <EndpointInfo onClick={this.toggle} expanded={expanded} inverted={inverted}>
               <HttpVerb type={operation.httpVerb}> {operation.httpVerb}</HttpVerb>{' '}
               <ServerRelativeURL>{operation.path}</ServerRelativeURL>
+              <div className="see-full-url">See full URL</div>
               <ShelfIcon
                 float={'right'}
                 color={inverted ? 'black' : 'white'}
                 size={'20px'}
-                direction={expanded ? 'up' : 'down'}
+                direction={expanded ? 'down' : 'right'}
                 style={{ marginRight: '-25px' }}
               />
             </EndpointInfo>

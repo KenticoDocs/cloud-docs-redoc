@@ -29,6 +29,10 @@ export const StyledResponseTitle = styled(ResponseTitle)`
     }
   }
 
+  & + [class*='ResponseDetailsWrap'] {
+    border: 2px solid ${props => props.theme.colors.responses[props.type].backgroundColor};
+  }
+
   ${props =>
     (props.empty &&
       `
@@ -46,6 +50,8 @@ cursor: default;
 
 export const ResponseDetailsWrap = styled.div`
   padding: 0;
+  position: relative;
+  top: -4px;
 `;
 
 export const HeadersCaption = styled(UnderlinedHeader.withComponent('caption'))`

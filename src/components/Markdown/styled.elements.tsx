@@ -130,8 +130,16 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
   }
 
   ol {
-    padding: 0 0 1.125em;
+    padding: 0 0 1.125em 1.125em;
     margin: 0;
+
+    & > li {
+      padding: 0 0 0.25em;
+    }
+
+    ol, ul {
+      padding-bottom: 0;
+    }
   }
 
   ul {
@@ -152,6 +160,10 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
         left: 0;
         top: 0.6em;
       }
+    }
+
+    ol, ul {
+      padding-bottom: 0;
     }
   }
 

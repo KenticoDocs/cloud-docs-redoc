@@ -1,0 +1,122 @@
+@font-face {
+  font-family: 'kentico-icons';
+  src: url('https://cdn.jsdelivr.net/gh/Kentico/kentico-icons/production/fonts/kentico-icons.eot');
+  src: url('https://cdn.jsdelivr.net/gh/Kentico/kentico-icons/production/fonts/kentico-icons.eot?#iefix') format('embedded-opentype'),
+    url('https://cdn.jsdelivr.net/gh/Kentico/kentico-icons/production/fonts/kentico-icons.woff') format('woff'),
+    url('https://cdn.jsdelivr.net/gh/Kentico/kentico-icons/production/fonts/kentico-icons.ttf') format('truetype'),
+    url('https://cdn.jsdelivr.net/gh/Kentico/kentico-icons/production/fonts/kentico-icons.svg#svgFontName') format('svg');
+}
+
+@import url('https://cdn.jsdelivr.net/gh/Kentico/kentico-icons/production/icon-variables.less');
+
+.callout {
+  border-left: .5em solid;
+  padding: 1em 1.25em 1.25em;
+  margin: 0 0 1em;
+  box-sizing: border-box;
+  position: relative;
+
+  &:before {
+    font-family: 'kentico-icons';
+    display: inline-block;
+    padding: 0 .75em 0 0;
+    width: 1em;
+    font-weight: normal;
+    position: absolute;
+    top: 1em;
+    left: 1.375em;
+  }
+
+  &--tip {
+    background-color: #C8E2C4;
+    border-color: #00A54B;
+
+    &:before {
+      color: #00A54B;
+      content: "\e675";
+    }
+
+    .callout__title,
+    &>p:first-child>strong {
+      color: #00A54B;
+    }
+  }
+
+  &--warning {
+    background-color: #FACDBD;
+    border-color: #F16A38;
+
+    &:before {
+      color: #F16A38;
+      content: "\e60d";
+    }
+
+    .callout__title,
+    &>p:first-child>strong {
+      color: #F16A38;
+    }
+  }
+
+  &--note {
+    background-color: #E3E9EC;
+    border-color: #7C909B;
+
+    &:before {
+      color: #7C909B;
+      content: "\e693";
+    }
+
+    .callout__title,
+    &>p:first-child>strong {
+      color: #7C909B;
+    }
+  }
+
+  &--info {
+    background-color: #C0EAFF;
+    border-color: #008AE1;
+
+    &:before {
+      color: #008AE1;
+      content: "\e664";
+    }
+
+    .callout__title,
+    &>p:first-child>strong {
+      color: #008AE1;
+    }
+  }
+
+  &__title,
+  &>p:first-child>strong {
+    font-weight: 700;
+  }
+
+  &>p:first-child>strong {
+    padding: 0 0 .375em;
+  }
+
+  p,
+  figure {
+    padding: 0 0 .5em 1.75em !important;
+
+    &:first-child,
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  figcaption {
+    p {
+      padding-left: 0;
+    }
+  }
+
+  ul {
+    padding-left: 2.75em;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+}

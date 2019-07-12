@@ -10,6 +10,11 @@ export const MiddlePanel = styled.div`
     padding: ${props =>
       `${props.theme.spacing.sectionVertical}px ${props.theme.spacing.sectionHorizontal}px`};
   `};
+
+  ${media.lessThan('small', true)`
+    padding: ${props =>
+      `${props.theme.spacing.sectionVertical}px ${props.theme.spacing.sectionHorizontal / 2}px`};
+  `};
 `;
 
 export const Section = styled.div.attrs(props => ({

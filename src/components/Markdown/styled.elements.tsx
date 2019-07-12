@@ -25,13 +25,12 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
   ResolvedThemeInterface,
   { compact?: boolean; inline?: boolean }
 >)`
-
   font-family: ${props => props.theme.typography.fontFamily};
   font-weight: ${props => props.theme.typography.fontWeightRegular};
   line-height: ${props => props.theme.typography.lineHeight};
 
   p {
-    padding: 0 0 1em;
+    padding: 0 0 0.5em;
     margin: 0;
 
     &:last-child {
@@ -46,7 +45,7 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
 
     ul {
       padding-left: 1.875em;
-      padding-right: .5em;
+      padding-right: 0.5em;
     }
   }
 
@@ -76,7 +75,7 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
   h2 {
     ${headerCommonMixin(2)};
     color: ${props => props.theme.colors.text.primary};
-    padding: .375em 0;
+    padding: 0.375em 0;
   }
 
   code {
@@ -95,14 +94,15 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
 
   pre {
     font-family: ${props => props.theme.typography.code.fontFamily};
-    white-space:${({ theme }) => (theme.typography.code.wrap ? 'pre-wrap' : 'pre')};
+    white-space: ${({ theme }) => (theme.typography.code.wrap ? 'pre-wrap' : 'pre')};
     background-color: #263238;
     color: white;
     padding: ${props => props.theme.spacing.unit * 4}px;
     overflow-x: auto;
     line-height: normal;
-    border-radius: 0px
+    border-radius: 0px;
     border: 1px solid rgba(38, 50, 56, 0.1);
+    margin: 0;
 
     code {
       background-color: transparent;
@@ -137,7 +137,8 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
       padding: 0 0 0.25em;
     }
 
-    ol, ul {
+    ol,
+    ul {
       padding-bottom: 0;
     }
   }
@@ -162,7 +163,8 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
       }
     }
 
-    ol, ul {
+    ol,
+    ul {
       padding-bottom: 0;
     }
   }
@@ -202,7 +204,8 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
   }
 
   table {
-    ul, ol {
+    ul,
+    ol {
       p {
         margin: 0;
       }

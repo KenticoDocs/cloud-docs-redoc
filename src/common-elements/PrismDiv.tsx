@@ -7,15 +7,17 @@ export const PrismDiv = styled.div`
 
   code[class*='language-'],
   pre[class*='language-'] {
-    /* color: white;
+    /*color: white;
     background: none; */
     text-shadow: 0 -0.1em 0.2em black;
     text-align: left;
     white-space: pre;
     word-spacing: normal;
-    word-break: normal;
+    word-break: break-word;
     word-wrap: normal;
     line-height: 1.5;
+    font-size: 1em;
+    display: block;
 
     -moz-tab-size: 4;
     -o-tab-size: 4;
@@ -25,6 +27,14 @@ export const PrismDiv = styled.div`
     -moz-hyphens: none;
     -ms-hyphens: none;
     hyphens: none;
+
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar {
+      background-color: transparent;
+    }
   }
 
   @media print {
@@ -36,9 +46,12 @@ export const PrismDiv = styled.div`
 
   /* Code blocks */
   pre[class*='language-'] {
-    padding: 1em;
-    margin: 0.5em 0;
+    padding-left: 3.8em;
+    padding-top: 4em;
+    margin: 0 0 1em;
     overflow: auto;
+    white-space: pre-wrap;
+    display: flex;
   }
 
   .token.comment,

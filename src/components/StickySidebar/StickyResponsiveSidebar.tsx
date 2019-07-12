@@ -52,31 +52,52 @@ const StyledStickySidebar = styled.div<{ open?: boolean }>`
 const FloatingButton = styled.div`
   outline: none;
   user-select: none;
-  background-color: #f3f6f7;
+  background-color: #fff;
   color: ${props => props.theme.typography.links.color};
   display: none;
   cursor: pointer;
   position: fixed;
-  right: 20px;
+  right: 16px;
   z-index: 100;
   border-radius: 50%;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   ${media.lessThan('small')`
     display: flex;
   `};
 
-  bottom: 44px;
+  top: 16px;
 
-  width: 60px;
-  height: 60px;
-  padding: 0 20px;
+  width: 48px;
+  height: 48px;
+  padding: 0 8px;
+  justify-content: center;
+  align-items: center;
 
   @media print {
     display: none;
   }
 
-  svg {
-    color: ${props => props.theme.typography.links.color};
+  .nav-trigger-off,
+  .nav-trigger-on {
+    position: relative;
+    top: 2px;
+  }
+
+  .nav-trigger-on {
+    &:before {
+      content: '\\e64a';
+      font-family: 'kentico-icons';
+      font-size: 1.5em;
+      color: #6b7c85;
+    }
+  }
+
+  .nav-trigger-off {
+    &:before {
+      content: '\\e650';
+      font-family: 'kentico-icons';
+      font-size: 1.5em;
+      color: #6b7c85;
+    }
   }
 `;
 

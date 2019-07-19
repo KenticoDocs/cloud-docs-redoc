@@ -37,15 +37,17 @@ export const ShelfIcon = styled(IntShelfIcon)`
   height: ${props => props.size || '18px'};
   width: ${props => props.size || '18px'};
   vertical-align: middle;
-  margin: 0 .25em 0 0;
+  margin: 0 0.125em 0 0;
+  position: relative;
+  top: 0.125em;
   float: ${props => props.float || ''};
   transition: transform 0.2s ease-out;
   transform: rotateZ(${props => directionMap[props.direction || 'down']});
 
   polygon {
     fill: ${props =>
-    (props.color && props.theme.colors[props.color] && props.theme.colors[props.color].main) ||
-    props.color};
+      (props.color && props.theme.colors[props.color] && props.theme.colors[props.color].main) ||
+      props.color};
   }
 `;
 

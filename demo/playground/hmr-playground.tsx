@@ -97,7 +97,7 @@ const options: RedocRawOptions = {
       textColor: '#6B7C85',
       backgroundColor: '#fff',
       arrow: {
-        size: '1.25em',
+        size: '1.125em',
         color: '#008AE1',
       },
     },

@@ -594,3 +594,46 @@ figure {
 .hidden {
   display: none !important;
 }
+
+.breadcrumbs {
+  background-color: #f3f6f7;
+  padding: 1.5em 2.5em;
+  margin: -1em 0 1em -1em;
+  width: ~"calc(100% + 2em)";
+
+  li {
+    display: inline-block;
+
+    &:after {
+      content: '/';
+      color: #7e909c;
+      padding: 0 .5em;
+    }
+
+    &:last-child {
+      &:after {
+        display: none;
+      }
+    }
+  }
+
+  a {
+    color: #007DCC;
+
+    &:hover {
+      color: #e46952;
+    }
+  }
+
+  span {
+    color: #7e909c;
+  }
+}
+
+.nav-trigger-top {
+  top: 56px !important;
+
+  .menu-content[open]+& {
+    top: 16px !important;
+  }
+}

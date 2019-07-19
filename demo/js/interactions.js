@@ -1,27 +1,5 @@
 (function () {
-
   /* Helper methods */
-  var setCookie = (name, value, days) => {
-    var expires = '';
-    if (days) {
-      var date = new Date();
-      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-      expires = '; expires=' + date.toUTCString();
-    }
-    document.cookie = name + '=' + (value || '') + expires + '; path=/';
-  };
-
-  var getCookie = (name) => {
-    var nameEQ = name + '=';
-    var ca = document.cookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-      if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-    }
-    return null;
-  };
-
   var triggerClick = function (item) {
     setTimeout(function () {
       item.click();
@@ -30,70 +8,34 @@
 
   /* Code blocks inside documentation body */
   var getPrismClassName = function (item) {
-    var lang = 'lang-';
-    item = item.toLowerCase();
-
-    if (item) {
-      switch (item) {
-        case 'rest':
-          lang += 'shell';
-          break;
-        case 'shell':
-          lang += 'shell';
-          break;
-        case 'curl':
-          lang += 'shell';
-          break;
-        case '_net':
-          lang += 'dotnet';
-          break;
-        case 'javascript':
-          lang += 'js';
-          break;
-        case 'typescript':
-          lang += 'ts';
-          break;
-        case 'java':
-          lang += 'java';
-          break;
-        case 'android':
-          lang += 'java';
-          break;
-        case 'javarx':
-          lang += 'java';
-          break;
-        case 'php':
-          lang += 'php';
-          break;
-        case 'ios':
-          lang += 'swift';
-          break;
-        case 'python':
-          lang += 'python';
-          break;
-        case 'ruby':
-          lang += 'ruby';
-          break;
-        default:
-          lang += 'clike';
-      }
-    } else {
-      lang += 'clike';
+    var lang;
+    var pairings = {
+      'rest': 'shell',
+      'shell': 'shell',
+      'curl': 'shell',
+      '_net': 'dotnet',
+      'c_': 'dotnet',
+      'javascript': 'js',
+      'json': 'js',
+      'typescript': 'ts',
+      'java': 'java',
+      'android': 'java',
+      'javarx': 'java',
+      'php': 'php',
+      'swift': 'swift',
+      'python': 'python',
+      'ruby': 'ruby'
     }
 
-    return lang;
-  };
+    if (item && item.codename) {
+      lang = pairings[item.codename];
+    }
 
-  var codeBlocks = function () {
-    var blocks = document.querySelectorAll('[data-platform-code]');
+    if (!lang) {
+      lang = 'clike';
+    }
 
-    var interval = setInterval(function () {
-      blocks = document.querySelectorAll('[data-platform-code]');
-      if (blocks.length) {
-        initCodeBlocks(blocks);
-        clearInterval(interval);
-      }
-    }, 100);
+    return 'lang-' + lang;
   };
 
   var createHighlightedBlock = function (block) {
@@ -113,19 +55,30 @@
     }
   };
 
+  var codeBlocks = function () {
+    var blocks = document.querySelectorAll('[data-platform-code]');
+
+    var interval = setInterval(function () {
+      blocks = document.querySelectorAll('[data-platform-code]');
+      if (blocks.length) {
+        initCodeBlocks(blocks);
+        clearInterval(interval);
+      }
+    }, 100);
+  };
+
   codeBlocks();
 
   document.addEventListener('click', (e) => {
     if (e.target && e.target.matches('.language-selector__link')) {
       e.preventDefault();
 
-
       var platform = e.target.getAttribute('data-platform');
       var links = document.querySelectorAll('.language-selector__link');
       var linkRedoc = document.querySelector('.tab-click_' + platform);
       var blocks = document.querySelectorAll('[data-platform-code]');
 
-      setCookie('KCDOCS.preselectedLanguage', platform);
+      window.helper.setCookie('KCDOCS.preselectedLanguage', platform);
 
       for (var i = 0; i < links.length; i++) {
         if (links[i].getAttribute('data-platform') === platform) {
@@ -135,12 +88,12 @@
         }
       }
 
-      for (var i = 0; i < blocks.length; i++) {
-        if (blocks[i].getAttribute('data-platform-code') === platform) {
-          blocks[i].classList.remove('hidden');
-          Prism.highlightElement(blocks[i].querySelector('code'));
+      for (var j = 0; j < blocks.length; j++) {
+        if (blocks[j].getAttribute('data-platform-code') === platform) {
+          blocks[j].classList.remove('hidden');
+          window.Prism.highlightElement(blocks[j].querySelector('code'));
         } else {
-          blocks[i].classList.add('hidden');
+          blocks[j].classList.add('hidden');
         }
       }
 
@@ -150,12 +103,11 @@
     }
   });
 
-
   /* Code blocks for requests and responses */
   var initPlatfromFromCookie = function () {
     var clicked = false;
 
-    var cookie = getCookie('KCDOCS.preselectedLanguage');
+    var cookie = window.helper.getCookie('KCDOCS.preselectedLanguage');
 
     if (cookie && !clicked) {
       var tabs = document.querySelectorAll('[class="tab-click_' + cookie + '"], [data-platform="' + cookie + '"]');
@@ -199,11 +151,10 @@
 
     body.addEventListener('click', function (e) {
       if (e.target && e.target.className.indexOf('tab-click_') > -1 && !clicked) {
-
         var platform = getPlatformFromClassName(e.target.className);
         var className = 'tab-click_' + platform;
 
-        setCookie('KCDOCS.preselectedLanguage', platform);
+        window.helper.setCookie('KCDOCS.preselectedLanguage', platform);
 
         if (!tabs.length) {
           tabs = document.querySelectorAll('[class*="tab-click_"], [data-platform]');
@@ -224,4 +175,32 @@
   };
 
   clickTab();
+
+  var setButtonPosition = function (button) {
+    if (window.pageYOffset < 56) {
+      if (!button.classList.contains('nav-trigger-top')) {
+        button.classList.add('nav-trigger-top');
+      }
+    } else {
+      button.classList.remove('nav-trigger-top');
+    }
+  };
+
+  var floatingButtonPosition = function () {
+    var button = document.querySelector('[class*="__FloatingButton"]');
+
+    var interval = setInterval(function () {
+      button = document.querySelector('[class*="__FloatingButton"]');
+      if (button) {
+        setButtonPosition(button);
+        clearInterval(interval);
+      }
+    }, 100);
+  };
+
+  floatingButtonPosition();
+  window.addEventListener('scroll', function () {
+    var button = document.querySelector('[class*="__FloatingButton"]');
+    setButtonPosition(button);
+  });
 })();

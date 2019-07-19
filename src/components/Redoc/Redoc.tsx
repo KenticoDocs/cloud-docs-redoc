@@ -7,6 +7,7 @@ import { OptionsProvider } from '../OptionsProvider';
 import { AppStore } from '../../services';
 import { ApiInfo } from '../ApiInfo/';
 import { ApiLogo } from '../ApiLogo/ApiLogo';
+import { Breadcrumbs } from '../Breadcrumbs';
 import { ContentItems } from '../ContentItems/ContentItems';
 import { SideMenu } from '../SideMenu/SideMenu';
 import { StickyResponsiveSidebar } from '../StickySidebar/StickyResponsiveSidebar';
@@ -53,6 +54,7 @@ export class Redoc extends React.Component<RedocProps> {
                   />
                 )) ||
                   null}
+                <Breadcrumbs store={store} />
                 <SideMenu menu={menu} />
               </StickyResponsiveSidebar>
               <ApiContentWrap className="api-content">

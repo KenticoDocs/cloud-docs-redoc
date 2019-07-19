@@ -2,8 +2,8 @@ import * as React from 'react';
 
 import PerfectScrollbarType, * as PerfectScrollbarNamespace from 'perfect-scrollbar';
 import psStyles from 'perfect-scrollbar/css/perfect-scrollbar.css';
-
 import { OptionsContext } from '../components/OptionsProvider';
+
 import styled, { createGlobalStyle } from '../styled-components';
 
 /*

@@ -129,7 +129,6 @@ export class StickyResponsiveSidebar extends React.Component<StickySidebarProps>
 
   render() {
     const open = this.props.menu.sideBarOpened;
-
     const style = options => {
       const top = this.getScrollYOffset(options);
       return {

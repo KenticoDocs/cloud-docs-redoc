@@ -52,27 +52,33 @@ export class MenuItem extends React.Component<MenuItemProps> {
         {item.type === 'operation' ? (
           <OperationMenuItemContent {...this.props} item={item as OperationModel} />
         ) : (
-            <MenuItemLabel depth={item.depth} active={item.active} type={item.type}>
-              {(item.depth > 0 &&
-                item.items.length > 0 && (
-                  <ShelfIcon float={'left'} direction={item.expanded ? 'down' : 'right'} size={'1.5em'} />
-                )) ||
-                null}
-              <MenuItemTitle title={item.name}>
-                {item.name}
-                {this.props.children}
-              </MenuItemTitle>
-            </MenuItemLabel>
-          )}
-        {!withoutChildren &&
-          item.items &&
-          item.items.length > 0 && (
-            <MenuItems
-              expanded={item.expanded}
-              items={item.items}
-              onActivate={this.props.onActivate}
-            />
-          )}
+          <MenuItemLabel
+            depth={item.depth}
+            active={item.active}
+            type={item.type}
+            className={item.items.length > 0 ? 'has-subnav' : ''}
+          >
+            {(item.depth > 0 && item.items.length > 0 && (
+              <ShelfIcon
+                float={'left'}
+                direction={item.expanded ? 'down' : 'right'}
+                size={'1.5em'}
+              />
+            )) ||
+              null}
+            <MenuItemTitle title={item.name}>
+              {item.name}
+              {this.props.children}
+            </MenuItemTitle>
+          </MenuItemLabel>
+        )}
+        {!withoutChildren && item.items && item.items.length > 0 && (
+          <MenuItems
+            expanded={item.expanded}
+            items={item.items}
+            onActivate={this.props.onActivate}
+          />
+        )}
       </MenuItemLi>
     );
   }

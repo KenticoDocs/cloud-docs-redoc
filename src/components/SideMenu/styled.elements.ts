@@ -116,7 +116,7 @@ export const MenuItemLabel = styled.label.attrs((props: MenuItemLabelType) => ({
   color: #6B7C85;
   font-weight: ${props => (props.active ? '700' : '400')};
   margin: 0;
-  padding: 0.5em 0 0.5em 1.5em;
+  padding: 0.375em 0 0.375em 1.5em;
   line-height: 1.25em;
   display: block;
   ${({ depth, type, theme }) =>
@@ -126,6 +126,10 @@ export const MenuItemLabel = styled.label.attrs((props: MenuItemLabelType) => ({
   background-color: transparent;
 
   ${props => (props.deprecated && deprecatedCss) || ''};
+
+  &.has-subnav {
+    padding: 0.375em 0 0.375em .25em;
+  }
 
   &:hover {
     [class*=MenuItemTitle] {
@@ -143,11 +147,11 @@ export const MenuItemLabel = styled.label.attrs((props: MenuItemLabelType) => ({
   }
 
   &.-depth2 {
-    padding: 0.5em 0 0.5em 3.5em;
+    padding: 0.375em 0 0.375em 2.5em;
   }
 
   &.-depth3 {
-    padding: 0.5em 0 0.5em 5em;
+    padding: 0.5em 0 0.375em 5em;
   }
 
   ${ShelfIcon} {

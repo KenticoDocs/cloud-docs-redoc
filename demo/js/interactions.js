@@ -219,7 +219,7 @@
       var newId = section + '/' + headingId;
 
       headings[i].setAttribute('id', newId);
-      var anchorLink = '<a class="linkify__StyledShareLink" href="#' + newId + '"></a>';
+      var anchorLink = '<a class="linkify__StyledShareLink" href="#' + newId + '" data-custom-anchor></a>';
       headings[i].innerHTML = anchorLink + headingHTML;
     }
   };
@@ -265,6 +265,26 @@
     }, 100);
   };
 
+  var forceCorrectHash = function () {
+    var content = document.querySelector('.api-content');
+
+    var interval = setInterval(function () {
+      content = document.querySelector('.api-content');
+      if (content) {
+        content.addEventListener('click', function (e) {
+          if (e.target && e.target.matches('[data-custom-anchor]')) {
+            setTimeout(function () {
+              window.location.hash = e.target.getAttribute('href');
+            }, 50);
+
+          }
+        });
+        clearInterval(interval);
+      }
+    });
+  };
+
   addAchorsToHeadings();
   scrollToHeading();
+  forceCorrectHash();
 })();

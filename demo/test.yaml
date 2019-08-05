@@ -1,4 +1,5 @@
 openapi: 3.0.2
+x-api-status: beta
 info:
   title: Kentico Cloud API
   description: |
@@ -10,9 +11,9 @@ info:
 
     Sample JSON code block:
     
-    <pre class="line-numbers" data-platform-code="">
-    <div class="infobar"><ul class="infobar__languages"><li class="infobar__lang">JSON</li></ul><div class="infobar__copy">Copy</div></div>
-    <div class="clean-code">"teaser_image": { 
+    <!--CodeSample programmingLanguage=JSON platform=-->
+    ```json
+    { 
       "type": "asset",
       "name": "Teaser image",
       "value": [
@@ -27,12 +28,14 @@ info:
         }
       ]
     }
-    </div>
-    </pre>
+    ```
+    <!--CodeSample-end-->
 
     All requests to the API must be made securely with HTTPS with TLS 1.2.
 
-    <div class="callout callout--note"><p><strong>API requests limit</strong></p><p>Requests made to the Delivery API count towards the overall API Calls limit set in our Fair Use Policy. This does NOT apply to Delivery Preview API calls to preview unpublished content.</p></div>
+    <!--Callout type=Note-->
+    <p><strong>API requests limit</strong></p><p>Requests made to the Delivery API count towards the overall API Calls limit set in our Fair Use Policy. This does NOT apply to Delivery Preview API calls to preview unpublished content.</p>
+    <!--Callout-end-->
 
     ## Production vs. Preview (+code samples)
 
@@ -48,21 +51,10 @@ info:
 
     If you want to preview unpublished content in your project, you need to authorize your request.
 
-    <ul class="language-selector__list">
-      <li class="language-selector__item"><a class="language-selector__link" href="#" data-platform="rest">cURL</a></li>
-      <li class="language-selector__item"><a class="language-selector__link" href="#" data-platform="javascript">JavaScript</a></li>
-      <li class="language-selector__item"><a class="language-selector__link" href="#" data-platform="typescript">TypeScript</a></li>
-      <li class="language-selector__item"><a class="language-selector__link" href="#" data-platform="_net">.NET</a></li>
-      <li class="language-selector__item"><a class="language-selector__link" href="#" data-platform="java">Java</a></li>
-      <li class="language-selector__item"><a class="language-selector__link" href="#" data-platform="android">Android</a></li>
-      <li class="language-selector__item"><a class="language-selector__link" href="#" data-platform="ios">iOS</a></li>
-      <li class="language-selector__item"><a class="language-selector__link" href="#" data-platform="php">PHP</a></li>
-      <li class="language-selector__item"><a class="language-selector__link" href="#" data-platform="ruby">Ruby</a></li>
-    </ul>
-
-    <pre class="line-numbers" data-platform-code="android">
-    <div class="infobar"><ul class="infobar__languages"><li class="infobar__lang">Java</li></ul><div class="infobar__copy">Copy</div></div>
-    <div class="clean-code">import com.kenticocloud.delivery_core.*;
+    <!--CodeSamples-->
+    <!--CodeSample programmingLanguage=Java platform=Android-->
+    ```java
+    import com.kenticocloud.delivery_core.*;
     import com.kenticocloud.delivery_rx.*;
 
     import io.reactivex.Observer;
@@ -103,11 +95,11 @@ info:
             public void onComplete() {
             }
         });
-    </div>
-    </pre>
-    <pre class="line-numbers" data-platform-code="ios">
-    <div class="infobar"><ul class="infobar__languages"><li class="infobar__lang">swift</li></ul><div class="infobar__copy">Copy</div></div>
-    <div class="clean-code">import KenticoCloud
+    ```
+    <!--CodeSample-end-->
+    <!--CodeSample programmingLanguage=Swift platform=iOS-->
+    ```swift
+    import KenticoCloud
 
     let client = DeliveryClient.init(projectId: "975bf280-fd91-488c-994c-2f04416e5ee3")
 
@@ -127,10 +119,11 @@ info:
             }
         }
     }
-    </div></pre>
-    <pre class="line-numbers" data-platform-code="java">
-    <div class="infobar"><ul class="infobar__languages"><li class="infobar__lang">Java</li></ul><div class="infobar__copy">Copy</div></div>
-    <div class="clean-code">import com.kenticocloud.delivery;
+    ```
+    <!--CodeSample-end-->
+    <!--CodeSample programmingLanguage=Java platform=Java-->
+    ```java
+    import com.kenticocloud.delivery;
 
     DeliveryClient client = new DeliveryClient("975bf280-fd91-488c-994c-2f04416e5ee3");
 
@@ -138,10 +131,11 @@ info:
         .build();
 
     ContentItemsListingResponse listingResponse = client.getItems();
-    </div></pre>
-    <pre class="line-numbers" data-platform-code="javascript">
-    <div class="infobar"><ul class="infobar__languages"><li class="infobar__lang">JavaScript</li></ul><div class="infobar__copy">Copy</div></div>
-    <div class="clean-code">const KenticoCloud = require("kentico-cloud-delivery");
+    ```
+    <!--CodeSample-end-->
+    <!--CodeSample programmingLanguage=Javascript platform=JavaScript-->
+    ```javascript
+    const KenticoCloud = require("kentico-cloud-delivery");
 
     const deliveryClient = new KenticoCloud.DeliveryClient({
         projectId: "975bf280-fd91-488c-994c-2f04416e5ee3"
@@ -150,10 +144,11 @@ info:
     deliveryClient.items()
         .getObservable()
         .subscribe(response =&gt; console.log(response));
-    </div></pre>
-    <pre class="line-numbers" data-platform-code="_net">
-    <div class="infobar"><ul class="infobar__languages"><li class="infobar__lang">C#</li></ul><div class="infobar__copy">Copy</div></div>
-    <div class="clean-code">using KenticoCloud.Delivery;
+    ```
+    <!--CodeSample-end-->
+    <!--CodeSample programmingLanguage=C# platform=_NET-->
+    ```csharp
+    using KenticoCloud.Delivery;
 
     // Initializes a content delivery client
     IDeliveryClient client = DeliveryClientBuilder
@@ -165,10 +160,11 @@ info:
     DeliveryItemListingResponse&lt;object&gt; response = await client.GetItemsAsync&lt;object&gt;();
 
     var items = response.Items;
-    </div></pre>
-    <pre class="line-numbers" data-platform-code="php">
-    <div class="infobar"><ul class="infobar__languages"><li class="infobar__lang">PHP</li></ul><div class="infobar__copy">Copy</div></div>
-    <div class="clean-code">&lt;?php
+    ```
+    <!--CodeSample-end-->
+    <!--CodeSample programmingLanguage=PHP platform=PHP-->
+    ```php
+    &lt;?php
     // Defined by Composer to include required libraries
     require __DIR__ . "/vendor/autoload.php";
 
@@ -177,26 +173,29 @@ info:
     $client = new DeliveryClient("975bf280-fd91-488c-994c-2f04416e5ee3");
 
     $items = $client-&gt;getItems();
-    </div></pre>
-    <pre class="line-numbers" data-platform-code="rest">
-    <div class="infobar"><ul class="infobar__languages"><li class="infobar__lang">cURL</li></ul><div class="infobar__copy">Copy</div></div>
-    <div class="clean-code">curl --request GET \
+    ```
+    <!--CodeSample-end-->
+    <!--CodeSample programmingLanguage=cURL platform=REST-->
+    ```
+    curl --request GET \
       --url "https://deliver.kenticocloud.com/975bf280-fd91-488c-994c-2f04416e5ee3/items"
       --header "content-type: application/json"
-    </div></pre>
-    <pre class="line-numbers" data-platform-code="ruby">
-    <div class="infobar"><ul class="infobar__languages"><li class="infobar__lang">ruby</li></ul><div class="infobar__copy">Copy</div></div>
-    <div class="clean-code">require "delivery-sdk-ruby"
+    ```
+    <!--CodeSample-end-->
+    <!--CodeSample programmingLanguage=Ruby platform=Ruby-->
+    ```csharp
+    require "delivery-sdk-ruby"
 
     delivery_client = KenticoCloud::Delivery::DeliveryClient.new project_id: "975bf280-fd91-488c-994c-2f04416e5ee3"
     delivery_client.items.execute do |response|
       items = response.items
       items.each { |item| puts item.system.codename }
     end
-    </div></pre>
-    <pre class="line-numbers" data-platform-code="typescript">
-    <div class="infobar"><ul class="infobar__languages"><li class="infobar__lang">TypeScript</li></ul><div class="infobar__copy">Copy</div></div>
-    <div class="clean-code">import { ContentItem, DeliveryClient } from "kentico-cloud-delivery";
+    ```
+    <!--CodeSample-end-->
+    <!--CodeSample programmingLanguage=TypeScript platform=TypeScript-->
+    ```csharp
+    import { ContentItem, DeliveryClient } from "kentico-cloud-delivery";
 
     const deliveryClient = new DeliveryClient({
       projectId: "975bf280-fd91-488c-994c-2f04416e5ee3"
@@ -205,7 +204,9 @@ info:
     deliveryClient.items&lt;ContentItem&gt;()
         .getObservable()
         .subscribe(response =&gt; console.log(response));
-    </div></pre>
+    ```
+    <!--CodeSample-end-->
+    <!--CodeSamples-end-->
 
     For the Delivery Preview API, you can use two concurrent API keys, Primary and Secondary. For more details on how to work with the keys, see Previewing unpublished content.
 
@@ -254,9 +255,10 @@ tags:
 
       Note: When retrieving language variants, the Content Management API will always reference content elements with their internal IDs. When creating or updating language variants via the API, you can reference content elements by their internal IDs or codenames.
 
-      <pre class="line-numbers" data-platform-code="">
-      <div class="infobar"><ul class="infobar__languages"><li class="infobar__lang">JSON</li></ul><div class="infobar__copy">Copy</div></div>
-      <div class="clean-code"># Delivery API
+      
+      <!--CodeSample programmingLanguage=JSON platform=-->
+      ```json
+      # Delivery API
       "content": {
         "type": "rich_text",
         "name": "Content",
@@ -273,7 +275,8 @@ tags:
         },
         "value": "&lt;p&gt;&lt;a href=\"http://www.kenticocloud.com\" title=\"#1 CMS\"&gt;Kentico Cloud&lt;/a&gt;&lt;/p&gt;"
       }
-      </div></pre>
+      ```
+      <!--CodeSample-end-->
 
       ## Text element (CM API v2)
 
@@ -291,7 +294,9 @@ tags:
 
       Requires the attribute `href`.
 
-      <div class="callout callout--info"><p><strong>Inserting URL values</strong></p><p>When inserting URL values, the system might add the <code>http://</code> prefix in case the provided URL is invalid or not safe. For example, URLs using the <code>javascript</code> protocol will be prefixed. URL values starting with <code>/</code>, <code>?</code>, or <code>#</code> are allowed.</p><p>Examples of how inserted URLs are stored:</p><ul><li><code>http://example.com</code> → <code>http://example.com</code></li><li><code>https://example.com</code> → <code>https://example.com</code></li><li><code>ftp://example.com</code> → <code>ftp://example.com</code></li><li><code>example.com</code> → <code>http://example.com</code></li><li><code>about-us.html</code> → <code>http://about-us.html</code></li><li><code>/about-us.html</code> → <code>/about-us.html</code></li><li><code>?query</code> → <code>?query</code></li><li><code>#anchor</code> → <code>#anchor</code></li><li><code>javascript:alert()</code> → <code>http://javascript:alert()</code></li><li><code>javascript://%0aalert()</code> → <code>http://javascript://%0aalert()</code></li><li><code>data:text/html,&lt;script&gt;alert()&lt;/script&gt;</code> → <code>http://data:text/html,&lt;script&gt;alert()&lt;/script&gt;</code></li></ul></div>
+      <!--Callout type=Info-->
+      <p><strong>Inserting URL values</strong></p><p>When inserting URL values, the system might add the <code>http://</code> prefix in case the provided URL is invalid or not safe. For example, URLs using the <code>javascript</code> protocol will be prefixed. URL values starting with <code>/</code>, <code>?</code>, or <code>#</code> are allowed.</p><p>Examples of how inserted URLs are stored:</p><ul><li><code>http://example.com</code> → <code>http://example.com</code></li><li><code>https://example.com</code> → <code>https://example.com</code></li><li><code>ftp://example.com</code> → <code>ftp://example.com</code></li><li><code>example.com</code> → <code>http://example.com</code></li><li><code>about-us.html</code> → <code>http://about-us.html</code></li><li><code>/about-us.html</code> → <code>/about-us.html</code></li><li><code>?query</code> → <code>?query</code></li><li><code>#anchor</code> → <code>#anchor</code></li><li><code>javascript:alert()</code> → <code>http://javascript:alert()</code></li><li><code>javascript://%0aalert()</code> → <code>http://javascript://%0aalert()</code></li><li><code>data:text/html,&lt;script&gt;alert()&lt;/script&gt;</code> → <code>http://data:text/html,&lt;script&gt;alert()&lt;/script&gt;</code></li></ul>
+      <!--Callout-end-->
 
       ### Assets in Rich text
 
@@ -318,21 +323,10 @@ tags:
     description: |
       Taxonomies are a versatile tool for categorizing and organizing your content. Learn more about them in our Help Center or see how to retrieve content tagged with a specific taxonomy term.
 
-      <ul class="language-selector__list">
-        <li class="language-selector__item"><a class="language-selector__link" href="#" data-platform="rest">cURL</a></li>
-        <li class="language-selector__item"><a class="language-selector__link" href="#" data-platform="javascript">JavaScript</a></li>
-        <li class="language-selector__item"><a class="language-selector__link" href="#" data-platform="typescript">TypeScript</a></li>
-        <li class="language-selector__item"><a class="language-selector__link" href="#" data-platform="_net">.NET</a></li>
-        <li class="language-selector__item"><a class="language-selector__link" href="#" data-platform="java">Java</a></li>
-        <li class="language-selector__item"><a class="language-selector__link" href="#" data-platform="android">Android</a></li>
-        <li class="language-selector__item"><a class="language-selector__link" href="#" data-platform="ios">iOS</a></li>
-        <li class="language-selector__item"><a class="language-selector__link" href="#" data-platform="php">PHP</a></li>
-        <li class="language-selector__item"><a class="language-selector__link" href="#" data-platform="ruby">Ruby</a></li>
-      </ul>
-
-      <pre class="line-numbers" data-platform-code="android">
-      <div class="infobar"><ul class="infobar__languages"><li class="infobar__lang">Java</li></ul><div class="infobar__copy">Copy</div></div>
-      <div class="clean-code">import com.kenticocloud.delivery_core.*;
+      <!--CodeSamples-->
+      <!--CodeSample programmingLanguage=Java platform=Android-->
+      ```java
+      import com.kenticocloud.delivery_core.*;
       import com.kenticocloud.delivery_rx.*;
 
       import io.reactivex.Observer;
@@ -391,10 +385,11 @@ tags:
               public void onComplete() {
               }
           });
-      </div></pre>
-      <pre class="line-numbers" data-platform-code="ios">
-      <div class="infobar"><ul class="infobar__languages"><li class="infobar__lang">Swift</li></ul><div class="infobar__copy">Copy</div></div>
-      <div class="clean-code">import KenticoCloud
+      ```
+      <!--CodeSample-end-->
+      <!--CodeSample programmingLanguage=Swift platform=iOS-->
+      ```swift
+      import KenticoCloud
 
       let client = DeliveryClient.init(projectId: "975bf280-fd91-488c-994c-2f04416e5ee3")
 
@@ -412,10 +407,11 @@ tags:
               }
           }
       }
-      </div></pre>
-      <pre class="line-numbers" data-platform-code="java">
-      <div class="infobar"><ul class="infobar__languages"><li class="infobar__lang">Java</li></ul><div class="infobar__copy">Copy</div></div>
-      <div class="clean-code">import com.kenticocloud.delivery;
+      ```
+      <!--CodeSample-end-->
+      <!--CodeSample programmingLanguage=Java platform=Java-->
+      ```java
+      import com.kenticocloud.delivery;
 
       DeliveryClient client = new DeliveryClient("975bf280-fd91-488c-994c-2f04416e5ee3");
 
@@ -427,10 +423,11 @@ tags:
 
       // Create strongly typed models according to https://developer.kenticocloud.com/docs/strongly-typed-models
       List&lt;ArticleItem&gt; items = client.getItems(ArticleItem.class, params);
-      </div></pre>
-      <pre class="line-numbers" data-platform-code="javascript">
-      <div class="infobar"><ul class="infobar__languages"><li class="infobar__lang">JavaScript</li></ul><div class="infobar__copy">Copy</div></div>
-      <div class="clean-code">const KenticoCloud = require("kentico-cloud-delivery");
+      ```
+      <!--CodeSample-end-->
+      <!--CodeSample programmingLanguage=Javascript platform=Javascript-->
+      ```javascript
+      const KenticoCloud = require("kentico-cloud-delivery");
 
       // Create strongly typed models according to https://developer.kenticocloud.com/docs/strongly-typed-models
       class Article extends KenticoCloud.ContentItem {
@@ -452,10 +449,11 @@ tags:
           .orderParameter("system.last_modified", KenticoCloud.SortOrder.desc)
           .getObservable()
           .subscribe(response =&gt; console.log(response));
-      </div></pre>
-      <pre class="line-numbers" data-platform-code="_net">
-      <div class="infobar"><ul class="infobar__languages"><li class="infobar__lang">C#</li></ul><div class="infobar__copy">Copy</div></div>
-      <div class="clean-code">using KenticoCloud.Delivery;
+      ```
+      <!--CodeSample-end-->
+      <!--CodeSample programmingLanguage=C# platform=_NET-->
+      ```csharp
+      using KenticoCloud.Delivery;
 
       // Initializes a content delivery client
       IDeliveryClient client = DeliveryClientBuilder
@@ -471,10 +469,11 @@ tags:
       );
 
       var items = response.Items;
-      </div></pre>
-      <pre class="line-numbers" data-platform-code="php">
-      <div class="infobar"><ul class="infobar__languages"><li class="infobar__lang">PHP</li></ul><div class="infobar__copy">Copy</div></div>
-      <div class="clean-code">&lt;?php
+      ```
+      <!--CodeSample-end-->
+      <!--CodeSample programmingLanguage=PHP platform=PHP-->
+      ```php
+      &lt;?php
 
       // Defined by Composer to include required libraries
       require __DIR__ . "/vendor/autoload.php";
@@ -488,16 +487,18 @@ tags:
                   -&gt;equals("system.type", "article")
                   -&gt;limit(3)
                   -&gt;orderDesc("system.last_modified"));
-      </div></pre>
-      <pre class="line-numbers" data-platform-code="rest">
-      <div class="infobar"><ul class="infobar__languages"><li class="infobar__lang">cURL</li></ul><div class="infobar__copy">Copy</div></div>
-      <div class="clean-code">curl --request GET \
+      ```
+      <!--CodeSample-end-->
+      <!--CodeSample programmingLanguage=cURL platform=REST-->
+      ```
+      curl --request GET \
         --url "https://deliver.kenticocloud.com/975bf280-fd91-488c-994c-2f04416e5ee3/items?system.type=article&amp;limit=3&amp;order=system.last_modified[desc]"
         --header "content-type: application/json"
-      </div></pre>
-      <pre class="line-numbers" data-platform-code="ruby">
-      <div class="infobar"><ul class="infobar__languages"><li class="infobar__lang">Ruby</li></ul><div class="infobar__copy">Copy</div></div>
-      <div class="clean-code">require "delivery-sdk-ruby"
+      ```
+      <!--CodeSample-end-->
+      <!--CodeSample programmingLanguage=Ruby platform=Ruby-->
+      ```ruby
+      require "delivery-sdk-ruby"
 
       delivery_client = KenticoCloud::Delivery::DeliveryClient.new project_id: "975bf280-fd91-488c-994c-2f04416e5ee3"
       delivery_client.items("system.type".eq "article")
@@ -507,10 +508,11 @@ tags:
                       items = response.items
                       items.each { |item| puts item.system.codename }
                     end
-      </div></pre>
-      <pre class="line-numbers" data-platform-code="typescript">
-      <div class="infobar"><ul class="infobar__languages"><li class="infobar__lang">TypeScript</li></ul><div class="infobar__copy">Copy</div></div>
-      <div class="clean-code">import { ContentItem, DeliveryClient, Fields, SortOrder, TypeResolver } from "kentico-cloud-delivery";
+      ```
+      <!--CodeSample-end-->
+      <!--CodeSample programmingLanguage=TypeScript platform=TypeScript-->
+      ```typescript
+      import { ContentItem, DeliveryClient, Fields, SortOrder, TypeResolver } from "kentico-cloud-delivery";
 
       // Create strongly typed models according to https://developer.kenticocloud.com/docs/strongly-typed-models
       export class Article extends ContentItem {
@@ -534,7 +536,9 @@ tags:
           .orderParameter("system.last_modified", SortOrder.desc)
           .getObservable()
           .subscribe(response =&gt; console.log(response));
-      </div></pre>
+      ```
+      <!--CodeSample-end-->
+      <!--CodeSamples-end-->
 paths:
   /{project_id}/items/test:
     get:
@@ -872,7 +876,9 @@ paths:
 
           Oh hey, a callout.
 
-          <div class="callout callout--tip"><p><strong>Oh look, a fancy tip</strong></p><p>"Callout, <a href="https://www.youtube.com/watch?v=ks072waMayk">you're out of your element</a>."</p></div>
+          <!--Callout type=Tip-->
+          <p><strong>Oh look, a fancy tip</strong></p><p>"Callout, <a href="https://www.youtube.com/watch?v=ks072waMayk">you're out of your element</a>."
+          <!--Callout-end-->
         content:
           application/json:
             schema:
@@ -1223,7 +1229,9 @@ paths:
         description: | 
           The binary data of the file.
 
-          <div class="callout callout--note"><p><strong>Anything goes</strong></p><p>You can even upload exe files disguised as jpegs. It's all about the <code>Content-type</code> header.</p></div>
+          <!--Callout type=Note-->
+          <p><strong>Anything goes</strong></p><p>You can even upload exe files disguised as jpegs. It's all about the <code>Content-type</code> header.</p>
+          <!--Callout-end-->
         content:
           application/json:
             schema:
@@ -1413,7 +1421,10 @@ paths:
       summary: Modify taxonomy groups
       description: |
         Modify taxonomy groups and their terms. The taxonomy group can be specified by internal ID, codename, or external ID.
-        <div class="callout callout--info"><p><strong>Brace yourself</strong></p><p>Should only by administered by experienced professionals.</p></div>
+        
+        <!--Callout type=Info-->
+        <p><strong>Brace yourself</strong></p><p>Should only by administered by experienced professionals.</p>
+        <!--Callout-end-->
       operationId: modify-taxonomy-groups
       parameters:
         - $ref: '#/components/parameters/project_id'
@@ -1470,7 +1481,9 @@ components:
       description: |
         API key to authorize requests to the API. If you don't have an API key for this API yet, get yours in [Kentico Cloud](https://app.kenticocloud.com/) > Project settings > API keys.
 
-        <div class="callout callout--warning"><p><strong>Warning: This is fine</strong></p><p>We recommend that you use the `Authorization` header when making requests to the API to avoid getting hurt.</p></div>
+        <!--Callout type=Warning-->
+        <p><strong>Warning: This is fine</strong></p><p>We recommend that you use the `Authorization` header when making requests to the API to avoid getting hurt.</p>
+        <!--Callout-end-->
       scheme: bearer
       bearerFormat: Bearer <YOUR_API_KEY>
   
@@ -1510,7 +1523,9 @@ components:
         * Internal ID (`f4b3fc05-e988-4dae-9ac1-a94aba566474`)
         * External ID (`external-id/59713`)
 
-        <div class="callout callout--note"><p><strong>External IDs</strong></p><p>If a content item with the specified external ID does NOT exist, a new content item will be created. If the content item specified by the external ID already exists, the properties specified in the request body will be updated.</p></div>
+        <!--Callout type=Note-->
+        <p><strong>External IDs</strong></p><p>If a content item with the specified external ID does NOT exist, a new content item will be created. If the content item specified by the external ID already exists, the properties specified in the request body will be updated.</p>
+        <!--Callout-end-->
       required: true
       schema:
         type: string
@@ -1531,7 +1546,9 @@ components:
       description: |
         The name of the uploaded binary file. The `file_name` parameter specified in the URL will be used for the asset name when [creating an asset](#operation/add-an-asset).
 
-        <div class="callout callout--info"><p><strong>Premium feature</strong></p><p>You'll need a Business plan to specify file name. Lower plans get automatically generated uuids.</p></div>
+        <!--Callout type=Info-->
+        <p><strong>Premium feature</strong></p><p>You'll need a Business plan to specify file name. Lower plans get automatically generated uuids.</p>
+        <!--Callout-end-->
       required: true
       schema:
         type: string
@@ -1631,7 +1648,9 @@ components:
           description: |
             Asset descriptions for each active language.
 
-            <div class="callout callout--warning"><p><strong>Deactivated languages</strong></p><p>Deactivating a language in your project also deletes any content in that language, including your asset description. False.</p></div>
+            <!--Callout type=Warning-->
+            <p><strong>Deactivated languages</strong></p><p>Deactivating a language in your project also deletes any content in that language, including your asset description. False.</p>
+            <!--Callout-end-->
           items:
             $ref: '#/components/schemas/AssetDescription'
           uniqueItems: true
@@ -1917,7 +1936,9 @@ components:
       description: |
         An operation that modifies a taxonomy group or taxonomy term, specified by a reference.
 
-        <div class="callout callout--info"><p><strong>Referencing objects</strong></p><p>Scared of references? So were we. Learn more about references here and cherish the endless possibilities.</p></div>
+        <!--Callout type=Info-->
+        <p><strong>Referencing objects</strong></p><p>Scared of references? So were we. Learn more about references here and cherish the endless possibilities.</p>
+        <!--Callout-end-->
       discriminator:
         propertyName: op
         mapping:

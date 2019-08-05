@@ -17,5 +17,9 @@ var helper = {
       if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
     }
     return null;
+  },
+  findAncestor: function (el, sel) {
+    while ((el = el.parentElement) && !((el.matches || el.matchesSelector).call(el, sel)));
+    return el;
   }
 }

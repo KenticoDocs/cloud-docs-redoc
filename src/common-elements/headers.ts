@@ -13,6 +13,8 @@ export const headerCommonMixin = level => css`
   font-size: ${headerFontSize[level]};
   line-height: ${({ theme }) => theme.typography.headings.lineHeight};
   margin: 0;
+  display: inline-block;
+  position: relative;
 `;
 
 export const H1 = styled.h1`

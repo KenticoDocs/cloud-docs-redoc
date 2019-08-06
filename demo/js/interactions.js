@@ -258,6 +258,10 @@
 
           if (heading) {
             window.scrollTo(0, offset(heading));
+
+            setTimeout(function () {
+              window.location.hash = '#' + anchor;
+            }, 50);
           }
         }
         clearInterval(interval);

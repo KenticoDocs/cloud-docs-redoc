@@ -652,3 +652,21 @@ h3 {
   display: inline-block;
   position: relative;
 }
+
+.api-status,
+span.api-status {
+  font-size: 12px;
+  color: #ec8a60;
+  font-weight: 400;
+  text-transform: uppercase;
+  padding-left: .5em;
+  position: relative;
+
+  [class*="MenuItemLabel"] & {
+    top: .125em;
+  }
+
+  [class*="headers"] & {
+    top: -.5em;
+  }
+}

@@ -12,24 +12,30 @@ import { Operation } from '../Operation/Operation';
 @observer
 export class ContentItems extends React.Component<{
   items: ContentItemModel[];
+  status: string;
 }> {
   render() {
     const items = this.props.items;
+    const status = this.props.status;
+
     if (items.length === 0) {
       return null;
     }
-    return items.map(item => <ContentItem item={item} key={item.id} />);
+    return items.map(item => <ContentItem item={item} key={item.id} status={status} />);
   }
 }
 
 export interface ContentItemProps {
   item: ContentItemModel;
+  status: string;
 }
 
 @observer
 export class ContentItem extends React.Component<ContentItemProps> {
   render() {
     const item = this.props.item;
+    const status = this.props.status;
+
     let content;
     const { type } = item;
     switch (type) {
@@ -41,7 +47,7 @@ export class ContentItem extends React.Component<ContentItemProps> {
         content = <SectionItem {...this.props} />;
         break;
       case 'operation':
-        content = <OperationItem item={item as any} />;
+        content = <OperationItem item={item as any} status={status} />;
         break;
       default:
         content = <SectionItem {...this.props} />;
@@ -54,7 +60,7 @@ export class ContentItem extends React.Component<ContentItemProps> {
             {content}
           </Section>
         )}
-        {item.items && <ContentItems items={item.items} />}
+        {item.items && <ContentItems items={item.items} status={status} />}
       </>
     );
   }
@@ -94,8 +100,9 @@ export class SectionItem extends React.Component<ContentItemProps> {
 @observer
 export class OperationItem extends React.Component<{
   item: OperationModel;
+  status: string;
 }> {
   render() {
-    return <Operation operation={this.props.item} />;
+    return <Operation operation={this.props.item} status={this.props.status} />;
   }
 }

@@ -8,6 +8,7 @@ import { Badge, DarkRightPanel, H2, MiddlePanel, Row } from '../../common-elemen
 import { OptionsContext } from '../OptionsProvider';
 
 import { ShareLink } from '../../common-elements/linkify';
+import { APIStatus } from '../APIStatus';
 import { Endpoint } from '../Endpoint/Endpoint';
 import { ExternalDocumentation } from '../ExternalDocumentation/ExternalDocumentation';
 import { Markdown } from '../Markdown/Markdown';
@@ -30,12 +31,13 @@ const Description = styled.div`
 
 export interface OperationProps {
   operation: OperationType;
+  status: string;
 }
 
 @observer
 export class Operation extends React.Component<OperationProps> {
   render() {
-    const { operation } = this.props;
+    const { operation, status } = this.props;
 
     const { name: summary, description, deprecated, externalDocs } = operation;
     const hasDescription = !!(description || externalDocs);
@@ -48,6 +50,7 @@ export class Operation extends React.Component<OperationProps> {
               <H2>
                 <ShareLink to={operation.id} />
                 {summary} {deprecated && <Badge type="warning"> Deprecated </Badge>}
+                <APIStatus status={status} />
               </H2>
               {options.pathInMiddlePanel && <Endpoint operation={operation} inverted={true} />}
               {hasDescription && (

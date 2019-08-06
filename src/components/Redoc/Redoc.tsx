@@ -38,6 +38,7 @@ export class Redoc extends React.Component<RedocProps> {
       store: { spec, menu, options, search, marker },
     } = this.props;
     const store = this.props.store;
+
     return (
       <ThemeProvider theme={options.theme}>
         <StoreProvider value={this.props.store}>
@@ -54,12 +55,12 @@ export class Redoc extends React.Component<RedocProps> {
                   />
                 )) ||
                   null}
-                <Breadcrumbs store={store} />
-                <SideMenu menu={menu} />
+                <Breadcrumbs store={store} status={spec.info.apiStatus} />
+                <SideMenu menu={menu} status={spec.info.apiStatus} />
               </StickyResponsiveSidebar>
               <ApiContentWrap className="api-content">
                 <ApiInfo store={store} />
-                <ContentItems items={menu.items as any} />
+                <ContentItems items={menu.items as any} status={spec.info.apiStatus} />
               </ApiContentWrap>
               <BackgroundStub />
             </RedocWrap>

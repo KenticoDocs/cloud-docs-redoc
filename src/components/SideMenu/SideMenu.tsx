@@ -7,11 +7,17 @@ import { MenuItems } from './MenuItems';
 import { PerfectScrollbarWrap } from '../../common-elements/perfect-scrollbar';
 
 @observer
-export class SideMenu extends React.Component<{ menu: MenuStore; className?: string }> {
+export class SideMenu extends React.Component<{
+  menu: MenuStore;
+  className?: string;
+  status: string;
+}> {
   private _updateScroll?: () => void;
 
   render() {
     const store = this.props.menu;
+    const status = this.props.status;
+
     return (
       <PerfectScrollbarWrap
         updateFn={this.saveScrollUpdate}
@@ -20,7 +26,7 @@ export class SideMenu extends React.Component<{ menu: MenuStore; className?: str
           wheelPropagation: false,
         }}
       >
-        <MenuItems items={store.items} onActivate={this.activate} root={true} />
+        <MenuItems items={store.items} onActivate={this.activate} root={true} status={status} />
       </PerfectScrollbarWrap>
     );
   }

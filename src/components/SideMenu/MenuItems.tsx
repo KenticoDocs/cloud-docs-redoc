@@ -14,13 +14,15 @@ export interface MenuItemsProps {
   root?: boolean;
 
   className?: string;
+  status: string;
 }
 
 @observer
 export class MenuItems extends React.Component<MenuItemsProps> {
   render() {
-    const { items, root, className } = this.props;
+    const { items, root, className, status } = this.props;
     const expanded = this.props.expanded == null ? true : this.props.expanded;
+
     return (
       <MenuItemUl
         className={className}
@@ -29,7 +31,7 @@ export class MenuItems extends React.Component<MenuItemsProps> {
         {...(root ? { role: 'navigation' } : {})}
       >
         {items.map((item, idx) => (
-          <MenuItem key={idx} item={item} onActivate={this.props.onActivate} />
+          <MenuItem key={idx} item={item} onActivate={this.props.onActivate} status={status} />
         ))}
       </MenuItemUl>
     );

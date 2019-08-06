@@ -4,6 +4,7 @@ import * as React from 'react';
 import { ShelfIcon } from '../../common-elements/shelfs';
 import { IMenuItem, OperationModel } from '../../services';
 import { shortenHTTPVerb } from '../../utils/openapi';
+import { APIStatus } from '../APIStatus';
 import { MenuItems } from './MenuItems';
 import { MenuItemLabel, MenuItemLi, MenuItemTitle, OperationBadge } from './styled.elements';
 
@@ -11,6 +12,7 @@ export interface MenuItemProps {
   item: IMenuItem;
   onActivate?: (item: IMenuItem) => void;
   withoutChildren?: boolean;
+  status: string;
 }
 
 @observer
@@ -41,7 +43,8 @@ export class MenuItem extends React.Component<MenuItemProps> {
   };
 
   render() {
-    const { item, withoutChildren } = this.props;
+    const { item, withoutChildren, status } = this.props;
+
     return (
       <MenuItemLi
         onClick={this.activate}
@@ -50,7 +53,7 @@ export class MenuItem extends React.Component<MenuItemProps> {
         data-item-id={item.id}
       >
         {item.type === 'operation' ? (
-          <OperationMenuItemContent {...this.props} item={item as OperationModel} />
+          <OperationMenuItemContent {...this.props} item={item as OperationModel} status={status} />
         ) : (
           <MenuItemLabel
             depth={item.depth}
@@ -77,6 +80,7 @@ export class MenuItem extends React.Component<MenuItemProps> {
             expanded={item.expanded}
             items={item.items}
             onActivate={this.props.onActivate}
+            status={status}
           />
         )}
       </MenuItemLi>
@@ -86,12 +90,13 @@ export class MenuItem extends React.Component<MenuItemProps> {
 
 export interface OperationMenuItemContentProps {
   item: OperationModel;
+  status: string;
 }
 
 @observer
 class OperationMenuItemContent extends React.Component<OperationMenuItemContentProps> {
   render() {
-    const { item } = this.props;
+    const { item, status } = this.props;
     return (
       <MenuItemLabel depth={item.depth} active={item.active} deprecated={item.deprecated}>
         <OperationBadge type={item.httpVerb}>{shortenHTTPVerb(item.httpVerb)}</OperationBadge>
@@ -99,6 +104,7 @@ class OperationMenuItemContent extends React.Component<OperationMenuItemContentP
           {item.name}
           {this.props.children}
         </MenuItemTitle>
+        <APIStatus status={status} />
       </MenuItemLabel>
     );
   }

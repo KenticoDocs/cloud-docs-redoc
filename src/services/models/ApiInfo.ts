@@ -5,7 +5,7 @@ import { OpenAPIParser } from '../OpenAPIParser';
 export class ApiInfoModel implements OpenAPIInfo {
   title: string;
   version: string;
-  apistatus?: string;
+  apiStatus?: string;
 
   description: string;
   termsOfService?: string;

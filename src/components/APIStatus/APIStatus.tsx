@@ -2,7 +2,7 @@ import { observer } from 'mobx-react';
 import * as React from 'react';
 
 export interface ApiInfoProps {
-  status: string;
+  status?: string;
 }
 
 @observer

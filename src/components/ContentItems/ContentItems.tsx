@@ -12,7 +12,7 @@ import { Operation } from '../Operation/Operation';
 @observer
 export class ContentItems extends React.Component<{
   items: ContentItemModel[];
-  status: string;
+  status?: string;
 }> {
   render() {
     const items = this.props.items;
@@ -27,7 +27,7 @@ export class ContentItems extends React.Component<{
 
 export interface ContentItemProps {
   item: ContentItemModel;
-  status: string;
+  status?: string;
 }
 
 @observer
@@ -100,7 +100,7 @@ export class SectionItem extends React.Component<ContentItemProps> {
 @observer
 export class OperationItem extends React.Component<{
   item: OperationModel;
-  status: string;
+  status?: string;
 }> {
   render() {
     return <Operation operation={this.props.item} status={this.props.status} />;

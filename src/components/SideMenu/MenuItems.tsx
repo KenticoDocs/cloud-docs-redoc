@@ -14,7 +14,7 @@ export interface MenuItemsProps {
   root?: boolean;
 
   className?: string;
-  status: string;
+  status?: string;
 }
 
 @observer

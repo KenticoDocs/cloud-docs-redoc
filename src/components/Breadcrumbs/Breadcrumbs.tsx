@@ -6,7 +6,7 @@ import { APIStatus } from '../APIStatus';
 
 export interface ApiInfoProps {
   store: AppStore;
-  status: string;
+  status?: string;
 }
 
 @observer

@@ -31,7 +31,7 @@ const Description = styled.div`
 
 export interface OperationProps {
   operation: OperationType;
-  status: string;
+  status?: string;
 }
 
 @observer

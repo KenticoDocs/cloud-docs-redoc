@@ -10,7 +10,7 @@ import { PerfectScrollbarWrap } from '../../common-elements/perfect-scrollbar';
 export class SideMenu extends React.Component<{
   menu: MenuStore;
   className?: string;
-  status: string;
+  status?: string;
 }> {
   private _updateScroll?: () => void;
 

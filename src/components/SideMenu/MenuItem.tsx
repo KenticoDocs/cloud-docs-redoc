@@ -12,7 +12,7 @@ export interface MenuItemProps {
   item: IMenuItem;
   onActivate?: (item: IMenuItem) => void;
   withoutChildren?: boolean;
-  status: string;
+  status?: string;
 }
 
 @observer
@@ -90,7 +90,7 @@ export class MenuItem extends React.Component<MenuItemProps> {
 
 export interface OperationMenuItemContentProps {
   item: OperationModel;
-  status: string;
+  status?: string;
 }
 
 @observer

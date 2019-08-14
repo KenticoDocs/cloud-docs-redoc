@@ -241,8 +241,8 @@
   };
 
   var offset = function (el) {
-    var rect = el.getBoundingClientRect(),
-      scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    var rect = el.getBoundingClientRect();
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     return rect.top + scrollTop;
   }
 
@@ -258,10 +258,6 @@
 
           if (heading) {
             window.scrollTo(0, offset(heading));
-
-            setTimeout(function () {
-              window.location.hash = '#' + anchor;
-            }, 50);
           }
         }
         clearInterval(interval);
@@ -280,7 +276,6 @@
             setTimeout(function () {
               window.location.hash = e.target.getAttribute('href');
             }, 50);
-
           }
         });
         clearInterval(interval);

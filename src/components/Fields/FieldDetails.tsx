@@ -40,7 +40,7 @@ export class FieldDetails extends React.PureComponent<FieldProps> {
               &gt;{' '}
             </TypeFormat>
           )}
-          {schema.title && <TypeTitle> ({schema.title}) </TypeTitle>}
+          {/*{schema.title && <TypeTitle> ({schema.title}) </TypeTitle>}*/}
           <ConstraintsView constraints={schema.constraints} />
           {schema.nullable && <NullableLabel> {l('nullable')} </NullableLabel>}
           {schema.pattern && <PatternLabel>{schema.pattern}</PatternLabel>}

@@ -42,7 +42,7 @@ export class MenuBuilder {
 
     const items: ContentItemModel[] = [];
     const tagsMap = MenuBuilder.getTagsWithOperations(spec);
-    items.push(...MenuBuilder.addMarkdownItems(spec.info.description || '', options));
+    items.push(...MenuBuilder.addMarkdownItems(spec.info.description || '', undefined, options));
     if (spec['x-tagGroups'] && spec['x-tagGroups'].length > 0) {
       items.push(
         ...MenuBuilder.getTagGroupsItems(parser, undefined, spec['x-tagGroups'], tagsMap, options),
@@ -59,14 +59,15 @@ export class MenuBuilder {
    */
   static addMarkdownItems(
     description: string,
+    parent: GroupModel | undefined,
     options: RedocNormalizedOptions,
   ): ContentItemModel[] {
     const renderer = new MarkdownRenderer(options);
     const headings = renderer.extractHeadings(description || '');
 
-    const mapHeadingsDeep = (parent, items, depth = 1) =>
+    const mapHeadingsDeep = (parentElem, items, depth = 1) =>
       items.map(heading => {
-        const group = new GroupModel('section', heading, parent);
+        const group = new GroupModel('section', heading, parentElem);
         group.depth = depth;
         if (heading.items) {
           group.items = mapHeadingsDeep(group, heading.items, depth + 1);
@@ -82,7 +83,7 @@ export class MenuBuilder {
         return group;
       });
 
-    return mapHeadingsDeep(undefined, headings);
+    return mapHeadingsDeep(parent, headings, 1);
   }
 
   /**

@@ -399,8 +399,12 @@ export function normalizeServers(
   });
 }
 
+export const OBJECT_DEFINTION_COMPONENT_NAME = 'object-description';
+export const SECURITY_DEFINITIONS_JSX_NAME = 'SecurityDefinitions';
 export const SECURITY_DEFINITIONS_COMPONENT_NAME = 'security-definitions';
 export let SECURITY_SCHEMES_SECTION_PREFIX = 'section/Authentication/';
+export const SCHEMA_DEFINITION_JSX_NAME = 'SchemaDefinition';
+
 export function setSecuritySchemePrefix(prefix: string) {
   SECURITY_SCHEMES_SECTION_PREFIX = prefix;
 }

@@ -318,6 +318,10 @@ tags:
     # x-displayName: Assets
     description: |
       Assets in Kentico Cloud consist of a reference to a binary file and metadata describing the file. Each binary file can be referenced only by a single asset. Once an asset is created, the file it references cannot be changed, you can only modify the asset's descriptions and title. Note that binary files that are not used by any assets will not be visible in the Kentico Cloud UI.
+
+      Schema definition for the Asset object:
+      
+      <SchemaDefinition schemaRef="#/components/schemas/Asset" />
   - name: Taxonomy
     # x-displayName: Taxonomy
     description: |

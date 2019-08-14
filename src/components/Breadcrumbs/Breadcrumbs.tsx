@@ -14,7 +14,7 @@ export class Breadcrumbs extends React.Component<ApiInfoProps> {
   render() {
     const { store, status } = this.props;
     const { info } = store.spec;
-    console.log(status);
+
     return (
       <ul className="breadcrumbs">
         <li>

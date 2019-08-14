@@ -306,12 +306,32 @@ body {
     }
   }
 
+  [class*="PropertyCell"] {
+    [class*="ShelfIcon"] {
+      top: 0;
+    }
+  }
+
+  [class*="InnerPropertiesWrap"] {
+    background: #f3f6f7 !important;
+  }
+
   [class*="PropertiesTable"] {
     background-color: #F3F6F7;
     margin-left: -2em;
     width: calc(100% + 4em);
     padding: 0 2em .75em;
     margin-bottom: 1em;
+
+    [class*="PropertiesTable"] {
+      padding: 0 0 .75em;
+    }
+
+    [class*="PaddedSchema"] {
+      [class*="PropertiesTable"] {
+        padding: 0 2em .75em;
+      }
+    }
 
     [class*="ExampleValue"] {
       background-color: #F3F6F7;

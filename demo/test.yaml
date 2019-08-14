@@ -582,6 +582,7 @@ paths:
 
                       Components and content items in the modular_content collection are returned in no particular order and cannot be filtered. See Linked content for more details and where they are ordered.
                     additionalProperties:
+                      x-additionalPropertiesName: <content_item_codename>
                       $ref: '#/components/schemas/ContentItemTest'
               example:
                 $ref: 'https://deliver.kenticocloud.com/758a2067-bd67-00de-213a-e0a3aa2bd865/items/origins?elements=title,teaser_image,personas,body_copy,summary'

@@ -15,7 +15,7 @@ import { SecurityDefs } from '../components/SecuritySchemes/SecuritySchemes';
 import {
   SCHEMA_DEFINITION_JSX_NAME,
   SECURITY_DEFINITIONS_COMPONENT_NAME,
-  SECURITY_DEFINITIONS_JSX_NAME,
+  // SECURITY_DEFINITIONS_JSX_NAME,
 } from '../utils/openapi';
 
 export interface StoreState {

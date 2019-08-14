@@ -7,7 +7,7 @@ import {
   TypeFormat,
   TypeName,
   TypePrefix,
-  TypeTitle,
+  // TypeTitle,
 } from '../../common-elements/fields';
 import { ExternalDocumentation } from '../ExternalDocumentation/ExternalDocumentation';
 import { Markdown } from '../Markdown/Markdown';

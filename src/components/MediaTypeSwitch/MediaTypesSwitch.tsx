@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import { DropdownProps } from '../../common-elements/dropdown';
 import { MediaContentModel, MediaTypeModel, SchemaModel } from '../../services/models';
-import { DropdownLabel, DropdownWrapper } from '../PayloadSamples/styled.elements';
+// import { DropdownLabel, DropdownWrapper } from '../PayloadSamples/styled.elements';
 
 export interface MediaTypeChildProps {
   schema: SchemaModel;

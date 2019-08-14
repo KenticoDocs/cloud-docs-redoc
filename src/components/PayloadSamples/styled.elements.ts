@@ -1,7 +1,7 @@
-import { transparentize } from 'polished';
 // @ts-ignore
-// import Dropdown from 'react-dropdown';
+import Dropdown from 'react-dropdown';
 
+import { transparentize } from 'polished';
 import styled from '../../styled-components';
 
 import { StyledDropdown } from '../../common-elements';

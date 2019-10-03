@@ -22,7 +22,7 @@ export class Breadcrumbs extends React.Component<ApiInfoProps> {
         </li>
         <li>
           <span>
-            {info.title} {info.version}
+            {info.title}
             <APIStatus status={status} />
           </span>
         </li>

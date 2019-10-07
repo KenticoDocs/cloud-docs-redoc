@@ -32,6 +32,10 @@ export class SideMenu extends React.Component<{
   }
 
   activate = (item: IMenuItem) => {
+    if (item && item.active && this.context.menuToggle) {
+      return item.expanded ? item.collapse() : item.expand();
+    }
+
     this.props.menu.activateAndScroll(item, true);
     setTimeout(() => {
       if (this._updateScroll) {

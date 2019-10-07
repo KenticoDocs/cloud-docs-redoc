@@ -5,7 +5,6 @@ import { OpenAPIParser } from '../OpenAPIParser';
 export class ApiInfoModel implements OpenAPIInfo {
   title: string;
   version: string;
-  apiStatus?: string;
 
   description: string;
   termsOfService?: string;
@@ -25,7 +24,6 @@ export class ApiInfoModel implements OpenAPIInfo {
 
     this.downloadLink = this.getDownloadLink();
     this.downloadFileName = this.getDownloadFileName();
-    this.apiStatus = parser.spec['x-api-status'] || '';
   }
 
   private getDownloadLink(): string | undefined {

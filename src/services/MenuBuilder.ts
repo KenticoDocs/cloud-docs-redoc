@@ -42,7 +42,7 @@ export class MenuBuilder {
 
     const items: ContentItemModel[] = [];
     const tagsMap = MenuBuilder.getTagsWithOperations(spec);
-    items.push(...MenuBuilder.addMarkdownItems(spec.info.description || '', undefined, options));
+    items.push(...MenuBuilder.addMarkdownItems(spec.info.description || '', undefined, 1, options));
     if (spec['x-tagGroups'] && spec['x-tagGroups'].length > 0) {
       items.push(
         ...MenuBuilder.getTagGroupsItems(parser, undefined, spec['x-tagGroups'], tagsMap, options),
@@ -60,14 +60,15 @@ export class MenuBuilder {
   static addMarkdownItems(
     description: string,
     parent: GroupModel | undefined,
+    initialDepth: number,
     options: RedocNormalizedOptions,
   ): ContentItemModel[] {
     const renderer = new MarkdownRenderer(options);
     const headings = renderer.extractHeadings(description || '');
 
-    const mapHeadingsDeep = (parentElem, items, depth = 1) =>
+    const mapHeadingsDeep = (_parent, items, depth = 1) =>
       items.map(heading => {
-        const group = new GroupModel('section', heading, parentElem);
+        const group = new GroupModel('section', heading, _parent);
         group.depth = depth;
         if (heading.items) {
           group.items = mapHeadingsDeep(group, heading.items, depth + 1);
@@ -83,7 +84,7 @@ export class MenuBuilder {
         return group;
       });
 
-    return mapHeadingsDeep(parent, headings, 1);
+    return mapHeadingsDeep(parent, headings, initialDepth);
   }
 
   /**
@@ -145,14 +146,21 @@ export class MenuBuilder {
       }
       const item = new GroupModel('tag', tag, parent);
       item.depth = GROUP_DEPTH + 1;
-      item.items = this.getOperationsItems(parser, item, tag, item.depth + 1, options);
 
       // don't put empty tag into content, instead put its operations
       if (tag.name === '') {
-        const items = this.getOperationsItems(parser, undefined, tag, item.depth + 1, options);
+        const items = [
+          ...MenuBuilder.addMarkdownItems(tag.description || '', item, item.depth + 1, options),
+          ...this.getOperationsItems(parser, undefined, tag, item.depth + 1, options),
+        ];
         res.push(...items);
         continue;
       }
+
+      item.items = [
+        ...MenuBuilder.addMarkdownItems(tag.description || '', item, item.depth + 1, options),
+        ...this.getOperationsItems(parser, item, tag, item.depth + 1, options),
+      ];
 
       res.push(item);
     }

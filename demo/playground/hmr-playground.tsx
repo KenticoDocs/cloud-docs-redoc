@@ -21,7 +21,7 @@ const swagger = window.location.search.indexOf('swagger') > -1;
 
 const userUrl = window.location.search.match(/url=(.*)$/);*/
 
-const specUrl = 'test.yaml';
+const specUrl = 'test.json';
 // (userUrl && userUrl[1]) || (swagger ? 'swagger.yaml' : big ? 'big-openapi.json' : 'openapi.yaml');
 
 let store;

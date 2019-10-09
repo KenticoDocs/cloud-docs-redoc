@@ -18,7 +18,7 @@ export class Breadcrumbs extends React.Component<ApiInfoProps> {
     return (
       <ul className="breadcrumbs">
         <li>
-          <a href="/new-reference"> API Reference</a>
+          <a href="/reference"> API Reference</a>
         </li>
         <li>
           <span>

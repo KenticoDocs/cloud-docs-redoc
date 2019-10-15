@@ -1,10 +1,10 @@
 {
-  "name": "kentico-cloud-docs-redoc",
-  "version": "2.0.17",
+  "name": "kentico-kontent-docs-redoc",
+  "version": "3.0.0",
   "description": "ReDoc",
   "repository": {
     "type": "git",
-    "url": "git://github.com/KenticoDocs/cloud-docs-redoc"
+    "url": "git://github.com/KenticoDocs/kontent-docs-redoc"
   },
   "engines": {
     "node": ">=6.9",

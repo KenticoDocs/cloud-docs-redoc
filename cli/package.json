@@ -4,7 +4,7 @@
   "description": "ReDoc's Command Line Interface",
   "main": "index.js",
   "bin": "index.js",
-  "repository": "git://github.com/KenticoDocs/cloud-docs-redoc",
+  "repository": "git://github.com/KenticoDocs/kontent-docs-redoc",
   "author": "Roman Hotsiy <gotsijroman@gmail.com>",
   "license": "MIT",
   "dependencies": {

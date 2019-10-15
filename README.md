@@ -1,4 +1,4 @@
-# **Redoc Fork for [Kentico Cloud Documentation portal](https://docs.kenticocloud.com/)**
+# **Redoc Fork for [Kentico Kontent Documentation portal](https://docs.kontent.ai/)**
 
 ***
 

@@ -5,6 +5,7 @@
     "version": "1"
   },
   "openapi": "3.0.2",
+  "x-api-status": "beta",
   "paths": {
     "/{project_id}/items": {
       "get": {

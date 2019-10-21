@@ -40,7 +40,8 @@ export const linkifyMixin = className => css`
     h2:hover
     > .linkify__StyledShareLink::before,
   .linkify__StyledShareLink:hover::before,
-  h3:hover > .linkify__StyledShareLink::before {
+  h3:hover > .linkify__StyledShareLink::before,
+  h4:hover > .linkify__StyledShareLink::before {
     visibility: visible;
   }
 `;

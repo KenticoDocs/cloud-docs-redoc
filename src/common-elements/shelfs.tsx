@@ -39,7 +39,6 @@ export const ShelfIcon = styled(IntShelfIcon)`
   vertical-align: middle;
   margin: 0 0.125em 0 0;
   position: relative;
-  top: 0.125em;
   float: ${props => props.float || ''};
   transition: transform 0.2s ease-out;
   transform: rotateZ(${props => directionMap[props.direction || 'down']});
@@ -53,10 +52,12 @@ export const ShelfIcon = styled(IntShelfIcon)`
 
 export const Badge = styled.span<{ type: string }>`
   display: inline-block;
-  padding: 0 5px;
+  padding: 0 8px;
   margin: 0;
-  background-color: ${props => props.theme.colors[props.type].main};
-  color: ${props => props.theme.colors[props.type].contrastText};
+  background-color: transparent;
+  border: 1px solid ${props => props.theme.colors[props.type].main};
+  color: ${props => props.theme.colors[props.type].main};
   font-size: ${props => props.theme.typography.code.fontSize};
   vertical-align: text-top;
+  border-radius: 16px 16px 16px 4px;
 `;

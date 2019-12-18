@@ -15,6 +15,7 @@ export const linksCss = css`
     }
 
     &:hover {
+      text-decoration: none;
       color: ${props => props.theme.typography.links.hover};
     }
   }
@@ -30,11 +31,13 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
   line-height: ${props => props.theme.typography.lineHeight};
 
   p {
-    padding: 0 0 0.5em;
+    padding: 0 0 1em;
     margin: 0;
+    line-height: 1.625em;
 
     &:last-child {
       margin-bottom: 0;
+      padding: 0;
     }
   }
 
@@ -156,7 +159,7 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
         content: '';
         width: 0.375em;
         height: 0.375em;
-        background-color: #008ae1;
+        background-color: #f05a22;
         position: absolute;
         left: 0;
         top: 0.6em;
@@ -182,8 +185,8 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
   }
 
   table tbody {
-    border-top: 0.125em solid #e4e9ec;
-    border-left: 0.125em solid #e4e9ec;
+    border-top: 0.125em solid #d3d2d2;
+    border-left: 0.125em solid #d3d2d2;
   }
 
   table tr {
@@ -193,11 +196,12 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
   table th,
   table td {
     padding: 0.5em 0.75em;
-    border-bottom: 0.125em solid #e4e9ec;
-    border-right: 0.125em solid #e4e9ec;
+    border-bottom: 0.125em solid #d3d2d2;
+    border-right: 0.125em solid #d3d2d2;
   }
 
-  table th {
+  table th,
+  table tr:first-child td {
     text-align: left;
     font-weight: 400;
     background-color: ${({ theme }) => theme.schema.nestedBackground};

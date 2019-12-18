@@ -20,7 +20,7 @@ const defaultTheme: ThemeInterface = {
       contrastText: ({ colors }) => readableColor(colors.primary.main),
     },
     success: {
-      main: '#00aa13',
+      main: '#36A284',
       light: ({ colors }) => lighten(colors.tonalOffset, colors.success.main),
       dark: ({ colors }) => darken(colors.tonalOffset, colors.success.main),
       contrastText: ({ colors }) => readableColor(colors.success.main),
@@ -32,13 +32,13 @@ const defaultTheme: ThemeInterface = {
       contrastText: '#ffffff',
     },
     error: {
-      main: '#e53935',
+      main: '#B72929',
       light: ({ colors }) => lighten(colors.tonalOffset, colors.error.main),
       dark: ({ colors }) => darken(colors.tonalOffset, colors.error.main),
       contrastText: ({ colors }) => readableColor(colors.error.main),
     },
     text: {
-      primary: '#333333',
+      primary: '#231F20',
       secondary: ({ colors }) => lighten(colors.tonalOffset, colors.text.primary),
     },
     border: {
@@ -112,7 +112,7 @@ const defaultTheme: ThemeInterface = {
       fontFamily: 'Courier, monospace',
       lineHeight: ({ typography }) => typography.lineHeight,
       fontWeight: ({ typography }) => typography.fontWeightRegular,
-      color: '#e53935',
+      color: '#B72929',
       backgroundColor: 'rgba(38, 50, 56, 0.05)',
       wrap: false,
     },
@@ -125,7 +125,7 @@ const defaultTheme: ThemeInterface = {
   menu: {
     width: '260px',
     backgroundColor: '#fafafa',
-    textColor: '#333333',
+    textColor: '#231F20',
     groupItems: {
       textTransform: 'uppercase',
     },

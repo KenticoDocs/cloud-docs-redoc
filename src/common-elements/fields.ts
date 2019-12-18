@@ -92,12 +92,13 @@ export const ExtensionValue = styled(ExampleValue)``;
 
 export const ConstraintItem = styled(FieldLabel)`
   ${({ theme }) => `
-    background-color: #f3f6f7;
-    color: #168cde;
+    background-color: transparent;
+    color: #4863BE;
 
     margin: 0 ${theme.spacing.unit}px;
-    padding: 0 ${theme.spacing.unit}px;
-    border: 1px solid ${transparentize(0.9, theme.colors.primary.main)};
+    padding: 3px 8px;
+    border: 1px solid #4863BE;
+    border-radius: 16px 16px 16px 4px;
 }`};
   & + & {
     margin-left: 0;

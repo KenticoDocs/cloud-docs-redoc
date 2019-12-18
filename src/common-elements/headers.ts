@@ -1,9 +1,9 @@
 import styled, { css, extensionsHook } from '../styled-components';
 
 const headerFontSize = {
-  1: '1.875em',
-  2: '1.3125em',
-  3: '1.3125em',
+  1: '2em',
+  2: '1.375em',
+  3: '1em',
 };
 
 export const headerCommonMixin = level => css`
@@ -45,13 +45,14 @@ export const RightPanelHeader = styled.h3`
 `;
 
 export const UnderlinedHeader = styled.h5`
-  border-bottom: 1px solid rgba(38, 50, 56, 0.3);
-  margin: 1em 0 0 0;
-  color: rgba(38, 50, 56, 0.5);
+  border-bottom: 1px solid #e9e8e8;
+  margin: 1em 0;
+  color: #a7a5a5;
   font-weight: normal;
   text-transform: uppercase;
-  font-size: 1em;
+  font-size: 0.875em;
   line-height: 20px;
+  letter-spacing: 0.7px;
 
   ${extensionsHook('UnderlinedHeader')};
 `;

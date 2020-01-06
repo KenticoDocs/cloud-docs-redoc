@@ -15,6 +15,7 @@ export const linksCss = css`
     }
 
     &:hover {
+      text-decoration: none;
       color: ${props => props.theme.typography.links.hover};
     }
   }
@@ -30,11 +31,13 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
   line-height: ${props => props.theme.typography.lineHeight};
 
   p {
-    padding: 0 0 0.5em;
+    padding: 0 0 1em;
     margin: 0;
+    line-height: 1.625em;
 
     &:last-child {
       margin-bottom: 0;
+      padding: 0;
     }
   }
 
@@ -95,7 +98,7 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
   pre {
     font-family: ${props => props.theme.typography.code.fontFamily};
     white-space: ${({ theme }) => (theme.typography.code.wrap ? 'pre-wrap' : 'pre')};
-    background-color: #263238;
+    background-color: transparent;
     color: white;
     padding: ${props => props.theme.spacing.unit * 4}px;
     overflow-x: auto;
@@ -156,7 +159,7 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
         content: '';
         width: 0.375em;
         height: 0.375em;
-        background-color: #008ae1;
+        background-color: #f05a22;
         position: absolute;
         left: 0;
         top: 0.6em;
@@ -170,31 +173,57 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
   }
 
   table {
-    display: block;
-    width: 100%;
+    display: inline-block;
+    width: auto;
     overflow: auto;
     word-break: normal;
     word-break: keep-all;
-    border-collapse: collapse;
+    border-collapse: separate;
     border-spacing: 0;
     margin-top: 1.5em;
     margin-bottom: 1.5em;
-  }
-
-  table tbody {
-    border-top: 0.125em solid #e4e9ec;
-    border-left: 0.125em solid #e4e9ec;
-  }
-
-  table tr {
+    border-top: 0.125em solid #d7d7d7;
+    border-left: 0.125em solid #d7d7d7;
+    border-radius: 1.5em 1.5em 0.675em 1.5em;
     background-color: #fff;
   }
 
-  table th,
-  table td {
-    padding: 0.5em 0.75em;
-    border-bottom: 0.125em solid #e4e9ec;
-    border-right: 0.125em solid #e4e9ec;
+  table td,
+  table th {
+    border-bottom: 0.125em solid #d7d7d7;
+    border-right: 0.125em solid #d7d7d7;
+    padding: 1.5em 1.5em;
+    box-sizing: border-box;
+  }
+
+  table tr {
+    &:first-child {
+      td,
+      th {
+        background-color: #f3f3f3;
+
+        &:first-child {
+          border-radius: 1.5em 0 0 0;
+        }
+
+        &:last-child {
+          border-radius: 0 1.5em 0 0;
+        }
+      }
+    }
+
+    &:last-child {
+      td,
+      th {
+        &:first-child {
+          border-radius: 0 0 0 1.5em;
+        }
+
+        &:last-child {
+          border-radius: 0 0 0.675em 0;
+        }
+      }
+    }
   }
 
   table th {

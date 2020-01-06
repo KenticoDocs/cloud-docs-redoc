@@ -18,20 +18,21 @@ export const OneOfLabel = styled.span`
 export const OneOfButton = styled.li<{ active: boolean }>`
   display: inline-block;
   margin-right: 10px;
-  font-size: 0.8em;
+  font-size: 0.875em;
   cursor: pointer;
-  border: 2px solid ${props => props.theme.typography.links.color};
-  padding: 2px 10px;
+  border: 2px solid #4863be;
+  padding: 6px 12px;
+  border-radius: 32px 32px 8px 32px;
 
   ${props => {
     if (props.active) {
       return `
       color: white;
-      background-color: ${props.theme.typography.links.color};
+      background-color: #4863BE;
       `;
     } else {
       return `
-        color: ${props.theme.typography.links.color};
+        color: #4863BE;
         background-color: transparent;
 
         &:hover {

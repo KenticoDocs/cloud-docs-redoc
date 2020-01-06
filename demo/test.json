@@ -1,6 +1,6 @@
 {
   "info": {
-    "description": "The Management API is a secure REST API that provides read/write access to your Kentico Kontent projects.\n\n# Introduction\n\n\n<!--Callout type=Note-->\n\n<p><strong>This API is in BETA</strong></p>\n<p>For planned features, see our <a href=\"https://kontent.ai/roadmap\">Roadmap</a>. If you have any feedback on the API, let us know using the chat button in the bottom-right corner.</p>\n<p>For the current stable version of the API, see <a data-item-id=\"2cf1c638-6bff-4e22-85fa-eeb31b57279e\" href=\"https://docs.kontent.ai/link-to/management_api_v1\">Management API v1</a>.</p>\n\n<!--Callout-end-->\n\n<!--Callout type=Info-->\n\n<p><strong>Premium feature&nbsp;</strong></p>\n<p>The Management API requires a <a href=\"https://kontent.ai/pricing\" data-new-window=\"true\" target=\"_blank\" rel=\"noopener noreferrer\">Business plan or higher</a>.</p>\n\n<!--Callout-end-->\n\nUse the API to migrate your existing content into your Kentico Kontent project, or update content in unpublished content items. Note that the API cannot be used on published content unless you create new versions of the content items first, either in UI or through the Management API.\n\nWhen retrieving and updating content via the Management API, you always work with the latest versions of content – the same as you would see in the Kentico Kontent user interface. Learn how to import content via the API by taking the tutorial on [Importing to Kentico Kontent](https://docs.kontent.ai/link-to/importing_to_kentico_kontent).\n\nThe base URL for all requests is `https://manage.kontent.ai/v2/projects/<YOUR_PROJECT_ID>`.\n\nAll requests to the API must be made securely with HTTPS with [TLS 1.2](https://github.com/Kentico/delivery-sdk-net/wiki/Fixing-error:-Could-not-create-SSL-TLS-secure-channel \"A note on TLS 1.1 deprecation\") and [authenticated](#section/Authentication) with a valid API key. Requests to the API are [rate limited](https://docs.kontent.ai/link-to/rate_limiting) and uncached.\n\n<!--Callout type=Note-->\n\n<p><strong>API requests limits</strong></p>\n<p>The requests made to the Management API count towards the overall API calls limit set in our <a href=\"https://kontent.ai/pricing/fup\">Fair Use Policy</a>. For more information, see <a href=\"https://kontent.ai/pricing\">Pricing FAQ</a> on our Kentico Kontent&nbsp;website.</p>\n\n<!--Callout-end-->\n\n<!--CodeSample programmingLanguage=cURL platform=REST-->\n\n\n```\ncurl --request GET \\\n  --url https://manage.kontent.ai/v2/projects/975bf280-fd91-488c-994c-2f04416e5ee3/items \\\n  --header 'Authorization: Bearer <YOUR_API_KEY>' \\\n  --header 'Content-type: application/json'\n```\n\n<!--CodeSample-end-->\n\n**Note**: The Management API does not provide any content filtering options and is not optimized for content delivery. If you need to deliver larger amounts of content, filter it, and leverage content caching, we recommend using the [Delivery API](https://docs.kontent.ai/link-to/delivery_api) instead.\n\n# Authentication\n\n\nTo work with the Management API, send your requests over HTTPS and authenticate using the `Authorization` header in the following format: `Authorization: Bearer <YOUR_API_KEY>`.\n\n# Errors\n\n\nThe Management API returns standard HTTP status codes to indicate success or failure of a request. In general, status codes in the `2xx` range indicate a successful request, status codes in the `4xx` range indicate errors caused by an incorrect input (for example, providing incorrect API key), and status codes in the `5xx` range indicate an error on our side.\n\n## HTTP status codes summary\n\n\n<table>\n\n<tbody>\n\n<tr>\n\n<td>\n\n**HTTP status code**\n\n</td>\n\n<td>\n\n**Description**\n\n</td>\n\n</tr>\n\n<tr>\n\n<td>\n\n`400` **Bad request**\n\n</td>\n\n<td>The request was not understood. Check your request for missing required parameters or invalid query parameter values.</td>\n\n</tr>\n\n<tr>\n\n<td>\n\n`401` **Unauthorized**\n\n</td>\n\n<td>The provided API key is invalid or missing.</td>\n\n</tr>\n\n<tr>\n\n<td>\n\n`403` **Forbidden**\n\n</td>\n\n<td>The provided API key is invalid for the requested project.</td>\n\n</tr>\n\n<tr>\n\n<td>\n\n`404` **Not found**\n\n</td>\n\n<td>The requested resource doesn't exist. Try checking the path for typos.</td>\n\n</tr>\n\n<tr>\n\n<td>\n\n`405` **Method not allowed**\n\n</td>\n\n<td>The requested HTTP method is not supported for the specified resource. Try performing a GET request.</td>\n\n</tr>\n\n<tr>\n\n<td>\n\n`429` **Too many requests**\n\n</td>\n\n<td>The rate limit for the API has been exceeded. Try your request again after a few seconds.</td>\n\n</tr>\n\n<tr>\n\n<td>\n\n`500` **Internal Server Error**\n\n</td>\n\n<td>Something went wrong on our side. Try the request again in a few minutes, or contact us.</td>\n\n</tr>\n\n</tbody>\n\n</table>\n\n## Resolving errors\n\n\nFor troubleshooting failed requests, the API provides error messages defined in a consumable format to help you identify and fix the issue.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/Error\" showReadOnly={true} showWriteOnly={true} /> \n\nIf you cannot identify and resolve an issue with your API call, you can contact us with the response status and the request ID you get in the error response.\n",
+    "description": "The Management API is a secure REST API that provides read/write access to your Kentico Kontent projects.\n\n# Introduction\n\n\n<!--Callout type=Note-->\n\n<p><strong>This API is in BETA</strong></p>\n<p>For planned features, see our <a href=\"https://kontent.ai/roadmap\">Roadmap</a>. If you have any feedback on the API, let us know using the chat button in the bottom-right corner.</p>\n<p>For the current stable version of the API, see <a data-item-id=\"2cf1c638-6bff-4e22-85fa-eeb31b57279e\" href=\"https://docs.kontent.ai/link-to/management_api_v1\">Management API v1</a>.</p>\n\n<!--Callout-end-->\n\n<!--Callout type=Info-->\n\n<p><strong>Premium feature&nbsp;</strong></p>\n<p>The Management API requires a <a data-item-id=\"f10f0d66-605d-4fb5-8ff4-67d808c59d4a\" href=\"https://docs.kontent.ai/link-to/what_each_subscription_plan_includes\">Professional plan or higher</a>.</p>\n\n<!--Callout-end-->\n\nUse the API to migrate your existing content into your Kentico Kontent project, or update content in unpublished content items. Note that the API cannot be used on published content unless you create new versions of the content items first, either in UI or through the Management API.\n\nWhen retrieving and updating content via the Management API, you always work with the latest versions of content – the same as you would see in the Kentico Kontent user interface. Learn how to import content via the API by taking the tutorial on [Importing to Kentico Kontent](https://docs.kontent.ai/link-to/importing_to_kentico_kontent).\n\nThe base URL for all requests is `https://manage.kontent.ai/v2/projects/<YOUR_PROJECT_ID>`.\n\nAll requests to the API must be made securely with HTTPS with [TLS 1.2](https://github.com/Kentico/delivery-sdk-net/wiki/Fixing-error:-Could-not-create-SSL-TLS-secure-channel \"A note on TLS 1.1 deprecation\") and [authenticated](#section/Authentication) with a valid API key. Requests to the API are [rate limited](https://docs.kontent.ai/link-to/rate_limiting) and uncached.\n\n<!--Callout type=Note-->\n\n<p><strong>API requests limits</strong></p>\n<p>The requests made to the Management API count towards the overall API calls limit set in our <a href=\"https://kontent.ai/pricing/fup\">Fair Use Policy</a>. For more information, see <a href=\"https://kontent.ai/pricing\">Pricing FAQ</a> on our Kentico Kontent&nbsp;website.</p>\n\n<!--Callout-end-->\n\n<!--CodeSample programmingLanguage=cURL platform=REST-->\n\n\n```\ncurl --request GET \\\n  --url https://manage.kontent.ai/v2/projects/975bf280-fd91-488c-994c-2f04416e5ee3/items \\\n  --header 'Authorization: Bearer <YOUR_API_KEY>' \\\n  --header 'Content-type: application/json'\n```\n\n<!--CodeSample-end-->\n\n**Note**: The Management API does not provide any content filtering options and is not optimized for content delivery. If you need to deliver larger amounts of content, filter it, and leverage content caching, we recommend using the [Delivery API](https://docs.kontent.ai/link-to/delivery_api) instead.\n\n# Authentication\n\n\nTo work with the Management API, send your requests over HTTPS and authenticate using the `Authorization` header in the following format: `Authorization: Bearer <YOUR_API_KEY>`.\n\n# Errors\n\n\nThe Management API returns standard HTTP status codes to indicate success or failure of a request. In general, status codes in the `2xx` range indicate a successful request, status codes in the `4xx` range indicate errors caused by an incorrect input (for example, providing incorrect API key), and status codes in the `5xx` range indicate an error on our side.\n\n## HTTP status codes summary\n\n\n<table>\n\n<tbody>\n\n<tr>\n\n<td>\n\n**HTTP status code**\n\n</td>\n\n<td>\n\n**Description**\n\n</td>\n\n</tr>\n\n<tr>\n\n<td>\n\n`400` **Bad request**\n\n</td>\n\n<td>The request was not understood. Check your request for missing required parameters or invalid query parameter values.</td>\n\n</tr>\n\n<tr>\n\n<td>\n\n`401` **Unauthorized**\n\n</td>\n\n<td>The provided API key is invalid or missing.</td>\n\n</tr>\n\n<tr>\n\n<td>\n\n`403` **Forbidden**\n\n</td>\n\n<td>The provided API key is invalid for the requested project.</td>\n\n</tr>\n\n<tr>\n\n<td>\n\n`404` **Not found**\n\n</td>\n\n<td>The requested resource doesn't exist. Try checking the path for typos.</td>\n\n</tr>\n\n<tr>\n\n<td>\n\n`405` **Method not allowed**\n\n</td>\n\n<td>The requested HTTP method is not supported for the specified resource. Try performing a GET request.</td>\n\n</tr>\n\n<tr>\n\n<td>\n\n`429` **Too many requests**\n\n</td>\n\n<td>The rate limit for the API has been exceeded. Try your request again after a few seconds.</td>\n\n</tr>\n\n<tr>\n\n<td>\n\n`500` **Internal Server Error**\n\n</td>\n\n<td>Something went wrong on our side. Try the request again in a few minutes, or contact us.</td>\n\n</tr>\n\n</tbody>\n\n</table>\n\n## Resolving errors\n\n\nFor troubleshooting failed requests, the API provides error messages defined in a consumable format to help you identify and fix the issue.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/Error\" showReadOnly={true} showWriteOnly={true} /> \n\nIf you cannot identify and resolve an issue with your API call, you can contact us with the response status and the request ID you get in the error response.\n",
     "title": "Management API v2",
     "version": "2"
   },
@@ -416,7 +416,61 @@
                   },
                   "uniqueItems": true,
                   "type": "array"
-                }
+                },
+                "example": [{
+                  "elements": [{
+                    "element": {
+                      "id": "85d5efc6-f47e-2fde-a6f5-0950fe89ecd1"
+                    },
+                    "value": "On Roasts"
+                  }, {
+                    "element": {
+                      "id": "62eb9881-e222-6b81-91d2-fdf052726414"
+                    },
+                    "value": [{
+                      "id": "f6daed1f-3f3b-4036-a9c7-9519359b9601"
+                    }]
+                  }, {
+                    "element": {
+                      "id": "4ae5f7a9-fe1f-1e8c-bfec-d321455139c4"
+                    },
+                    "value": "2014-11-07T00:00:00Z"
+                  }, {
+                    "element": {
+                      "id": "90550cbe-7bff-40a9-2947-9c81489fe562"
+                    },
+                    "value": "Roasting coffee beans can take from 6 to 13 minutes. Different roasting times produce different types of coffee, with varying concentration of caffeine and intensity of the original flavor."
+                  }, {
+                    "element": {
+                      "id": "108ed7c0-fc8c-c0ec-d0b5-5a8071408b54"
+                    },
+                    "value": "<p>There’s nothing complicated about roasting. ...</p>"
+                  }, {
+                    "element": {
+                      "id": "ee7c3687-b469-6c56-3ac6-c8dfdc8b58b5"
+                    },
+                    "value": [{
+                      "id": "117cdfae-52cf-4885-b271-66aef6825612"
+                    }, {
+                      "id": "b2fea94c-73fd-42ec-a22f-f409878de187"
+                    }]
+                  }, {
+                    "element": {
+                      "id": "5efb2425-5987-a4a6-a2d3-b14712b56e73"
+                    },
+                    "value": "roasts, coffee"
+                  }],
+                  "workflow_step": {
+                    "id": "c4c2904a-e18c-48ae-9835-2405923262ba"
+                  },
+                  "item": {
+                    "id": "f4b3fc05-e988-4dae-9ac1-a94aba566474"
+                  },
+                  "language": {
+                    "id": "00000000-0000-0000-0000-000000000000"
+                  },
+                  "last_modified": "2017-12-08T08:49:53.603Z"
+                }]
               }
             }
           },
@@ -497,11 +551,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
-                },
-                "example": {
-                  "request_id": "|34b4f5ab4fb3f54bbd72877d98f3121c.d1a27a5_",
-                  "error_code": 0,
-                  "message": "The requested content item 'getting_contents' was not found."
                 }
               }
             }
@@ -552,6 +601,67 @@
                     }
                   },
                   "type": "object"
+                },
+                "example": {
+                  "variants": [{
+                    "elements": [{
+                      "element": {
+                        "id": "49150275-064b-5314-be6e-b93e1d7661e1"
+                      },
+                      "value": "<p>Content in rich text on level 1</p>\n<object type=\"application/kenticocloud\" data-type=\"component\" data-id=\"382abced-bfb6-4ee9-a2d4-2c3b8cd8ba5d\"></object>",
+                      "components": [{
+                        "id": "382abced-bfb6-4ee9-a2d4-2c3b8cd8ba5d",
+                        "type": {
+                          "id": "f4cb13df-d61d-572e-8f3b-3afe7e3a7ea1"
+                        },
+                        "elements": [{
+                          "element": {
+                            "id": "0b9173d6-1c94-5fb0-a010-86eef9013fd4"
+                          },
+                          "value": "<p>Component on level 2</p>\n<object type=\"application/kenticocloud\" data-type=\"component\" data-id=\"7c1ca8b2-2fa8-41d8-be02-bf157d3fa225\"></object>",
+                          "components": [{
+                            "id": "7c1ca8b2-2fa8-41d8-be02-bf157d3fa225",
+                            "type": {
+                              "id": "37684e4c-9303-589b-a937-c7c165171b38"
+                            },
+                            "elements": [{
+                              "element": {
+                                "id": "fbb2e76e-d1e7-57af-ab16-9d44d5f179ef"
+                              },
+                              "value": []
+                            }, {
+                              "element": {
+                                "id": "ff50c0e0-226e-5474-b71b-2af194edd7c4"
+                              },
+                              "value": "<p>Nested component on level 3</p>",
+                              "components": []
+                            }]
+                          }]
+                        }, {
+                          "element": {
+                            "id": "edd22f22-ccd6-56e6-9fe2-676a7e250d8c"
+                          },
+                          "value": [{
+                            "id": "f206b928-7609-5192-bd31-6eb6aae48096"
+                          }]
+                        }]
+                      }]
+                    }],
+                    "workflow_step": {
+                      "id": "1e93d088-1ff4-421c-82ca-0564182746ef"
+                    },
+                    "item": {
+                      "id": "0276f15b-1104-46d8-8e04-29326c58c332"
+                    },
+                    "language": {
+                      "id": "00000000-0000-0000-0000-000000000000"
+                    },
+                    "last_modified": "2019-11-11T12:56:15.5964Z"
+                  }],
+                  "pagination": {
+                    "continuation_token": null,
+                    "next_page": null
+                  }
                 }
               }
             }
@@ -565,11 +675,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
-                },
-                "example": {
-                  "request_id": "|34b4f5ab4fb3f54bbd72877d98f3121c.d1a27a5_",
-                  "error_code": 0,
-                  "message": "The requested content item 'getting_contents' was not found."
                 }
               }
             }
@@ -601,6 +706,58 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/LanguageVariant"
+                },
+                "example": {
+                  "elements": [{
+                    "element": {
+                      "id": "05987dc9-ebe3-7b61-b949-522eb42dbc0d"
+                    },
+                    "value": "Tostar granos de café puede tardar de 6 a 13 minutos."
+                  }, {
+                    "element": {
+                      "id": "ce6cda71-9d38-1d57-3ac3-ec9b2e286edd"
+                    },
+                    "value": [{
+                      "id": "f6daed1f-3f3b-4036-a9c7-9519359b9601"
+                    }]
+                  }, {
+                    "element": {
+                      "id": "34213fdf-0015-8f4f-e5e6-83c6842cff4a"
+                    },
+                    "value": "Dancing Goat"
+                  }, {
+                    "element": {
+                      "id": "68f65095-c9b4-05d6-a473-2883c2f0c7af"
+                    },
+                    "value": "@kenticoCloud"
+                  }, {
+                    "element": {
+                      "id": "b208d3dc-bd8d-b1af-5ef0-747650730ba7"
+                    },
+                    "value": "En Asados"
+                  }, {
+                    "element": {
+                      "id": "b7d1dd8b-a5d8-2ad8-2f57-49881363f6f7"
+                    },
+                    "value": "Tostar granos de café puede tardar de 6 a 13 minutos."
+                  }, {
+                    "element": {
+                      "id": "63793ba4-6004-a93c-68ca-52a1f0482bca"
+                    },
+                    "value": [{
+                      "id": "f6daed1f-3f3b-4036-a9c7-9519359b9601"
+                    }]
+                  }],
+                  "workflow_step": {
+                    "id": "c4c2904a-e18c-48ae-9835-2405923262ba"
+                  },
+                  "item": {
+                    "id": "f4b3fc05-e988-4dae-9ac1-a94aba566474"
+                  },
+                  "language": {
+                    "id": "d1f95fde-af02-b3b5-bd9e-f232311ccab8"
+                  },
+                  "last_modified": "2018-02-27T19:08:25.404Z"
                 }
               }
             }
@@ -611,11 +768,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
-                },
-                "example": {
-                  "request_id": "|34b4f5ab4fb3f54bbd72877d98f3121c.d1a27a5_",
-                  "error_code": 0,
-                  "message": "The requested content item 'getting_contents' was not found."
                 }
               }
             }
@@ -637,8 +789,6 @@
         "operationId": "upsert-a-language-variant",
         "parameters": [{
           "$ref": "#/components/parameters/project_id"
-        }, {
-          "$ref": "#/components/parameters/item_identifier_dc3e32b"
         }, {
           "$ref": "#/components/parameters/language_identifier_for_variants"
         }],
@@ -768,8 +918,7 @@
                       "element": {
                         "id": "f2ff5e3f-a9ca-4604-58b0-34a2ad6a7cf1"
                       },
-                      "mode": "autogenerated",
-                      "value": "on_roasts"
+                      "mode": "autogenerated"
                     }, {
                       "element": {
                         "id": "2e555cc1-1eae-520c-189e-28548904f529"
@@ -851,8 +1000,7 @@
                       "element": {
                         "id": "f2ff5e3f-a9ca-4604-58b0-34a2ad6a7cf1"
                       },
-                      "mode": "autogenerated",
-                      "value": "on_roasts"
+                      "mode": "autogenerated"
                     }, {
                       "element": {
                         "id": "2e555cc1-1eae-520c-189e-28548904f529"
@@ -958,8 +1106,6 @@
         "operationId": "delete-a-language-variant",
         "parameters": [{
           "$ref": "#/components/parameters/project_id"
-        }, {
-          "$ref": "#/components/parameters/item_identifier_dc3e32b"
         }, {
           "$ref": "#/components/parameters/language_identifier_for_variants"
         }],
@@ -1098,6 +1244,40 @@
                     }
                   },
                   "type": "object"
+                },
+                "example": {
+                  "languages": [{
+                    "id": "00000000-0000-0000-0000-000000000000",
+                    "name": "English (American)",
+                    "codename": "en-US",
+                    "is_active": true,
+                    "is_default": true,
+                    "fallback_language": {
+                      "id": "00000000-0000-0000-0000-000000000000"
+                    }
+                  }, {
+                    "id": "5b700fac-d375-4504-88e3-c482c34d9049",
+                    "name": "English (British)",
+                    "codename": "en-GB",
+                    "is_active": true,
+                    "is_default": false,
+                    "fallback_language": {
+                      "id": "00000000-0000-0000-0000-000000000000"
+                    }
+                  }, {
+                    "id": "3cd98a5a-d33a-4b00-9980-11e7a1c97bb2",
+                    "name": "German (Austrian)",
+                    "codename": "de-AT",
+                    "is_active": true,
+                    "is_default": false,
+                    "fallback_language": {
+                      "id": "5b700fac-d375-4504-88e3-c482c34d9049"
+                    }
+                  }],
+                  "pagination": {
+                    "continuation_token": null,
+                    "next_page": null
+                  }
                 }
               }
             }
@@ -1612,11 +1792,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
-                },
-                "example": {
-                  "request_id": "|f027690dca4a294a954f54378e68fa12.d197c75_",
-                  "error_code": 218,
-                  "message": "Cannot cancel scheduling of a language variant that is not scheduled to publish."
                 }
               }
             }
@@ -1689,7 +1864,6 @@
                 }, {
                   "name": "Author bio",
                   "codename": "bio",
-                  "allowed_blocks": ["images", "text"],
                   "type": "rich_text",
                   "content_group": {
                     "external_id": "author"
@@ -1744,7 +1918,6 @@
                     "image_width_limit": null,
                     "image_height_limit": null,
                     "allowed_image_types": "any",
-                    "allowed_blocks": [],
                     "name": "Article body",
                     "guidelines": null,
                     "is_required": false,
@@ -1761,7 +1934,6 @@
                     "image_width_limit": null,
                     "image_height_limit": null,
                     "allowed_image_types": "any",
-                    "allowed_blocks": ["images", "text"],
                     "name": "Author bio",
                     "guidelines": null,
                     "is_required": false,
@@ -1794,10 +1966,10 @@
         },
         "x-code-samples": [{
           "lang": "REST",
-          "source": "curl --request POST \\\n  --url https://manage.kontent.ai/v2/projects/975bf280-fd91-488c-994c-2f04416e5ee3/types\n  --header 'Authorization: Bearer <YOUR_API_KEY>' \\\n  --header 'Content-type: application/json' \\\n  --data '\n{\n \"external_id\": \"article\",\n \"name\": \"Article\",\n \"codename\": \"my_article\",\n \"content_groups\": [\n   {\n     \"name\": \"Article copy\",\n     \"external_id\": \"article-copy\"\n   },\n   {\n     \"name\": \"Author\",\n     \"external_id\": \"author\"\n   }\n ],\n \"elements\": [\n   {\n     \"name\": \"Article title\",\n     \"codename\": \"title\",\n     \"type\": \"text\",\n     \"content_group\": {\n       \"external_id\": \"article-copy\"\n     }\n   },\n   {\n     \"name\": \"Article body\",\n     \"codename\": \"body\",\n     \"type\": \"rich_text\",\n     \"content_group\": {\n       \"external_id\": \"article-copy\"\n     }\n   },\n   {\n     \"name\": \"Author bio\",\n     \"codename\": \"bio\",\n     \"allowed_blocks\": [\n     \t\"images\",\n     \t\"text\"\n     \t],\n     \"type\": \"rich_text\",\n     \"content_group\": {\n       \"external_id\": \"author\"\n     }\n   }\n ]\n}'"
+          "source": "curl --request POST \\\n  --url https://manage.kontent.ai/v2/projects/975bf280-fd91-488c-994c-2f04416e5ee3/types\n  --header 'Authorization: Bearer <YOUR_API_KEY>' \\\n  --header 'Content-type: application/json' \\\n  --data '\n{\n \"external_id\": \"article\",\n \"name\": \"Article\",\n \"codename\": \"my_article\",\n \"content_groups\": [\n   {\n     \"name\": \"Article copy\",\n     \"external_id\": \"article-copy\"\n   },\n   {\n     \"name\": \"Author\",\n     \"external_id\": \"author\"\n   }\n ],\n \"elements\": [\n   {\n     \"name\": \"Article title\",\n     \"codename\": \"title\",\n     \"type\": \"text\",\n     \"content_group\": {\n       \"external_id\": \"article-copy\"\n     }\n   },\n   {\n     \"name\": \"Article body\",\n     \"codename\": \"body\",\n     \"type\": \"rich_text\",\n     \"content_group\": {\n       \"external_id\": \"article-copy\"\n     }\n   },\n   {\n     \"name\": \"Author bio\",\n     \"codename\": \"bio\",\n     \"type\": \"rich_text\",\n     \"content_group\": {\n       \"external_id\": \"author\"\n     }\n   }\n ]\n}'"
         }, {
           "lang": "JavaScript",
-          "source": "// Tip: Find more about JS/TS SDKs at https://docs.kontent.ai/javascript\n// Using ES6 syntax\nimport { ManagementClient, ElementModels } from '@kentico/kontent-management';\n\nconst client = new ManagementClient({\n  projectId: '<YOUR_PROJECT_ID>',\n  apiKey: '<YOUR_API_KEY>'\n});\n\nclient.addContentType()\n  .withData(\n    {\n      name: \"Article\",\n      codename: \"my_article\",\n      external_id: \"article\",\n      content_groups: [\n        {\n          name: \"Article copy\",\n          external_id: \"article-copy\",\n        },\n        {\n          name: \"Author\",\n          external_id: \"author\",\n        }\n      ],\n      elements: [\n        {\n          name: \"Article title\",\n          codename: \"title\",\n          type: ElementModels.ElementType.text,\n          content_group: {\n            external_id: \"article-copy\"\n          },\n        },\n        {\n          name: \"Article body\",\n          codename: \"body\",\n          type: ElementModels.ElementType.richText,\n          content_group: {\n            external_id: \"article-copy\"\n          },\n        },\n        {\n         name: \"Author bio\",\n         codename: \"bio\",\n         type: ElementModels.ElementType.richText,\n         allowed_blocks: [\n     \t     \"images\",\n     \t     \"text\"\n     \t     ],\n         content_group: {\n         external_id: \"author\"\n     },\n        },\n      ]\n    }\n  )\n  .toObservable()\n  .subscribe((response) => {\n    console.log(response);\n  },\n    (error) => {\n      console.log(error);\n    });"
+          "source": "// Tip: Find more about JS/TS SDKs at https://docs.kontent.ai/javascript\n// Using ES6 syntax\nimport { ManagementClient, ElementModels } from '@kentico/kontent-management';\n\nconst client = new ManagementClient({\n  projectId: '<YOUR_PROJECT_ID>',\n  apiKey: '<YOUR_API_KEY>'\n});\n\nclient.addContentType()\n  .withData(\n    {\n      name: \"Article\",\n      codename: \"my_article\",\n      external_id: \"article\",\n      content_groups: [\n        {\n          name: \"Article copy\",\n          external_id: \"article-copy\",\n        },\n        {\n          name: \"Author\",\n          external_id: \"author\",\n        }\n      ],\n      elements: [\n        {\n          name: \"Article title\",\n          codename: \"title\",\n          type: ElementModels.ElementType.text,\n          content_group: {\n            external_id: \"article-copy\"\n          },\n        },\n        {\n          name: \"Article body\",\n          codename: \"body\",\n          type: ElementModels.ElementType.richText,\n          content_group: {\n            external_id: \"article-copy\"\n          },\n        },\n        {\n          name: \"Author bio\",\n          codename: \"bio\",\n          type: ElementModels.ElementType.richText,\n          content_group: {\n            external_id: \"author\",\n          },\n        },\n      ]\n    }\n  )\n  .toObservable()\n  .subscribe((response) => {\n    console.log(response);\n  },\n    (error) => {\n      console.log(error);\n    });"
         }]
       },
       "get": {
@@ -1831,6 +2003,63 @@
                     }
                   },
                   "type": "object"
+                },
+                "example": {
+                  "types": [{
+                    "id": "269202ad-1d9d-47fd-b3e8-bdb05b3e3cf0",
+                    "codename": "hosted_video",
+                    "last_modified": "2017-06-27T12:55:39.054Z",
+                    "name": "Hosted video",
+                    "content_groups": [],
+                    "elements": [{
+                      "name": "Video ID",
+                      "guidelines": "",
+                      "type": "text",
+                      "id": "116a2441-6441-7124-c85b-46a4fef5dcb9",
+                      "codename": "video_id"
+                    }]
+                  }, {
+                    "id": "a29399c3-5281-47ab-9916-acd4a6f887b7",
+                    "codename": "home",
+                    "last_modified": "2018-02-27T18:57:30.238Z",
+                    "name": "Home",
+                    "content_groups": [],
+                    "elements": [{
+                      "guidelines": "",
+                      "type": "guidelines",
+                      "id": "9367da14-3d08-4ed1-4841-24bf8055f916",
+                      "codename": "n9367da14_3d08_4ed1_4841_24bf8055f916"
+                    }, {
+                      "name": "Hero unit",
+                      "guidelines": "Assign 1 Hero unit that has been prepared for a home page. ",
+                      "type": "modular_content",
+                      "id": "2b15a8f3-2e5f-7d01-4d8e-5b22e222aa76",
+                      "codename": "hero_unit"
+                    }, {
+                      "name": "Articles",
+                      "guidelines": "Assign all articles which should be displayed on the home page.",
+                      "type": "modular_content",
+                      "id": "222f3a69-a54f-3e92-83ac-05f8a08e667f",
+                      "codename": "articles"
+                    }, {
+                      "name": "Our story",
+                      "guidelines": "Assign 1 Fact about us which will be displayed on the home page.",
+                      "type": "modular_content",
+                      "id": "617bccc0-4844-4beb-4ede-6247e954633a",
+                      "codename": "our_story"
+                    }, {
+                      "snippet": {
+                        "id": "baf884be-531f-441f-ae88-64205efdd0f6"
+                      },
+                      "type": "snippet",
+                      "id": "255d6748-ba3a-1b59-af5c-afd4a7d6cb4f",
+                      "codename": "metadata"
+                    }]
+                  }],
+                  "pagination": {
+                    "continuation_token": null,
+                    "next_page": null
+                  }
                 }
               }
             }
@@ -1851,7 +2080,7 @@
     "/{project_id}/types/{type_identifier}": {
       "get": {
         "description": "Retrieve information about a single content type.\n",
-        "operationId": "retrieve-a-content-type",
+        "operationId": "/{project_id}/types/{type_identifier}",
         "parameters": [{
           "$ref": "#/components/parameters/project_id"
         }, {
@@ -1982,9 +2211,6 @@
               }, {
                 "op": "remove",
                 "path": "/elements/external_id:my_multiple_choice/options/codename:my_option"
-              }, {
-                "op": "remove",
-                "path": "/elements/id:e94fab1f-c2c1-4f4a-b36c-3f7a0808d2b8/allowed_blocks/text"
               }]
             }
           },
@@ -1998,6 +2224,43 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ContentType"
+                },
+                "example": {
+                  "id": "269202ad-1d9d-47fd-b3e8-bdb05b3e3cf0",
+                  "codename": "my_article",
+                  "last_modified": "2019-07-10T13:38:46.6424347Z",
+                  "name": "A new type name",
+                  "elements": [{
+                    "name": "My text element",
+                    "guidelines": "Here you can tell users how to fill in the element.",
+                    "type": "text",
+                    "id": "116a2441-6441-7124-c85b-46a4fef5dcb9",
+                    "codename": "my_text_element"
+                  }, {
+                    "mode": "multiple",
+                    "options": [{
+                      "id": "523e6231-8d80-a158-3601-dffde4e64a78",
+                      "codename": "another_multiple_choice_option",
+                      "name": "Another multiple choice option"
+                    }, {
+                      "id": "d66ffa49-86ff-eeaa-c33b-e5d9eefe8b81",
+                      "codename": "my_other_multiple_choice_option",
+                      "name": "My other multiple choice option"
+                    }],
+                    "name": "My multiple choice element",
+                    "guidelines": "",
+                    "type": "multiple_choice",
+                    "id": "87924912-4861-aa84-176a-1eae7b22529b",
+                    "codename": "my_multiple_choice_element",
+                    "external_id": "my-multiple-choice-id"
+                  }, {
+                    "name": "My title",
+                    "guidelines": "Title of the article in plain text.",
+                    "type": "text",
+                    "external_id": "my-title-id",
+                    "id": "eacf283d-7e60-57b9-a68e-91180bfebb6d",
+                    "codename": "my_title"
+                  }]
                 }
               }
             }
@@ -2010,11 +2273,11 @@
                   "$ref": "#/components/schemas/Error"
                 },
                 "example": {
-                  "request_id": "|e70dfd410782714e9b3d9caf1a15ee38.bdac945_",
+                  "request_id": "|ac514428bcac904987759fbc2ae81138.29956127_",
                   "error_code": 5,
                   "message": "The provided request body is invalid. See the 'validation_errors' attribute for more information and specify a valid JSON object.",
                   "validation_errors": [{
-                    "message": "Invalid operation with index '0': Cannot add the last allowed limitation type. Remove all limitation types in order to create a rich-text element without any limitations."
+                    "message": "Invalid operation with index '0': The referenced object was not found."
                   }]
                 }
               }
@@ -2038,10 +2301,10 @@
         },
         "x-code-samples": [{
           "lang": "REST",
-          "source": "curl --request PATCH \\\n  --url https://manage.kontent.ai/v2/projects/975bf280-fd91-488c-994c-2f04416e5ee3/types/0be13600-e57c-577d-8108-c8d860330985 \\\n# --url https://manage.kontent.ai/v2/projects/975bf280-fd91-488c-994c-2f04416e5ee3/types/codename/my_article \\\n# --url https://manage.kontent.ai/v2/projects/975bf280-fd91-488c-994c-2f04416e5ee3/types/external_id/my-article-id \\\n  --header 'Authorization: Bearer <YOUR_API_KEY>' \\\n  --header 'Content-type: application/json'\n  --data '\n[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/name\",\n    \"value\": \"A new type name\"\n  },\n  {\n    \"op\": \"replace\",\n    \"path\": \"/elements/codename:my_text_element/guidelines\",\n    \"value\": \"Here you can tell users how to fill in the element.\"\n  },\n  {\n    \"op\": \"addInto\",\n    \"path\": \"/elements\",\n    \"value\": {\n      \"name\": \"My title\",\n      \"type\": \"text\",\n      \"guidelines\": \"Title of the article in plain text.\",\n      \"external_id\": \"my-title-id\"\n    }\n  },\n  {\n    \"op\": \"remove\",\n    \"path\": \"/elements/id:0b2015d0-16ae-414a-85f9-7e1a4b3a3eae\"\n  },\n  {\n    \"op\": \"remove\",\n    \"path\": \"/elements/external_id:my-multiple-choice-id/options/codename:my_option\"\n  },\n  {\n   \"op\": \"remove\",\n   \"path\": \"/elements/id:e94fab1f-c2c1-4f4a-b36c-3f7a0808d2b8/allowed_blocks/text\"\n  }\n]'"
+          "source": "curl --request PATCH \\\n  --url https://manage.kontent.ai/v2/projects/975bf280-fd91-488c-994c-2f04416e5ee3/types/0be13600-e57c-577d-8108-c8d860330985 \\\n# --url https://manage.kontent.ai/v2/projects/975bf280-fd91-488c-994c-2f04416e5ee3/types/codename/my_article \\\n# --url https://manage.kontent.ai/v2/projects/975bf280-fd91-488c-994c-2f04416e5ee3/types/external_id/my-article-id \\\n  --header 'Authorization: Bearer <YOUR_API_KEY>' \\\n  --header 'Content-type: application/json'\n  --data '\n[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/name\",\n    \"value\": \"A new type name\"\n  },\n  {\n    \"op\": \"replace\",\n    \"path\": \"/elements/codename:my_text_element/guidelines\",\n    \"value\": \"Here you can tell users how to fill in the element.\"\n  },\n  {\n    \"op\": \"addInto\",\n    \"path\": \"/elements\",\n    \"value\": {\n      \"name\": \"My title\",\n      \"type\": \"text\",\n      \"guidelines\": \"Title of the article in plain text.\",\n      \"external_id\": \"my-title-id\"\n    }\n  },\n  {\n    \"op\": \"remove\",\n    \"path\": \"/elements/id:0b2015d0-16ae-414a-85f9-7e1a4b3a3eae\"\n  },\n  {\n    \"op\": \"remove\",\n    \"path\": \"/elements/external_id:my-multiple-choice-id/options/codename:my_option\"\n  }\n]'"
         }, {
           "lang": "JavaScript",
-          "source": "// Tip: Find more about JS/TS SDKs at https://docs.kontent.ai/javascript\n// Using ES6 syntax\nimport { ManagementClient } from '@kentico/kontent-management';\n\nconst client = new ManagementClient({\n  projectId: '<YOUR_PROJECT_ID>',\n  apiKey: '<YOUR_API_KEY>'\n});\n\nclient.modifyContentType()\n  .byTypeId(\"0be13600-e57c-577d-8108-c8d860330985\")\n  //.byTypeCodename(\"my_article\")\n  //.byTypeExternalId(\"my-article-id\")\n  .withData (\n    [\n      {\n        op: \"replace\",\n        path: \"/name\",\n        value: \"A new type name\"\n      },\n      {\n        op: \"replace\",\n        path: \"/elements/codename:my_text_element/guidelines\",\n        value: \"Here you can tell users how to fill in the element.\"\n      },\n      {\n        op: \"addInto\",\n        path: \"/elements\",\n        value: {\n          name: \"My title\",\n          type: \"text\",\n          guidelines: \"Title of the article in plain text.\",\n          external_id: \"my-title-id\"\n        }\n      },\n      {\n        op: \"remove\",\n        path: \"/elements/id:0b2015d0-16ae-414a-85f9-7e1a4b3a3eae\"\n      },\n      {\n        op: \"remove\",\n        path: \"/elements/external_id:my-multiple-choice-id/options/codename:my_option\"\n      },\n      {\n       op: \"remove\",\n       path: \"/elements/id:e94fab1f-c2c1-4f4a-b36c-3f7a0808d2b8/allowed_blocks/text\"\n      }\n    ]\n  )\n  .toObservable()\n  .subscribe((response) => {\n    console.log(response);\n  },\n    (error) => {\n      console.log(error);\n    });"
+          "source": "// Tip: Find more about JS/TS SDKs at https://docs.kontent.ai/javascript\n// Using ES6 syntax\nimport { ManagementClient } from '@kentico/kontent-management';\n\nconst client = new ManagementClient({\n  projectId: '<YOUR_PROJECT_ID>',\n  apiKey: '<YOUR_API_KEY>'\n});\n\nclient.modifyContentType()\n  .byTypeId(\"0be13600-e57c-577d-8108-c8d860330985\")\n  //.byTypeCodename(\"my_article\")\n  //.byTypeExternalId(\"my-article-id\")\n  .withData (\n    [\n      {\n        op: \"replace\",\n        path: \"/name\",\n        value: \"A new type name\"\n      },\n      {\n        op: \"replace\",\n        path: \"/elements/codename:my_text_element/guidelines\",\n        value: \"Here you can tell users how to fill in the element.\"\n      },\n      {\n        op: \"addInto\",\n        path: \"/elements\",\n        value: {\n          name: \"My title\",\n          type: \"text\",\n          guidelines: \"Title of the article in plain text.\",\n          external_id: \"my-title-id\"\n        }\n      },\n      {\n        op: \"remove\",\n        path: \"/elements/id:0b2015d0-16ae-414a-85f9-7e1a4b3a3eae\"\n      },\n      {\n        op: \"remove\",\n        path: \"/elements/external_id:my-multiple-choice-id/options/codename:my_option\"\n      }\n    ]\n  )\n  .toObservable()\n  .subscribe((response) => {\n    console.log(response);\n  },\n    (error) => {\n      console.log(error);\n    });"
         }]
       },
       "delete": {
@@ -2119,13 +2382,13 @@
                 "external_id": "my_metadata_elements",
                 "elements": [{
                   "name": "Meta title",
-                  "codename": "my_metadata__meta_title",
+                  "codename": "meta_title",
                   "guidelines": "Length: 30–60 characters",
                   "type": "text",
                   "external_id": "my-meta-title"
                 }, {
                   "name": "Meta description",
-                  "codename": "my_metadata__meta_description",
+                  "codename": "meta_description",
                   "guidelines": "Length: 70-150 characters",
                   "type": "text",
                   "external_id": "my-meta-description"
@@ -2133,12 +2396,12 @@
               }
             }
           },
-          "description": "The content type snippet to be added.\n",
+          "description": "The content type snippet to be added\n",
           "required": true
         },
         "responses": {
           "201": {
-            "description": "The created content type snippet.\n",
+            "description": "The created content type snippet object.\n",
             "content": {
               "application/json": {
                 "schema": {
@@ -2154,14 +2417,14 @@
                     "guidelines": "Length: 30–60 characters",
                     "type": "text",
                     "id": "c44bf9dd-aa3f-41c7-b4d9-a09390e41e16",
-                    "codename": "my_metadata__meta_title",
+                    "codename": "meta_title",
                     "external_id": "my-meta-title"
                   }, {
                     "name": "Meta description",
                     "guidelines": "Length: 70-150 characters",
                     "type": "text",
                     "id": "59b9800b-81a9-4720-bef0-d4cecbaa646c",
-                    "codename": "my_metadata__meta_description",
+                    "codename": "meta_description",
                     "external_id": "my-meta-description"
                   }]
                 }
@@ -2189,10 +2452,10 @@
         },
         "x-code-samples": [{
           "lang": "REST",
-          "source": "curl --request POST \\\n  --url https://manage.kontent.ai/v2/projects/975bf280-fd91-488c-994c-2f04416e5ee3/snippets \\\n  --header 'Authorization: Bearer <YOUR_API_KEY>' \\\n  --header 'Content-type: application/json' \\\n  --data '\n{  \n  \"name\":\"metadata\",\n  \"codename\": \"my_metadata\",\n  \"external_id\":\"snippet-item-123\",\n  \"elements\":[\n    {  \n      \"name\":\"Meta title\",\n      \"codename\": \"my_metadata__meta_title\",\n      \"guidelines\":\"Length: 30–60 characters\",\n      \"type\":\"text\",\n      \"external_id\":\"meta_title\"\n    },\n    {  \n      \"name\":\"Meta description\",\n      \"codename\": \"my_metadata__meta_description\",\n      \"guidelines\":\"Length: 70-150 characters\",\n      \"type\":\"text\",\n      \"external_id\":\"meta_description\"\n    }\n  ]\n}'"
+          "source": "curl --request POST \\\n  --url https://manage.kontent.ai/v2/projects/975bf280-fd91-488c-994c-2f04416e5ee3/snippets \\\n  --header 'Authorization: Bearer <YOUR_API_KEY>' \\\n  --header 'Content-type: application/json' \\\n  --data '\n{  \n  \"name\":\"metadata\",\n  \"external_id\":\"snippet-item-123\",\n  \"elements\":[\n    {  \n      \"name\":\"Meta title\",\n      \"guidelines\":\"Length: 30–60 characters\",\n      \"type\":\"text\",\n      \"external_id\":\"meta_title\"\n    },\n    {  \n      \"name\":\"Meta description\",\n      \"guidelines\":\"Length: 70-150 characters\",\n      \"type\":\"text\",\n      \"external_id\":\"meta_description\"\n    }\n  ]\n}'"
         }, {
           "lang": "JavaScript",
-          "source": "// Tip: Find more about JS/TS SDKs at https://docs.kontent.ai/javascript\n// Using ES6 syntax\nimport { ManagementClient } from '@kentico/kontent-management';\n\nconst client = new ManagementClient({\n  projectId: '<YOUR_PROJECT_ID>',\n  apiKey: '<YOUR_API_KEY>'\n});\n\nclient.addContentTypeSnippet()\n  .withData(\n    {\n      name: \"metadata\",\n      codename: \"my_metadata\",\n      external_id: \"snippet-item-123\",\n      elements: [\n        {\n          name: \"Meta title\",\n          codename: \"my_metadata__meta_title\",\n          guidelines: \"Length: 30–60 characters\",\n          type: ElementModels.ElementType.text,\n          external_id: \"meta_title\"\n        },\n        {\n          name: \"Meta description\",\n          codename: \"my_metadata__meta_description\",\n          guidelines: \"Length: 70-150 characters\",\n          type: ElementModels.ElementType.text,\n          external_id: \"meta_title\"\n        }\n      ]\n    }\n  )\n  .toObservable()\n  .subscribe((response) => {\n    console.log(response);\n  },\n    (error) => {\n      console.log(error);\n    });"
+          "source": "// Tip: Find more about JS/TS SDKs at https://docs.kontent.ai/javascript\n// Using ES6 syntax\nimport { ManagementClient } from '@kentico/kontent-management';\n\nconst client = new ManagementClient({\n  projectId: '<YOUR_PROJECT_ID>',\n  apiKey: '<YOUR_API_KEY>'\n});\n\nclient.addContentTypeSnippet()\n  .withData(\n    {\n      name: \"metadata\",\n      external_id: \"snippet-item-123\",\n      elements: [\n        {\n          name: \"Meta title\",\n          guidelines: \"Length: 30–60 characters\",\n          type: ElementModels.ElementType.text,\n          external_id: \"meta_title\"\n        },\n        {\n          name: \"Meta description\",\n          guidelines: \"Length: 70-150 characters\",\n          type: ElementModels.ElementType.text,\n          external_id: \"meta_title\"\n        }\n      ]\n    }\n  )\n  .toObservable()\n  .subscribe((response) => {\n    console.log(response);\n  },\n    (error) => {\n      console.log(error);\n    });"
         }]
       },
       "get": {
@@ -2226,6 +2489,31 @@
                     }
                   },
                   "type": "object"
+                },
+                "example": {
+                  "snippets": [{
+                    "id": "baf884be-531f-441f-ae88-64205efdd0f6",
+                    "codename": "metadata",
+                    "last_modified": "2018-06-20T10:25:49.133Z",
+                    "name": "Metadata",
+                    "elements": [{
+                      "name": "Meta title",
+                      "guidelines": "Length: 30–60 characters",
+                      "type": "text",
+                      "id": "09398b24-61ed-512e-5b5c-affd54a098e5",
+                      "codename": "meta_title"
+                    }, {
+                      "name": "Meta description",
+                      "guidelines": "Length: 70–150 characters",
+                      "type": "text",
+                      "id": "2e555cc1-1eae-520c-189e-28548904f529",
+                      "codename": "meta_description"
+                    }]
+                  }],
+                  "pagination": {
+                    "continuation_token": null,
+                    "next_page": null
+                  }
                 }
               }
             }
@@ -2264,22 +2552,22 @@
                 },
                 "example": {
                   "id": "baf884be-531f-441f-ae88-64205efdd0f6",
-                  "codename": "my_metadata",
+                  "codename": "metadata",
                   "last_modified": "2018-06-20T10:25:49.133Z",
-                  "name": "My metadata",
+                  "name": "Metadata",
                   "external-id": "snippet-type-123",
                   "elements": [{
                     "name": "Meta title",
                     "guidelines": "Length: 30–60 characters",
                     "type": "text",
                     "id": "09398b24-61ed-512e-5b5c-affd54a098e5",
-                    "codename": "my_metadata__meta_title"
+                    "codename": "meta_title"
                   }, {
                     "name": "Meta description",
                     "guidelines": "Length: 70–150 characters",
                     "type": "text",
                     "id": "2e555cc1-1eae-520c-189e-28548904f529",
-                    "codename": "my_metadata__meta_description"
+                    "codename": "meta_description"
                   }]
                 }
               }
@@ -2310,7 +2598,7 @@
         }]
       },
       "patch": {
-        "description": "Modify content type snippets, their elements, and the configuration of specific objects.\n\nYou can modify the specified content type snippet and its contents in three ways based on your chosen operation type (in the `op` body parameter):\n* `addInto` to add an element to a content type snippet or add an option to a multiple choice element.\n* `remove` to delete a specific element from the specified content type snippet or delete a specific option from a multiple choice element.\n* `replace` to change the value of a specific property of a specified object.\n\nFor any operation that does not affect the content type snippet itself, you need to include a `{path_reference}` in the `path` body parameter for the object you want to modify. Path references can be by ID, codename, or external ID, but take a slightly different form from references to the content type snippet:\n* `id:5eb3d03e-c69d-4e93-b4cc-76f453271386`\n* `codename:snippet_codename__my_text_element`\n* `external_id:text_from_external_database` – Note that any special characters such as slashes (`/`) need to be escaped, so the external ID `external/id` would need to be added to `path` as `external_id:external\\/id`.\n",
+        "description": "Modify content type snippets, their elements, and the configuration of specific objects.\n\nYou can modify the specified content type snippet and its contents in three ways based on your chosen operation type (in the `op` body parameter):\n* `addInto` to add an element to a content type snippet or add an option to a multiple choice element.\n* `remove` to delete a specific element from the specified content type snippet or delete a specific option from a multiple choice element.\n* `replace` to change the value of a specific property of a specified object.\n\nFor any operation that does not affect the content type snippet itself, you need to include a `{path_reference}` in the `path` body parameter for the object you want to modify. Path references can be by ID, codename, or external ID, but take a slightly different form from references to the content type snippet:\n* `id:5eb3d03e-c69d-4e93-b4cc-76f453271386`\n* `codename:my_text_element`\n* `external_id:text_from_external_database` – Note that any special characters such as slashes (`/`) need to be escaped, so the external ID `external/id` would need to be added to `path` as `external_id:external\\/id`.\n",
         "operationId": "modify-a-content-type-snippet",
         "parameters": [{
           "$ref": "#/components/parameters/project_id"
@@ -2349,7 +2637,7 @@
                 "value": "A new snippet name"
               }, {
                 "op": "replace",
-                "path": "/elements/codename:my_metadata__my_meta_description/guidelines",
+                "path": "/elements/codename:my_meta_description/guidelines",
                 "value": "Length: 70-150 characters."
               }, {
                 "op": "addInto",
@@ -2394,7 +2682,7 @@
                     "type": "text",
                     "external_id": "my-meta-title-id",
                     "id": "0eb2bcda-5b9f-4425-b9e1-c7679356e456",
-                    "codename": "my_metadata_snippet__my_meta_title"
+                    "codename": "my_meta_title"
                   }, {
                     "maximum_text_length": {
                       "value": 150,
@@ -2405,7 +2693,7 @@
                     "is_required": false,
                     "type": "text",
                     "id": "f79ad793-b01d-42b0-b06c-7043cd9b6f31",
-                    "codename": "my_metadata_snippet__my_meta_description"
+                    "codename": "my_meta_description"
                   }, {
                     "mode": "single",
                     "options": [{
@@ -2421,7 +2709,7 @@
                     "guidelines": null,
                     "is_required": false,
                     "id": "fcc30f1e-9abf-41da-8693-ed89f3be438d",
-                    "codename": "my_metadata_snippet__my_multiple_choice",
+                    "codename": "my_multiple_choice",
                     "type": "multiple_choice",
                     "external_id": "my-multiple-choice-id"
                   }]
@@ -2465,7 +2753,7 @@
         },
         "x-code-samples": [{
           "lang": "REST",
-          "source": "curl --request PATCH \\\n  --url https://manage.kontent.ai/v2/projects/975bf280-fd91-488c-994c-2f04416e5ee3/snippets/baf884be-531f-441f-ae88-64205efdd0f6 \\\n# --url https://manage.kontent.ai/v2/projects/975bf280-fd91-488c-994c-2f04416e5ee3/snippets/codename/my_metadata_snippet \\\n# --url https://manage.kontent.ai/v2/projects/975bf280-fd91-488c-994c-2f04416e5ee3/snippets/external_id/my-metadata-snippet-id \\\n  --header 'Authorization: Bearer <YOUR_API_KEY>' \\\n  --header 'Content-type: application/json'\n  --data '\n[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/name\",\n    \"value\": \"A new snippet name\"\n  },\n  {\n    \"op\": \"replace\",\n    \"path\": \"/elements/codename:my_metadata__my_meta_description/guidelines\",\n    \"value\": \"Length: 70-150 characters.\"\n  },\n  {\n    \"op\": \"addInto\",\n    \"path\": \"/elements\",\n    \"value\": {\n      \"name\": \"My meta title\",\n      \"type\": \"text\",\n      \"guidelines\": \"Length: 30–60 characters.\",\n      \"external_id\": \"my-meta-title-id\"\n    }\n  },\n  {\n    \"op\": \"remove\",\n    \"path\": \"/elements/id:0b2015d0-16ae-414a-85f9-7e1a4b3a3eae\"\n  },\n  {\n    \"op\": \"remove\",\n    \"path\": \"/elements/external_id:my-multiple-choice-id/options/codename:my_option\"\n  }\n]'"
+          "source": "curl --request PATCH \\\n  --url https://manage.kontent.ai/v2/projects/975bf280-fd91-488c-994c-2f04416e5ee3/snippets/baf884be-531f-441f-ae88-64205efdd0f6 \\\n# --url https://manage.kontent.ai/v2/projects/975bf280-fd91-488c-994c-2f04416e5ee3/snippets/codename/my_metadata_snippet \\\n# --url https://manage.kontent.ai/v2/projects/975bf280-fd91-488c-994c-2f04416e5ee3/snippets/external_id/my-metadata-snippet-id \\\n  --header 'Authorization: Bearer <YOUR_API_KEY>' \\\n  --header 'Content-type: application/json'\n  --data '\n[\n  {\n    \"op\": \"replace\",\n    \"path\": \"/name\",\n    \"value\": \"A new snippet name\"\n  },\n  {\n    \"op\": \"replace\",\n    \"path\": \"/elements/codename:my_meta_description/guidelines\",\n    \"value\": \"Length: 70-150 characters.\"\n  },\n  {\n    \"op\": \"addInto\",\n    \"path\": \"/elements\",\n    \"value\": {\n      \"name\": \"My meta title\",\n      \"type\": \"text\",\n      \"guidelines\": \"Length: 30–60 characters.\",\n      \"external_id\": \"my-meta-title-id\"\n    }\n  },\n  {\n    \"op\": \"remove\",\n    \"path\": \"/elements/id:0b2015d0-16ae-414a-85f9-7e1a4b3a3eae\"\n  },\n  {\n    \"op\": \"remove\",\n    \"path\": \"/elements/external_id:my-multiple-choice-id/options/codename:my_option\"\n  }\n]'"
         }]
       },
       "delete": {
@@ -2676,22 +2964,75 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "required": ["taxonomies", "pagination"],
-                  "properties": {
-                    "taxonomies": {
-                      "description": "A list of taxonomies.\n",
-                      "items": {
-                        "$ref": "#/components/schemas/TaxonomyGroup"
-                      },
-                      "uniqueItems": true,
-                      "type": "array"
-                    },
-                    "pagination": {
-                      "$ref": "#/components/schemas/pagination"
-                    }
+                  "items": {
+                    "$ref": "#/components/schemas/TaxonomyGroup"
                   },
-                  "type": "object"
-                }
+                  "uniqueItems": true,
+                  "type": "array"
+                },
+                "example": [{
+                  "last_modified": "2017-09-07T08:15:22.721Z",
+                  "name": "Manufacturer",
+                  "terms": [{
+                    "name": "Aerobie",
+                    "terms": [],
+                    "id": "f04c8552-1b97-a49b-3944-79275622f471",
+                    "codename": "aerobie"
+                  }, {
+                    "name": "Chemex",
+                    "terms": [],
+                    "id": "16d27bf1-e0f4-8646-0e54-1b71efc6947f",
+                    "codename": "chemex"
+                  }, {
+                    "name": "Espro",
+                    "terms": [],
+                    "id": "b378225f-6dfc-e261-3848-dd030a6d7883",
+                    "codename": "espro"
+                  }, {
+                    "name": "Hario",
+                    "terms": [],
+                    "id": "6fde9724-5b72-8bc9-6da0-4f0573a54532",
+                    "codename": "hario"
+                  }],
+                  "id": "4ce421e9-c403-eee8-fdc2-74f09392a749",
+                  "codename": "manufacturer"
+                }, {
+                  "last_modified": "2016-10-20T13:24:00.32Z",
+                  "name": "Personas",
+                  "terms": [{
+                    "name": "Coffee expert",
+                    "terms": [{
+                      "name": "Barista",
+                      "terms": [],
+                      "id": "6a372f43-ccd7-e524-6308-c2094e7b6596",
+                      "codename": "barista"
+                    }, {
+                      "name": "Cafe owner",
+                      "terms": [],
+                      "id": "cdf2f3c6-89e3-5df1-f7de-7179460bd6b4",
+                      "codename": "cafe_owner"
+                    }],
+                    "id": "6693ca6e-79e0-57e4-000d-d23d5ce8f656",
+                    "codename": "coffee_expert"
+                  }, {
+                    "name": "Coffee enthusiast",
+                    "terms": [{
+                      "name": "Coffee lover",
+                      "terms": [],
+                      "id": "208a9095-1b92-10da-7627-75ae311935cf",
+                      "codename": "coffee_lover"
+                    }, {
+                      "name": "Coffee blogger",
+                      "terms": [],
+                      "id": "4fa27320-c363-3ebe-5ab5-b531300f053f",
+                      "codename": "coffee_blogger"
+                    }],
+                    "id": "ab2b73a3-473d-4232-0652-495598f5d670",
+                    "codename": "coffee_enthusiast"
+                  }],
+                  "id": "f30c7f72-e9ab-8832-2a57-62944a038809",
+                  "codename": "personas"
+                }]
               }
             }
           },
@@ -2726,6 +3067,50 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/TaxonomyGroup"
+                },
+                "example": {
+                  "last_modified": "2018-11-14T16:49:20.1440821Z",
+                  "name": "Personas 2",
+                  "external_id": "Tax-Group-123",
+                  "terms": [{
+                    "name": "Coffee expert",
+                    "external_id": "Tax-term-456",
+                    "terms": [{
+                      "name": "Barista",
+                      "external_id": "Tax-term-789",
+                      "terms": [],
+                      "id": "9bee9779-a9c6-5d66-875b-aaf7093b4ac2",
+                      "codename": "barista"
+                    }, {
+                      "name": "Cafe owner",
+                      "external_id": "Tax-term-101",
+                      "terms": [],
+                      "id": "9b897d7b-ded7-5de1-aee1-1e90e43db747",
+                      "codename": "cafe_owner"
+                    }],
+                    "id": "012a94e4-76b4-5a5d-95ce-164577c9b5e5",
+                    "codename": "coffee_expert"
+                  }, {
+                    "name": "Coffee enthusiast",
+                    "external_id": "Tax-term-112",
+                    "terms": [{
+                      "name": "Coffee lover",
+                      "external_id": "Tax-term-131",
+                      "terms": [],
+                      "id": "146c5e35-dffe-5977-b943-16f0e862af2e",
+                      "codename": "coffee_lover"
+                    }, {
+                      "name": "Coffee blogger",
+                      "external_id": "Tax-term-145",
+                      "terms": [],
+                      "id": "8d980871-c510-5a58-aad1-f40fc5f28bbd",
+                      "codename": "coffee_blogger"
+                    }],
+                    "id": "6104cfd7-59db-51ff-a042-f82e1df18262",
+                    "codename": "coffee_enthusiast"
+                  }],
+                  "id": "b07878ac-9096-5e6b-bbff-3161391cd0ad",
+                  "codename": "personas_2"
                 }
               }
             }
@@ -3510,6 +3895,16 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "The specified asset was not found.\n",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
           }
         },
         "x-code-samples": [{
@@ -4122,21 +4517,6 @@
                 }
               }
             }
-          },
-          "404": {
-            "description": "The specified webhook was not found.\n",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                },
-                "example": {
-                  "request_id": "|f5e9980562323e4b9b23588a141d323a.2774b2ca_",
-                  "error_code": 111,
-                  "message": "The requested webhook was not found."
-                }
-              }
-            }
           }
         },
         "x-code-samples": [{
@@ -4195,13 +4575,13 @@
     "description": "Rate limits specify the number of requests you or your application can make to the Management API within a specific time window. There are three separate time windows (second, minute, hour) allowing a different number of requests each.\n\nBy default, the Management API enforces the following rate limits\n* **10** requests per second\n* **400** requests per minute\n* **15000** requests per hour\n\nThese [limits apply to each API key](https://docs.kontent.ai/link-to/api_key_scope_and_validity) for the Management API.\n\n**Note**: We strongly advise against making multiple requests to the API in parallel. Doing so may cause unpredictable behavior and lead to inconsistencies in your content. We recommend that you wait for each request to finish before sending another one.\n\nWhen you reach the limit of a specific time window, the API will reject the request and respond with the [429 HTTP error](https://httpstatuses.com/429 \"Too Many Requests\").\n\n<!--CodeSample programmingLanguage=JSON platform=-->\n\n\n```json\n{\n    \"request_id\": \"80000004-0002-fd00-b63f-84710c7967bb\",\n    \"error_code\": 10000,\n    \"message\": \"API rate limit exceeded. Please retry your request later.\"\n}\n```\n\n<!--CodeSample-end-->\n\nThe error response will include the [`Retry-After` header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After) that tells you how many *seconds* you need to wait before attempting further requests. Each failed request is perfectly safe to retry.\n\nIf you begin to receive [429 HTTP errors](https://httpstatuses.com/429 \"Too Many Requests\"), reduce the frequency of your requests.\n",
     "name": "Rate limiting"
   }, {
-    "description": "References identify objects within your project. For example, you can use references to specify content types, content items, languages, and more.\n\nWhen specifying references to objects, the object can be identified by **one** of three properties:\n1.  Its internal ID, such as `18b43cc5-f4fd-0172-842b-3ae2c878cf6f`\n    * Generated by the system automatically.\n    * Can be used to specify any object.\n2.  Its codename, such as `item_codename`\n    * Initially generated from the object's display name (see below for how).\n    * Can be used to specify most objects.\n3.  Its external ID, such as `object-id-from-another-system`\n    * Specified when creating the object through the Management API. The external ID cannot be changed.\n    * Can be used to specify user-created assets, content items, content types, content groups, elements, languages, taxonomy groups, and taxonomy terms.\n\n### Rules for codenames\n\nWhen editing codenames, the new codenames must meet the following conditions:\n* Only lowercase letters, numbers, and underscores are permitted.\n* Codenames must start with a letter or an underscore and have at least one character.\n* Codenames are usually limited to 60 characters, but longer codenames are allowed for multiple choice options and taxonomy terms.\n* Codenames of elements within a snippet must be prefixed with the snippet's codename.\n* Codenames must be unique.\n\nThis means the following applies when codenames are generated automatically:\n* All letters are made lowercase.\n* All forbidden characters are replaced by `_`.\n* For any names that start with a number, the codename will start with `n`.\n* Codenames that duplicate another codename will have a random string attached to the end.\n* Codenames of elements within a snippet will be prefixed with the snippet's codename.\n* Codenames will be cut off at the character limit.\n\n## Reference object\n\n\nThe API uses internal IDs for referencing objects. This means that the reference objects in the API responses will always use internal IDs.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/Reference\" showReadOnly={true} showWriteOnly={true} /> \n\n## External IDs for imported content\n\n\nWhen [adding new content types](https://docs.kontent.ai/link-to/add_a_content_type) to your project, content groups must be referenced by their external IDs. By using external IDs to reference other objects in your project, you can import your content in the order you prefer. For example, when importing multiple articles that contain images, you can reference these images with external IDs, such as `roaster` or `coffee-cup`, before uploading them.\n\nThe referenced images will be visible in the UI only after you [add them as assets](https://docs.kontent.ai/link-to/upsert_an_asset) via the Management API. With this approach, you can choose whether you want to create content items first and then upload binary files for assets, or vice versa.\n\nThis means you can use external IDs to reference objects that don't yet exist in the project and add the objects via the API later.\n\nTo check whether your project contains any references to not-yet-created objects, see how to [validate project content](https://docs.kontent.ai/link-to/validate_project_content).\n\n**Note**: References to non-existent objects will be stored and retrieved via the Management API as internal IDs.\n\n<!--Callout type=Info-->\n\n<p><strong>Referencing objects that are not in your project yet</strong></p>\n<p>The Management API supports referencing of non-existent objects in the following elements:</p>\n<ul>\n  <li><a href=\"#section/Linked-items-element\">Linked items element</a></li>\n  <li><a href=\"#section/Asset-element\">Asset element</a></li>\n  <li><a href=\"#section/Taxonomy-element\">Taxonomy element</a></li>\n  <li><a href=\"#section/Rich-text-element\">Rich text element</a> (as assets, content items, and links)</li>\n</ul>\n<p>See how to <a data-item-id=\"41e4c06e-d21d-42d3-b036-74ca098b0e53\" href=\"https://docs.kontent.ai/link-to/importing_linked_content\">import linked content</a> to learn more.</p>\n\n<!--Callout-end-->\n\n### Missing objects in the UI\n\nIf you reference non-existent objects by external IDs in your elements, the referenced objects won't be shown in the user interface because the system cannot find those objects. The referenced assets, content items, and taxonomy terms will be displayed after you create them with their specific external IDs via the Management API.\n\nTo add the missing objects, see:\n* [Upsert a content item](https://docs.kontent.ai/link-to/upsert_a_content_item) to create content items specified by external IDs.\n* [Upsert an asset](https://docs.kontent.ai/link-to/upsert_an_asset) to create assets specified by external IDs.\n* [Add a taxonomy group](https://docs.kontent.ai/link-to/add_a_taxonomy_group) to create taxonomy groups with external IDs.\n",
+    "description": "References identify objects within your project. For example, you can use references to specify content types, content items, languages, and more.\n\nWhen specifying references to objects, the object can be identified by **one** of three properties:\n1.  Its internal ID, such as `18b43cc5-f4fd-0172-842b-3ae2c878cf6f`\n    * Generated by the system automatically.\n    * Can be used to specify any object.\n2.  Its codename, such as `item_codename`\n    * Initially generated from the object's display name (see below for how).\n    * Can be used to specify most objects.\n3.  Its external ID, such as `object-id-from-another-system`\n    * Specified when creating the object through the Management API. The external ID cannot be changed.\n    * Can be used to specify user-created assets, content items, content types, content groups, elements, languages, taxonomy groups, and taxonomy terms.\n\n### Rules for codenames\n\nWhen editing codenames, the new codenames must meet the following conditions:\n* Only lowercase letters, numbers, and underscores are permitted.\n* Codenames must start with a letter or an underscore and have at least one character.\n* Codenames are limited to 60 characters for all objects except multiple choice options, which are limited to 160 characters.\n* Codenames must be unique.\n\nThis means the following applies when codenames are generated automatically:\n* All letters are made lowercase.\n* All forbidden characters are replaced by `_`.\n* For any names that start with a number, the codename will start with `n`.\n* Codenames that duplicate another codename will have a random string attached to the end.\n* Codenames will be cut off at the character limit.\n\n## Reference object\n\n\nThe API uses internal IDs for referencing objects. This means that the reference objects in the API responses will always use internal IDs.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/Reference\" showReadOnly={true} showWriteOnly={true} /> \n\n## External IDs for imported content\n\n\nWhen [adding new content types](https://docs.kontent.ai/link-to/add_a_content_type) to your project, content groups must be referenced by their external IDs. By using external IDs to reference other objects in your project, you can import your content in the order you prefer. For example, when importing multiple articles that contain images, you can reference these images with external IDs, such as `roaster` or `coffee-cup`, before uploading them.\n\nThe referenced images will be visible in the UI only after you [add them as assets](https://docs.kontent.ai/link-to/upsert_an_asset) via the Management API. With this approach, you can choose whether you want to create content items first and then upload binary files for assets, or vice versa.\n\nThis means you can use external IDs to reference objects that don't yet exist in the project and add the objects via the API later.\n\nTo check whether your project contains any references to not-yet-created objects, see how to [validate project content](https://docs.kontent.ai/link-to/validate_project_content).\n\n**Note**: References to non-existent objects will be stored and retrieved via the Management API as internal IDs.\n\n<!--Callout type=Info-->\n\n<p><strong>Referencing objects that are not in your project yet</strong></p>\n<p>The Management API supports referencing of non-existent objects in the following elements:</p>\n<ul>\n  <li><a href=\"#section/Linked-items-element\">Linked items element</a></li>\n  <li><a href=\"#section/Asset-element\">Asset element</a></li>\n  <li><a href=\"#section/Taxonomy-element\">Taxonomy element</a></li>\n  <li><a href=\"#section/Rich-text-element\">Rich text element</a> (as assets, content items, and links)</li>\n</ul>\n<p>See how to <a data-item-id=\"41e4c06e-d21d-42d3-b036-74ca098b0e53\" href=\"https://docs.kontent.ai/link-to/importing_linked_content\">import linked content</a> to learn more.</p>\n\n<!--Callout-end-->\n\n### Missing objects in the UI\n\nIf you reference non-existent objects by external IDs in your elements, the referenced objects won't be shown in the user interface because the system cannot find those objects. The referenced assets, content items, and taxonomy terms will be displayed after you create them with their specific external IDs via the Management API.\n\nTo add the missing objects, see:\n* [Upsert a content item](https://docs.kontent.ai/link-to/upsert_a_content_item) to create content items specified by external IDs.\n* [Upsert an asset](https://docs.kontent.ai/link-to/upsert_an_asset) to create assets specified by external IDs.\n* [Add a taxonomy group](https://docs.kontent.ai/link-to/add_a_taxonomy_group) to create taxonomy groups with external IDs.\n",
     "name": "References"
   }, {
     "description": "To manage content items via the Management API, you need to send requests to URIs based on the following patterns:\n* Using internal IDs: `<base_URL>/items/<content_item_id>`\n* Using codenames: `<base_URL>/items/codename/<content_item_codename>`\n* Using external IDs: `<base_URL>/items/external-id/<content_item_external_identifier>`\n\nTo [retrieve language variants](https://docs.kontent.ai/link-to/retrieve_variants_of_an_item) of a specific content item, you can list the variants by specifying the internal ID, codename, or external ID of the content item.\n\n## Content item object\n\n\nThe content item object contains metadata about your content, such as the name of the content item and when the item was last modified. The content item object does not store the content itself. The content for each language variant of a content item is saved in [language variants](https://docs.kontent.ai/link-to/language_variants), with each content item having as many variants as there are active languages in your project.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/ContentItem\" showReadOnly={true} showWriteOnly={true} /> \n",
     "name": "Content items"
   }, {
-    "description": "When you retrieve or update [language variants](https://docs.kontent.ai/link-to/language_variants), you will work with a collection of elements. The elements collection contains the elements as defined in the content type.\n\n**Note**: When retrieving language variants, the Management API will always reference content elements with their internal IDs. When creating or updating language variants via the API, you can reference content elements by their internal IDs or codenames.\n\n## Asset element\n\n\n<SchemaDefinition schemaRef=\"#/components/schemas/AssetInVariant\" showReadOnly={true} showWriteOnly={true} /> \n\n## Custom element\n\n\n<SchemaDefinition schemaRef=\"#/components/schemas/CustomElementInVariant\" showReadOnly={true} showWriteOnly={true} /> \n\n## Date and time element\n\n\n<SchemaDefinition schemaRef=\"#/components/schemas/DateTimeInVariant\" showReadOnly={true} showWriteOnly={true} /> \n\n## Linked items element\n\n\n<SchemaDefinition schemaRef=\"#/components/schemas/LinkedItemsInVariant\" showReadOnly={true} showWriteOnly={true} /> \n\n## Multiple choice element\n\n\n<SchemaDefinition schemaRef=\"#/components/schemas/MultipleChoiceInVariant\" showReadOnly={true} showWriteOnly={true} /> \n\n## Number element\n\n\n<SchemaDefinition schemaRef=\"#/components/schemas/NumberInVariant\" showReadOnly={true} showWriteOnly={true} /> \n\n## Rich text element\n\n\n<SchemaDefinition schemaRef=\"#/components/schemas/RichTextInVariant\" showReadOnly={true} showWriteOnly={true} /> \n\n### HTML5 elements allowed in rich text\n\nThe rich text value can contain specific HTML elements and must form a valid HTML5 fragment. When transforming HTML to JSON, make sure to escape all double quotes.\n\n<table>\n\n<tbody>\n\n<tr>\n\n<td>\n\n**Types**\n\n</td>\n\n<td>\n\n**HTML elements**\n\n</td>\n\n<td>\n\n**Notes**\n\n</td>\n\n</tr>\n\n<tr>\n\n<td>Paragraphs</td>\n\n<td>\n\n`<p>...</p>`\n\n</td>\n\n<td>Must be used at the top level.</td>\n\n</tr>\n\n<tr>\n\n<td>Headings</td>\n\n<td>\n\n`<h1>...</h1>`, `<h2>...</h2>`, ` <h3>...</h3>`, `<h4>...</h4>`\n\n</td>\n\n<td>Must be used at the top level.</td>\n\n</tr>\n\n<tr>\n\n<td>Bold text</td>\n\n<td>\n\n`<strong>...</strong>`\n\n</td>\n\n<td>\n\nMust be nested. The `<b>` tag is not supported.\n\n</td>\n\n</tr>\n\n<tr>\n\n<td>Italic text</td>\n\n<td>\n\n`<em>...</em>`\n\n</td>\n\n<td>\n\nMust be nested. The `<i>` tag is not supported.\n\n</td>\n\n</tr>\n\n<tr>\n\n<td>Superscript</td>\n\n<td>\n\n`<sup>...</sup>`\n\n</td>\n\n<td>Superscript and subscript are mutually exclusive.</td>\n\n</tr>\n\n<tr>\n\n<td>Subscript</td>\n\n<td>\n\n`<sub>...</sub>`\n\n</td>\n\n<td>Superscript and subscript are mutually exclusive.</td>\n\n</tr>\n\n<tr>\n\n<td>Code</td>\n\n<td>\n\n`<code>...</code>`\n\n</td>\n\n<td>Must be nested.</td>\n\n</tr>\n\n<tr>\n\n<td>\n\n[Lists](#section/Rich-text-element/lists-in-rich-text)\n\n</td>\n\n<td>\n\n`<ol><li>...</li></ol>`, `<ul><li>...</li></ul>`\n\n</td>\n\n<td>Must be nested.</td>\n\n</tr>\n\n<tr>\n\n<td>\n\n[Tables](#section/Rich-text-element/tables-in-rich-text)\n\n</td>\n\n<td>\n\n`<table><tbody><tr><td>...</td></tr></tbody></table>`\n\n</td>\n\n<td>\n\nMust be used at the top level. The `<thead>` and `<tfoot>` tags are not supported.\n\n</td>\n\n</tr>\n\n<tr>\n\n<td>\n\n[Links](#section/Rich-text-element/links-in-rich-text)\n\n</td>\n\n<td>\n\n`<a ...>...</a>`\n\n</td>\n\n<td>\n\nCan be used at the top level and nested. For the list of supported `<a>` attributes, see [Links in rich text](#section/Rich-text-element/links-in-rich-text).\n\n</td>\n\n</tr>\n\n<tr>\n\n<td>\n\n[Assets](#section/Rich-text-element/assets-in-rich-text)\n\n</td>\n\n<td>\n\n`<figure ...><img ...></figure>`\n\n</td>\n\n<td>Must be used at the top level.</td>\n\n</tr>\n\n<tr>\n\n<td>\n\n[Content items](#section/Rich-text-element/content-items-in-rich-text) and [components](#section/Rich-text-element/components-in-rich-text)\n\n</td>\n\n<td>\n\n`<object ...></object>`\n\n</td>\n\n<td>Must be used at the top level.</td>\n\n</tr>\n\n<tr>\n\n<td>Line breaks</td>\n\n<td>\n\n`<br/>`\n\n</td>\n\n<td>\n\n</td>\n\n</tr>\n\n</tbody>\n\n</table>\n\n### Assets in rich text\n\nAssets in rich text are defined by the block element `<figure>` which requires one of the following attributes: `data-asset-id` or `data-asset-external-id`. The `data-asset-external-id` attribute can also reference an object that was not yet imported to Kentico Kontent. See more details about [external IDs for imported content](#section/External-IDs-for-imported-content).\n\nWhen inserting values in rich text, the `<img>` element is optional. Otherwise, the `<img>` element requires the attributes `src` and `data-asset-id`.\n\n<!--CodeSample programmingLanguage=JSON platform=-->\n\n\n```json\n{\n...\n  \"element\": {\n    \"codename\": \"asset_referenced_by_internal_id\"\n  },\n  \"value\": \"<figure data-asset-id=\\\"512047f1-2f7f-45fd-9e90-e71b8feae017\\\">    <img src=\\\"#\\\" data-asset-id=\\\"512047f1-2f7f-45fd-9e90-e71b8feae017\\\">    </figure>\"\n...\n  \"element\": {\n    \"codename\": \"asset_referenced_by_internal_id\"\n  },\n  \"value\": \"<figure data-asset-external-id=\\\"coffee_beans\\\"></figure>\"\n...\n}\n```\n\n<!--CodeSample-end-->\n\n### Components in rich text\n\nComponents in rich text are defined by the `<object>` block element. The `<object>` element requires the `type`, `data-type`, and `data-id` attributes.\n\n<!--CodeSample programmingLanguage=JSON platform=-->\n\n\n```json\n{\n...\n  \"element\": {\n    \"codename\": \"component_referenced_by_internal_id\"\n  },\n  \"value\": \"<object type=\\\"application/kenticocloud\\\"    data-type=\\\"component\\\"    data-id=\\\"382abced-bfb6-4ee9-a2d4-2c3b8cd8ba5d\\\"></object>\"\n...\n}\n```\n\n<!--CodeSample-end-->\n\nFor each component in the text, the rich text object's `components` property must hold a matching component object. When specifying components in the rich text's `value` property, you need to provide a unique ID (GUID) for the `data-id` attribute of each component.\n\n#### Component object\n\n<SchemaDefinition schemaRef=\"#/components/schemas/RichTextComponent\" showReadOnly={true} showWriteOnly={true} /> \n\n#### Nesting of components\n\nIf the inserted component contains a rich text element, the rich text element may contain more components. These nested components may contain another rich text element with more components, and so on. The components can be nested up to 6 levels deep.\n\n<!--CodeSample programmingLanguage=JSON platform=-->\n\n\n```json\n{\n  \"element\": {\n    \"id\": \"49150275-064b-5314-be6e-b93e1d7661e1\"\n  },\n  \"value\": \"<p>Content in rich text on level 1</p>\\n<object type=\\\"application/kenticocloud\\\" data-type=\\\"component\\\" data-id=\\\"382abced-bfb6-4ee9-a2d4-2c3b8cd8ba5d\\\"></object>\",\n  \"components\": [\n    {\n      \"id\": \"382abced-bfb6-4ee9-a2d4-2c3b8cd8ba5d\",\n      \"type\": {\n        \"id\": \"f4cb13df-d61d-572e-8f3b-3afe7e3a7ea1\"\n      },\n      \"elements\": [\n        {\n          \"element\": {\n            \"id\": \"0b9173d6-1c94-5fb0-a010-86eef9013fd4\"\n          },\n          \"value\": \"<p>Component on level 2</p>\\n<object type=\\\"application/kenticocloud\\\" data-type=\\\"component\\\" data-id=\\\"7c1ca8b2-2fa8-41d8-be02-bf157d3fa225\\\"></object>\",\n          \"components\": [\n            {\n              \"id\": \"7c1ca8b2-2fa8-41d8-be02-bf157d3fa225\",\n              \"type\": {\n                \"id\": \"37684e4c-9303-589b-a937-c7c165171b38\"\n              },\n              \"elements\": [\n                {\n                  \"element\": {\n                    \"id\": \"ff50c0e0-226e-5474-b71b-2af194edd7c4\"\n                  },\n                  \"value\": \"<p>Nested component on level 3</p>\",\n                  \"components\": []\n                }\n              ]\n            }\n          ]\n        },\n        {\n          \"element\": {\n            \"id\": \"edd22f22-ccd6-56e6-9fe2-676a7e250d8c\"\n          },\n          \"value\": [\n            {\n              \"id\": \"f206b928-7609-5192-bd31-6eb6aae48096\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}\n```\n\n<!--CodeSample-end-->\n\n### Content items in rich text\n\nContent items in rich text are defined by the `<object>` block element. The `<object>` element requires the attributes `type`, `data-type`, and either `data-id` or `data-external-id`. The `data-external-id` attribute can also reference an object that has not yet been imported to Kentico Kontent. See more details about [external IDs for imported content](#section/External-IDs-for-imported-content).\n\n<!--CodeSample programmingLanguage=JSON platform=-->\n\n\n```json\n{\n...\n  \"element\": {\n    \"codename\": \"item_referenced_by_internal_id\"\n  },\n  \"value\": \"<object type=\\\"application/kenticocloud\\\"    data-type=\\\"item\\\"    data-id=\\\"f4b3fc05-e988-4dae-9ac1-a94aba566474\\\"></object>\"\n...\n  \"element\": {\n    \"codename\": \"item_referenced_by_external_id\"\n  },\n  \"value\": \"<object type=\\\"application/kenticocloud\\\"    data-type=\\\"item\\\"    data-external-id=\\\"59713\\\"></object>\"\n...\n}\n```\n\n<!--CodeSample-end-->\n\n### Links in rich text\n\nLinks in rich text are defined as the `<a>` element, for example, `<a href=\"#\">Link</a>`. These links can be used for web URLs, email addresses, assets, and content items. For each of the link types, the `<a>` element supports a different set of required and optional attributes.\n\n#### Links to URLs\n\nLinks to URLs require the `href` attribute.\n\n<!--Callout type=Info-->\n\n<p><strong>Inserting URL values</strong></p>\n<p>When inserting URL values, the system might add the <code>http://</code> prefix in case the provided URL is invalid or not safe. For example, URLs using the <code>javascript</code> protocol will be prefixed. URL values starting with <code>/</code>,<code> ?</code>, or <code>#</code> are allowed.</p>\n<p>Examples of how inserted URLs are stored:</p>\n<ul>\n  <li><code>http://example.com</code> → <code>http://example.com</code></li>\n  <li><code>https://example.com</code> → <code>https://example.com</code></li>\n  <li><code>ftp://example.com</code> → <code>ftp://example.com</code></li>\n  <li><code>example.com</code> → <code>http://example.com</code></li>\n  <li><code>about-us.html</code> → <code>http://about-us.html</code></li>\n  <li><code>/about-us.html</code> → <code>/about-us.html</code></li>\n  <li><code>?query</code> → <code>?query</code></li>\n  <li><code>#anchor</code> → <code>#anchor</code></li>\n  <li><code>javascript:alert()</code> → <code>http://javascript:alert()</code></li>\n  <li><code>javascript://%0aalert()</code> → <code>http://javascript://%0aalert()</code></li>\n  <li><code>data:text/html,&lt;script&gt;alert()&lt;/script&gt;</code> → <code>http://data:text/html,&lt;script&gt;alert()&lt;/script&gt;</code></li>\n</ul>\n\n<!--Callout-end-->\n\nOptionally, the link can specify a title and whether the link should be opened in a new browser window.\n* If the link should provide a title, the `<a>` element must specify the title attribute with a value.\n* If the link should open in a new window, the `<a>` element must specify the data-new-window attribute set to true.\n\n**Note**: Other `<a>` attributes, such as `target` and `rel`, are not supported for URL links.\n\n<!--CodeSample programmingLanguage=JSON platform=-->\n\n\n```json\n{\n...\n  \"element\": {\n    \"codename\": \"link_to_url\"\n  },\n  \"value\": \"<a href=\\\"https://example.com\\\">example link</a>\"\n...\n  \"element\": {\n    \"codename\": \"link_to_url_new_window\"\n  },\n  \"value\": \"<a href=\\\"https://example.com\\\" data-new-window=\\\"true\\\">example link</a>\"\n...\n  \"element\": {\n    \"codename\": \"link_to_url_with_title\"\n  },\n  \"value\": \"<a href=\\\"https://example.com\\\" title=\\\"Example\\\">example link</a>\"\n...\n}\n```\n\n<!--CodeSample-end-->\n\n#### Links to email addresses\n\nEmail links require the `data-email-address` attribute . Optionally, the link can contain the `data-email-subject` attribute.\n\n<!--CodeSample programmingLanguage=JSON platform=-->\n\n\n```json\n{\n...\n  \"element\": {\n    \"codename\": \"link_to_email_address\"\n  },\n  \"value\": \"<a data-email-address=\\\"cloud@kentico.com\\\"    data-email-subject=\\\"An inquisitive question\\\">reach out</a>\"\n...\n}\n```\n\n<!--CodeSample-end-->\n\n#### Links to assets\n\nLinks to assets require one of the following attributes: `data-asset-id` or `data-asset-external-id`. The `data-asset-external-id` attribute can also reference an object that has not yet been imported to Kentico Kontent. See more details about [external IDs for imported content](#section/External-IDs-for-imported-content).\n\n<!--CodeSample programmingLanguage=JSON platform=-->\n\n\n```json\n{\n...\n  \"element\": {\n    \"codename\": \"asset_linked_by_internal_id\"\n },\n  \"value\": \"<a data-asset-id=\\\"0b590263-3fe5-4773-afae-5a3f6e511e66\\\">Hario Mini Mill</a>\"\n...\n  \"element\": {\n    \"codename\": \"asset_linked_by_external_id\"\n  },\n  \"value\": \"<a data-asset-external-id=\\\"hario_mini\\\">Hario Mini Mill</a>\"\n...\n}\n```\n\n<!--CodeSample-end-->\n\n#### Links to content items\n\nLinks to content items within a single Kentico Kontent project require one of the following attributes: `data-item-id` or `data-item-external-id`. The `data-item-external-id` attribute can also reference an object that has not yet been imported to Kentico Kontent. See more details about [external IDs for imported content](#section/External-IDs-for-imported-content).\n\n<!--CodeSample programmingLanguage=JSON platform=-->\n\n\n```json\n{\n...\n  \"element\": {\n    \"codename\": \"item_linked_by_internal_id\"\n  },\n  \"value\": \"<a data-item-id=\\\"f4b3fc05-e988-4dae-9ac1-a94aba566474\\\">On Roasts</a>\"\n...\n  \"element\": {\n    \"codename\": \"item_linked_by_external_id\"\n  },\n  \"value\": \"<a data-item-external-id=\\\"on_roasts\\\">On Roasts</a>\"\n...\n}\n```\n\n<!--CodeSample-end-->\n\n### Lists in rich text\n\nLists in rich text are defined as standard HTML lists, either ordered (`<ol>`) or unordered (`<ul>`). Each list item can contain another nested list, a piece of HTML formatted text, or be empty.\n\n<!--CodeSample programmingLanguage=JSON platform=-->\n\n\n```json\n{\n...\n  \"value\": \"<ol>   <li>A list item</li>    <li>Another list item   <ul>   <li>Nested list item</li>   </ul>   </li>   </ol>\"\n...\n}\n```\n\n<!--CodeSample-end-->\n\n### Tables in rich text\n\nTables in rich text elements are defined as standard HTML tables with the table cells and rows contained within the `<tbody>` element. Note that the tables cells and rows cannot be merged.\n\n<!--CodeSample programmingLanguage=JSON platform=-->\n\n\n```json\n{\n...\n  \"value\": \"<table><tbody>   <tr>   <td>Type A</td><td>Type B</td><td>Type C</td>   </tr>   <tr>   <td>12.4</td><td>3.14</td><td>34.1</td>   </tr>   </tbody></table>\"\n...\n}\n```\n\n<!--CodeSample-end-->\n\n## Taxonomy element\n\n\n<SchemaDefinition schemaRef=\"#/components/schemas/TaxonomyInVariant\" showReadOnly={true} showWriteOnly={true} /> \n\n## Text element\n\n\n<SchemaDefinition schemaRef=\"#/components/schemas/TextInVariant\" showReadOnly={true} showWriteOnly={true} /> \n\n## URL slug element\n\n\n<SchemaDefinition schemaRef=\"#/components/schemas/UrlSlugInVariant\" showReadOnly={true} showWriteOnly={true} /> \n",
+    "description": "When you retrieve or update [language variants](https://docs.kontent.ai/link-to/language_variants), you will work with a collection of elements. The elements collection contains the elements as defined in the content type.\n\n**Note**: When retrieving language variants, the Management API will always reference content elements with their internal IDs. When creating or updating language variants via the API, you can reference content elements by their internal IDs or codenames.\n\n## Asset element\n\n\n<SchemaDefinition schemaRef=\"#/components/schemas/AssetInVariant\" showReadOnly={true} showWriteOnly={true} /> \n\n## Custom element\n\n\n**Note**: The Management API currently does not support upserting custom elements.\n\n<SchemaDefinition schemaRef=\"#/components/schemas/CustomElementInVariant\" showReadOnly={true} showWriteOnly={true} /> \n\n## Date and time element\n\n\n<SchemaDefinition schemaRef=\"#/components/schemas/DateTimeInVariant\" showReadOnly={true} showWriteOnly={true} /> \n\n## Linked items element\n\n\n<SchemaDefinition schemaRef=\"#/components/schemas/LinkedItemsInVariant\" showReadOnly={true} showWriteOnly={true} /> \n\n## Multiple choice element\n\n\n<SchemaDefinition schemaRef=\"#/components/schemas/MultipleChoiceInVariant\" showReadOnly={true} showWriteOnly={true} /> \n\n## Number element\n\n\n<SchemaDefinition schemaRef=\"#/components/schemas/NumberInVariant\" showReadOnly={true} showWriteOnly={true} /> \n\n## Rich text element\n\n\n<SchemaDefinition schemaRef=\"#/components/schemas/RichTextInVariant\" showReadOnly={true} showWriteOnly={true} /> \n\n### HTML5 elements allowed in rich text\n\nThe rich text value can contain specific HTML elements and must form a valid HTML5 fragment.\n\n<table>\n\n<tbody>\n\n<tr>\n\n<td>\n\n**Types**\n\n</td>\n\n<td>\n\n**HTML elements**\n\n</td>\n\n<td>\n\n**Notes**\n\n</td>\n\n</tr>\n\n<tr>\n\n<td>Paragraphs</td>\n\n<td>\n\n`<p>...</p>`\n\n</td>\n\n<td>Must be used at the top level.</td>\n\n</tr>\n\n<tr>\n\n<td>Headings</td>\n\n<td>\n\n`<h1>...</h1>`, `<h2>...</h2>`, ` <h3>...</h3>`, `<h4>...</h4>`\n\n</td>\n\n<td>Must be used at the top level.</td>\n\n</tr>\n\n<tr>\n\n<td>Bold text</td>\n\n<td>\n\n`<strong>...</strong>`\n\n</td>\n\n<td>\n\nMust be nested. The `<b>` tag is not supported.\n\n</td>\n\n</tr>\n\n<tr>\n\n<td>Italic text</td>\n\n<td>\n\n`<em>...</em>`\n\n</td>\n\n<td>\n\nMust be nested. The `<i>` tag is not supported.\n\n</td>\n\n</tr>\n\n<tr>\n\n<td>Superscript</td>\n\n<td>\n\n`<sup>...</sup>`\n\n</td>\n\n<td>Superscript and subscript are mutually exclusive.</td>\n\n</tr>\n\n<tr>\n\n<td>Subscript</td>\n\n<td>\n\n`<sub>...</sub>`\n\n</td>\n\n<td>Superscript and subscript are mutually exclusive.</td>\n\n</tr>\n\n<tr>\n\n<td>Code</td>\n\n<td>\n\n`<code>...</code>`\n\n</td>\n\n<td>Must be nested.</td>\n\n</tr>\n\n<tr>\n\n<td>\n\n[Lists](#section/Rich-text-element/lists-in-rich-text)\n\n</td>\n\n<td>\n\n`<ol><li>...</li></ol>`, `<ul><li>...</li></ul>`\n\n</td>\n\n<td>Must be nested.</td>\n\n</tr>\n\n<tr>\n\n<td>\n\n[Tables](#section/Rich-text-element/tables-in-rich-text)\n\n</td>\n\n<td>\n\n`<table><tbody><tr><td>...</td></tr></tbody></table>`\n\n</td>\n\n<td>\n\nMust be used at the top level. The `<thead>` and `<tfoot>` tags are not supported.\n\n</td>\n\n</tr>\n\n<tr>\n\n<td>\n\n[Links](#section/Rich-text-element/links-in-rich-text)\n\n</td>\n\n<td>\n\n`<a ...>...</a>`\n\n</td>\n\n<td>\n\nCan be used at the top level and nested. For the list of supported `<a>` attributes, see [Links in rich text](#section/Rich-text-element/links-in-rich-text).\n\n</td>\n\n</tr>\n\n<tr>\n\n<td>\n\n[Assets](#section/Rich-text-element/assets-in-rich-text)\n\n</td>\n\n<td>\n\n`<figure ...><img ...></figure>`\n\n</td>\n\n<td>Must be used at the top level.</td>\n\n</tr>\n\n<tr>\n\n<td>\n\n[Content items](#section/Rich-text-element/content-items-in-rich-text) and [components](#section/Rich-text-element/components-in-rich-text)\n\n</td>\n\n<td>\n\n`<object ...></object>`\n\n</td>\n\n<td>Must be used at the top level.</td>\n\n</tr>\n\n<tr>\n\n<td>Line breaks</td>\n\n<td>\n\n`<br/>`\n\n</td>\n\n<td>\n\n</td>\n\n</tr>\n\n</tbody>\n\n</table>\n\n### Assets in rich text\n\nAssets in rich text are defined by the block element `<figure>` which requires one of the following attributes: `data-asset-id` or `data-asset-external-id`. The `data-asset-external-id` attribute can also reference an object that was not yet imported to Kentico Kontent. See more details about [external IDs for imported content](#section/External-IDs-for-imported-content)..\n\nWhen inserting values in rich text, the `<img>` element is optional. Otherwise, the `<img>` element requires the attributes `src` and `data-asset-id`.\n\n<!--CodeSample programmingLanguage=HTML platform=-->\n\n\n```html\n<!-- Asset referenced by internal ID -->\n<figure data-asset-id=\"512047f1-2f7f-45fd-9e90-e71b8feae017\">\n <img src=\"#\" data-asset-id=\"512047f1-2f7f-45fd-9e90-e71b8feae017\">\n</figure>\n\n<!-- Asset referenced by external ID -->\n<figure data-asset-external-id=\"coffee_beans\"></figure>\n```\n\n<!--CodeSample-end-->\n\n### Components in rich text\n\nComponents in rich text are defined by the `<object>` block element. The `<object>` element requires the `type`, `data-type`, and `data-id` attributes.\n\n<!--CodeSample programmingLanguage=HTML platform=-->\n\n\n```html\n<!-- Component referenced by internal ID -->\n<object type=\"application/kenticocloud\" data-type=\"component\" data-id=\"382abced-bfb6-4ee9-a2d4-2c3b8cd8ba5d\"></object>\n```\n\n<!--CodeSample-end-->\n\nFor each component in the text, the rich text object's `components` property must hold a matching component object. When specifying components in the rich text's `value` property, you need to provide a unique ID (GUID) for the `data-id` attribute of each component.\n\n#### Component object\n\n<SchemaDefinition schemaRef=\"#/components/schemas/RichTextComponent\" showReadOnly={true} showWriteOnly={true} /> \n\n#### Nesting of components\n\nIf the inserted component contains a rich text element, the rich text element may contain more components. These nested components may contain another rich text element with more components, and so on. The components can be nested up to 6 levels deep.\n\n<!--CodeSample programmingLanguage=JSON platform=-->\n\n\n```json\n{\n  \"element\": {\n    \"id\": \"49150275-064b-5314-be6e-b93e1d7661e1\"\n  },\n  \"value\": \"<p>Content in rich text on level 1</p>\\n<object type=\\\"application/kenticocloud\\\" data-type=\\\"component\\\" data-id=\\\"382abced-bfb6-4ee9-a2d4-2c3b8cd8ba5d\\\"></object>\",\n  \"components\": [\n    {\n      \"id\": \"382abced-bfb6-4ee9-a2d4-2c3b8cd8ba5d\",\n      \"type\": {\n        \"id\": \"f4cb13df-d61d-572e-8f3b-3afe7e3a7ea1\"\n      },\n      \"elements\": [\n        {\n          \"element\": {\n            \"id\": \"0b9173d6-1c94-5fb0-a010-86eef9013fd4\"\n          },\n          \"value\": \"<p>Component on level 2</p>\\n<object type=\\\"application/kenticocloud\\\" data-type=\\\"component\\\" data-id=\\\"7c1ca8b2-2fa8-41d8-be02-bf157d3fa225\\\"></object>\",\n          \"components\": [\n            {\n              \"id\": \"7c1ca8b2-2fa8-41d8-be02-bf157d3fa225\",\n              \"type\": {\n                \"id\": \"37684e4c-9303-589b-a937-c7c165171b38\"\n              },\n              \"elements\": [\n                {\n                  \"element\": {\n                    \"id\": \"ff50c0e0-226e-5474-b71b-2af194edd7c4\"\n                  },\n                  \"value\": \"<p>Nested component on level 3</p>\",\n                  \"components\": []\n                }\n              ]\n            }\n          ]\n        },\n        {\n          \"element\": {\n            \"id\": \"edd22f22-ccd6-56e6-9fe2-676a7e250d8c\"\n          },\n          \"value\": [\n            {\n              \"id\": \"f206b928-7609-5192-bd31-6eb6aae48096\"\n            }\n          ]\n        }\n      ]\n    }\n  ]\n}\n```\n\n<!--CodeSample-end-->\n\n### Content items in rich text\n\nContent items in rich text are defined by the `<object>` block element. The `<object>` element requires the attributes `type`, `data-type`, and either `data-id` or `data-external-id`. The `data-external-id` attribute can also reference an object that has not yet been imported to Kentico Kontent. See more details about [external IDs for imported content](#section/External-IDs-for-imported-content).\n\n<!--CodeSample programmingLanguage=HTML platform=-->\n\n\n```html\n<!-- Content item referenced by internal ID -->\n<object type=\"application/kenticocloud\" data-type=\"item\" data-id=\"f4b3fc05-e988-4dae-9ac1-a94aba566474\"></object>\n\n<!-- Content item referenced by external ID -->\n<object type=\"application/kenticocloud\" data-type=\"item\" data-external-id=\"59713\"></object>\n```\n\n<!--CodeSample-end-->\n\n### Links in rich text\n\nLinks in rich text are defined as the `<a>` element, for example, `<a href=\"#\">Link</a>`. These links can be used for web URLs, email addresses, assets, and content items. For each of the link types, the `<a>` element supports a different set of required and optional attributes.\n\n#### Links to URLs\n\nLinks to URLs require the `href` attribute.\n\n<!--Callout type=Info-->\n\n<p><strong>Inserting URL values</strong></p>\n<p>When inserting URL values, the system might add the <code>http://</code> prefix in case the provided URL is invalid or not safe. For example, URLs using the <code>javascript</code> protocol will be prefixed. URL values starting with <code>/</code>,<code> ?</code>, or <code>#</code> are allowed.</p>\n<p>Examples of how inserted URLs are stored:</p>\n<ul>\n  <li><code>http://example.com</code> → <code>http://example.com</code></li>\n  <li><code>https://example.com</code> → <code>https://example.com</code></li>\n  <li><code>ftp://example.com</code> → <code>ftp://example.com</code></li>\n  <li><code>example.com</code> → <code>http://example.com</code></li>\n  <li><code>about-us.html</code> → <code>http://about-us.html</code></li>\n  <li><code>/about-us.html</code> → <code>/about-us.html</code></li>\n  <li><code>?query</code> → <code>?query</code></li>\n  <li><code>#anchor</code> → <code>#anchor</code></li>\n  <li><code>javascript:alert()</code> → <code>http://javascript:alert()</code></li>\n  <li><code>javascript://%0aalert()</code> → <code>http://javascript://%0aalert()</code></li>\n  <li><code>data:text/html,&lt;script&gt;alert()&lt;/script&gt;</code> → <code>http://data:text/html,&lt;script&gt;alert()&lt;/script&gt;</code></li>\n</ul>\n\n<!--Callout-end-->\n\nOptionally, the link can specify a title and whether the link should be opened in a new browser window.\n* If the link should provide a title, the `<a>` element must specify the title attribute with a value.\n* If the link should open in a new window, the `<a>` element must specify the data-new-window attribute set to true.\n\n**Note**: Other `<a>` attributes, such as `target` and `rel`, are not supported for URL links.\n\n<!--CodeSample programmingLanguage=HTML platform=-->\n\n\n```html\n<!-- Link to URL -->\n<a href=\"https://example.com\">example link</a>\n\n<!-- Link to URL that opens in a new window -->\n<a href=\"https://example.com\" data-new-window=\"true\">example link</a>\n\n<!-- Link to URL with a title -->\n<a href=\"https://example.com\" title=\"Example\">example link</a>\n```\n\n<!--CodeSample-end-->\n\n#### Links with email addresses\n\nEmail links require the `data-email-address` attribute . Optionally, the link can contain the `data-email-subject` attribute.\n\n<!--CodeSample programmingLanguage=HTML platform=-->\n\n\n```html\n<a data-email-address=\"cloud@kentico.com\" data-email-subject=\"An inquisitive question\">reach out</a>\n```\n\n<!--CodeSample-end-->\n\n#### Links to assets\n\nLinks to assets require one of the following attributes: `data-asset-id` or `data-asset-external-id`. The `data-asset-external-id` attribute can also reference an object that has not yet been imported to Kentico Kontent. See more details about [external IDs for imported content](#section/External-IDs-for-imported-content).\n\n<!--CodeSample programmingLanguage=HTML platform=-->\n\n\n```html\n<!-- Link to an asset referenced by internal ID -->\n<a data-asset-id=\"0b590263-3fe5-4773-afae-5a3f6e511e66\">Hario Mini Mill</a>\n\n<!-- Link to an asset referenced by external ID -->\n<a data-asset-external-id=\"hario_mini\">Hario Mini Mill</a>\n```\n\n<!--CodeSample-end-->\n\n#### Links to content items\n\nLinks to content items within a single Kentico Kontent project require one of the following attributes: `data-item-id` or `data-item-external-id`. The `data-item-external-id` attribute can also reference an object that has not yet been imported to Kentico Kontent. See more details about [external IDs for imported content](#section/External-IDs-for-imported-content).\n\n<!--CodeSample programmingLanguage=HTML platform=-->\n\n\n```html\n<!-- Link to a content item referenced by internal ID -->\n<a data-item-id=\"f4b3fc05-e988-4dae-9ac1-a94aba566474\">On Roasts</a>\n\n<!-- Link to a content item referenced by external ID -->\n<a data-item-external-id=\"on_roasts\">On Roasts</a>\n```\n\n<!--CodeSample-end-->\n\n### Lists in rich text\n\nLists in rich text are defined as standard HTML lists, either ordered (`<ol>`) or unordered (`<ul>`). Each list item can contain another nested list, a piece of HTML formatted text, or be empty.\n\n<!--CodeSample programmingLanguage=HTML platform=-->\n\n\n```html\n<ol>\n <li>A list item</li>\n <li></li>\n <li>Another list item\n   <ul>\n     <li>Nested list item</li>\n   </ul>\n </li>\n</ol>\n```\n\n<!--CodeSample-end-->\n\n### Tables in rich text\n\nTables in rich text elements are defined as standard HTML tables with the table cells and rows contained within the `<tbody>` element. Note that the tables cells and rows cannot be merged.\n\n<!--CodeSample programmingLanguage=HTML platform=-->\n\n\n```html\n<table><tbody>\n <tr>\n   <td>Type A</td><td>Type B</td><td>Type C</td>\n </tr>\n <tr>\n   <td>12.4</td><td>3.14</td><td>34.1</td>\n </tr>\n</tbody></table>\n```\n\n<!--CodeSample-end-->\n\n## Taxonomy element\n\n\n<SchemaDefinition schemaRef=\"#/components/schemas/TaxonomyInVariant\" showReadOnly={true} showWriteOnly={true} /> \n\n## Text element\n\n\n<SchemaDefinition schemaRef=\"#/components/schemas/TextInVariant\" showReadOnly={true} showWriteOnly={true} /> \n\n## URL slug element\n\n\n<SchemaDefinition schemaRef=\"#/components/schemas/UrlSlugInVariant\" showReadOnly={true} showWriteOnly={true} /> \n",
     "name": "Elements in language variants"
   }, {
     "description": "Language variants represent a localized variant of a content item. For example, when your project contains 2 active languages, each content item in that project can have 2 language variants.\n\n<!--Callout type=Note-->\n\n<p><strong>Deactivated languages</strong></p>\n<p>If a <a data-item-id=\"250b4fae-6e2b-461e-98c1-4ef6c4061b03\" href=\"https://docs.kontent.ai/link-to/deactivating_languages\">language is deactivated</a> in the project settings, the respective language variants cannot be retrieved via the Management API. In such cases, the API will return a 404 not found error.</p>\n\n<!--Callout-end-->\n\nEvery language variant is generally tied to a specific [content item](https://docs.kontent.ai/link-to/content_items_087d28e) and project [language](https://docs.kontent.ai/link-to/languages). This means you need to specify a language identifier when you request the variant, even if your project contains only one language.\n\nTo manage language variants via the Management API, send requests to URLs based on the following patterns:\n* Item ID + Language ID: `<base_URL>/items/<content_item_id>/variants/<language_id>`\n* Item ID + Language codename: `<base_URL>/items/<content_item_id>/variants/codename/<language_codename>`\n* Item codename + Language ID: `<base_URL>/items/codename/<content_item_codename>/variants/<language_id>`\n* Item codename + Language codename: `<base_URL>/items/codename/<content_item_codename>/variants/codename/<language_codename>`\n* Item external ID + Language ID: `<base_URL>/items/external-id/<content_item_external_id>/variants/<language_id>`\n* Item external ID + Language codename: `<base_URL>/items/external-id/<content_item_external_id>/variants/codename/<language_codename>`\n\nThese endpoints accept GET, PUT, and DELETE requests, allowing you to retrieve, upsert, and delete language variants. You can mix and match the identifiers of content items and languages when requesting language variants.\n\n**Tip**: If you need to [return all the language variants for a specific content type](https://docs.kontent.ai/link-to/list_language_variants_for_a_specific_content_type), you can use a single GET request. The API returns a paginated response limited to up to 50 language variant objects per page.\n\n## Language variant object\n\n\n<SchemaDefinition schemaRef=\"#/components/schemas/LanguageVariant\" showReadOnly={true} showWriteOnly={true} /> \n\n**Note**: When copying or migrating language variants, you can take the language variant object returned when [retrieving a language variant](https://docs.kontent.ai/link-to/retrieve_a_language_variant) and use it without modification in the body of a [request to upsert a language variant](https://docs.kontent.ai/link-to/upsert_a_language_variant).\n",
@@ -4461,7 +4841,7 @@
         "type": "object"
       },
       "ContentItem": {
-        "required": ["name", "type"],
+        "required": ["id", "name", "codename", "type", "last_modified"],
         "properties": {
           "id": {
             "description": "The content item's internal ID.\n",
@@ -4533,14 +4913,6 @@
       },
       "Error": {
         "description": "Error response\n",
-        "example": {
-          "request_id": "|797b0d5e2cecaf41b17a5aa4ca1b9276.d1956d1_",
-          "error_code": 5,
-          "message": "The provided request body is invalid. See the 'validation_errors' attribute for more information and specify a valid JSON object.",
-          "validation_errors": [{
-            "message": "No patch operations were provided, provide at least one operation."
-          }]
-        },
         "required": ["request_id", "error_code", "message"],
         "properties": {
           "request_id": {
@@ -4575,13 +4947,12 @@
         "properties": {
           "continuation_token": {
             "description": "Identifier of the next page of results. Is `null` when on the last page of results.\n",
-            "example": "+RID:~...",
+            "example": "MTAw",
             "nullable": true,
             "type": "string"
           },
           "next_page": {
             "description": "A URL to the next page of results. Is `null` when on the last page of results.\n",
-            "example": "https://manage.kontent.ai/v2/projects/<project_id>/<resource>?continuationToken=%2bRID%3a~...",
             "nullable": true,
             "type": "string"
           }
@@ -4915,48 +5286,6 @@
         "properties": {
           "elements": {
             "description": "List of elements as defined in the item's [content type](https://docs.kontent.ai/link-to/content_types_09b103e).\n",
-            "example": [{
-              "element": {
-                "id": "c7c3b834-2222-5677-89c4-b46f04489109"
-              },
-              "value": "Text element value"
-            }, {
-              "components": [{
-                "id": "518d8f59-940e-40b1-a90f-bef4ee6e7325",
-                "type": {
-                  "id": "a21859b5-9b76-4065-8d68-778e9fcc514e"
-                },
-                "elements": [{
-                  "components": [],
-                  "element": {
-                    "id": "0a331b5f-bbda-42b3-aaf7-090eb424da05"
-                  },
-                  "value": "<p>This is a <strong>component</strong> referenced in the rich text's value.</p>"
-                }, {
-                  "element": {
-                    "id": "df9d6c65-666f-475e-9113-1e2480afdc58"
-                  },
-                  "value": [{
-                    "id": "f96b88cd-f5a2-49f1-bcdf-35a503aec569"
-                  }]
-                }]
-              }],
-              "element": {
-                "id": "0ddd5a94-0360-5126-92e6-264dfbb61849"
-              },
-              "value": "<p>Rich text element value with a <a data-item-id=\"312ecd2f-d37f-4055-82c2-ac912d0d4b8d\">link to a content item</a> and a component.</p>\n<object type=\"application/kenticocloud\" data-type=\"component\" data-id=\"518d8f59-940e-40b1-a90f-bef4ee6e7325\"></object>"
-            }, {
-              "element": {
-                "id": "aa031bec-0012-4b60-8926-7dcbfc5a2efe"
-              },
-              "value": []
-            }, {
-              "mode": "manual",
-              "element": {
-                "id": "53a5eecb-f295-59b4-a07d-19655b6ad860"
-              },
-              "value": "custom-url-slug-value"
-            }],
             "items": {
               "oneOf": [{
                 "$ref": "#/components/schemas/AssetInVariant"
@@ -4985,34 +5314,25 @@
           },
           "workflow_step": {
             "description": "[Reference](https://docs.kontent.ai/link-to/references) to the variant's current [workflow step](https://docs.kontent.ai/link-to/workflow_and_publishing).\n",
-            "example": {
-              "id": "dc87d7cf-424b-4b89-9519-c9f79a3458b7"
-            },
             "allOf": [{
               "$ref": "#/components/schemas/Reference"
             }]
           },
           "item": {
             "description": "[Reference](https://docs.kontent.ai/link-to/references) to the content item.\n",
-            "example": {
-              "id": "82ef61f4-ccee-42ac-95e2-1a44beda9625"
-            },
             "allOf": [{
               "$ref": "#/components/schemas/Reference"
             }]
           },
           "language": {
             "description": "[Reference](https://docs.kontent.ai/link-to/references) to the language of the variant. Note that the default language will always have the ID of `00000000-0000-0000-0000-000000000000`.\n",
-            "example": {
-              "id": "00000000-0000-0000-0000-000000000000"
-            },
             "allOf": [{
               "$ref": "#/components/schemas/Reference"
             }]
           },
           "last_modified": {
             "description": "[ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) formatted date and time of the last change of content.\n",
-            "example": "2020-02-27T19:08:25.404Z",
+            "example": "2018-02-27T19:08:25.404Z",
             "readOnly": true,
             "format": "date-time",
             "type": "string"
@@ -5031,13 +5351,11 @@
           },
           "name": {
             "description": "The language's display name.\n",
-            "example": "Default project language",
             "maxLength": 25,
             "type": "string"
           },
           "codename": {
             "description": "The language's codename. Initially generated from the language's `name` unless the language is [added via API](https://docs.kontent.ai/link-to/add_a_language).\n",
-            "example": "default",
             "maxLength": 25,
             "type": "string"
           },
@@ -5052,15 +5370,12 @@
           },
           "is_default": {
             "description": "A flag determining whether the language is default.\n",
-            "example": true,
+            "example": false,
             "readOnly": true,
             "type": "boolean"
           },
           "fallback_language": {
             "description": "Language to use when the current language contains no content. With multiple languages you can create [fallback chains](https://docs.kontent.ai/link-to/localization_in_kentico_kontent).\n",
-            "example": {
-              "id": "00000000-0000-0000-0000-000000000000"
-            },
             "allOf": [{
               "$ref": "#/components/schemas/Reference"
             }]
@@ -5098,11 +5413,6 @@
         "type": "object"
       },
       "WorkflowStep": {
-        "example": {
-          "id": "16221cc2-bd22-4414-a513-f3e555c0fc93",
-          "name": "Copywriting",
-          "transitions_to": ["a3d4309f-f1e0-432e-bd95-7137b5abd8ba", "90bb6851-7a47-4c77-ae98-06a15431857f", "dc87d7cf-424b-4b89-9519-c9f79a3458b7"]
-        },
         "required": ["id", "name", "transitions_to"],
         "properties": {
           "id": {
@@ -5149,7 +5459,7 @@
         "properties": {
           "name": {
             "description": "The element's display name.\n",
-            "example": "Photo",
+            "example": "Avatar",
             "minLength": 1,
             "maxLength": 50,
             "type": "string"
@@ -5162,13 +5472,13 @@
           },
           "id": {
             "description": "The element's internal ID.\n",
-            "example": "30ca5bc8-4f2a-47b9-a9e7-0d13a2935e10",
+            "example": "9577bd7a-9232-4dd3-9e15-848303058b7a",
             "readOnly": true,
             "type": "string"
           },
           "codename": {
             "description": "The element's codename. Unless specified, [initially generated](#tag/References/rules-for-codenames) from the element's `name`.\n",
-            "example": "photo",
+            "example": "avatar",
             "type": "string"
           },
           "external_id": {
@@ -5178,49 +5488,43 @@
           },
           "guidelines": {
             "description": "The element's guidelines, providing instructions on what to fill in.\n",
-            "example": "Optional photo of the author.",
+            "example": "Be sure it is eye-catching.",
             "nullable": true,
             "type": "string"
           },
           "asset_count_limit": {
             "description": "Specifies the limitation for the number of assets allowed within the element.\n",
-            "example": {
-              "value": 1,
-              "condition": "exactly"
-            },
             "allOf": [{
               "$ref": "#/components/schemas/CountLimitation"
             }]
           },
           "maximum_file_size": {
             "description": "Specifies the maximum file size in bytes.\n",
-            "example": 262144,
+            "example": 524288,
             "format": "int32",
             "type": "integer"
           },
           "allowed_file_types": {
             "description": "Specifies the allowed file types.\n* `adjustable` for [images that that support image transformation](https://docs.kontent.ai/link-to/image_transformation_reference)\n* `any` for any file type\n",
-            "example": "adjustable",
+            "example": "any",
             "enum": ["adjustable", "any"],
             "type": "string"
           },
           "image_width_limit": {
             "description": "Specifies the width limitation for the asset.\n",
-            "example": null,
             "allOf": [{
               "$ref": "#/components/schemas/CountLimitation"
             }]
           },
           "image_height_limit": {
             "description": "Specifies the height limitation for the asset.\n",
-            "example": null,
             "allOf": [{
               "$ref": "#/components/schemas/CountLimitation"
             }]
           },
           "is_required": {
             "description": "Determines whether the element must be filled in.\n",
-            "example": true,
+            "example": false,
             "type": "boolean"
           },
           "content_group": {
@@ -5413,12 +5717,8 @@
       "LinkedItemsInType": {
         "required": ["name", "type"],
         "properties": {
-          "item_count_limit": {
+          "items_count_limit": {
             "description": "Specifies the limitation for the number of items allowed within the element.\n",
-            "example": {
-              "value": 1,
-              "condition": "exactly"
-            },
             "allOf": [{
               "$ref": "#/components/schemas/CountLimitation"
             }]
@@ -5651,50 +5951,18 @@
         },
         "type": "object"
       },
-      "AllowedBlocksValue": {
-        "example": "text",
-        "enum": ["images", "text", "tables", "components-and-items"],
-        "type": "string"
-      },
-      "AllowedBlocks": {
-        "description": "Specifies which blocks are allowed inside your rich text element. You can allow text, tables, images, and components and items. To allow all blocks, leave the array empty. If you include all values, the response will return a validation error.\n",
-        "example": ["text"],
-        "items": {
-          "$ref": "#/components/schemas/AllowedBlocksValue"
-        },
-        "type": "array"
-      },
       "RichTextInType": {
-        "example": {
-          "maximum_text_length": null,
-          "maximum_image_size": null,
-          "allowed_content_types": [{
-            "id": "41bf32d8-cbba-4d54-8048-002a21ba5a21"
-          }, {
-            "id": "ebc7f3ef-061d-4369-b92f-1512305f0dcd"
-          }],
-          "image_width_limit": null,
-          "image_height_limit": null,
-          "allowed_image_types": "any",
-          "allowed_blocks": ["components-and-items"],
-          "name": "Properties",
-          "guidelines": "Use only items and components in this element.",
-          "is_required": false,
-          "type": "rich_text",
-          "external_id": "88385bcc-6e62-4e2c-93d2-29b2e5506ea4",
-          "id": "e7226530-f5d8-5b74-a9e7-261d0be7547d",
-          "codename": "properties",
-          "content_group": {
-            "id": "78876c93-4a61-4fa3-a3b7-d2619b2625fa"
-          }
-        },
         "required": ["name", "type"],
         "properties": {
           "maximum_text_length": {
-            "$ref": "#/components/schemas/LengthLimitation"
+            "description": "Specifies a soft limitation for the text length.\n",
+            "allOf": [{
+              "$ref": "#/components/schemas/LengthLimitation"
+            }]
           },
           "maximum_image_size": {
             "description": "Specifies the maximum image size in bytes.\n",
+            "example": 1024,
             "format": "int32",
             "type": "integer"
           },
@@ -5705,9 +5973,6 @@
             },
             "uniqueItems": true,
             "type": "array"
-          },
-          "allowed_blocks": {
-            "$ref": "#/components/schemas/AllowedBlocks"
           },
           "image_width_limit": {
             "description": "Specifies the width limitation for images.\n",
@@ -5723,11 +5988,13 @@
           },
           "allowed_image_types": {
             "description": "Specifies which image types are allowed.\n* `adjustable` for [images that that support image transformation](https://docs.kontent.ai/link-to/image_transformation_reference)\n* `any` for any image type\n",
+            "example": "any",
             "enum": ["adjustable", "any"],
             "type": "string"
           },
           "name": {
             "description": "The element's display name.\n",
+            "example": "Content",
             "minLength": 1,
             "maxLength": 50,
             "type": "string"
@@ -5744,24 +6011,31 @@
           },
           "type": {
             "description": "The element's type.\n",
+            "example": "rich_text",
             "enum": ["rich_text"],
             "type": "string"
           },
           "id": {
             "description": "The element's internal ID.\n",
+            "example": "b18cbb42-9649-4870-b2d6-805238a34ae9",
             "readOnly": true,
             "type": "string"
           },
           "codename": {
             "description": "The element's codename. Unless specified, [initially generated](#tag/References/rules-for-codenames) from the element's `name`.\n",
+            "example": "content",
             "type": "string"
           },
           "external_id": {
             "description": "The element's [external ID](https://docs.kontent.ai/link-to/references).\n",
+            "example": "my-content",
             "type": "string"
           },
           "content_group": {
             "description": "[Reference](https://docs.kontent.ai/link-to/references) to the content group the element is used in.\n\n**Note**: The `content_group` property is only present if one or more content groups are defined in the content type.\n",
+            "example": {
+              "id": "67faca73-bfd3-4600-b6c4-9cc91cc8d85f"
+            },
             "allOf": [{
               "$ref": "#/components/schemas/Reference"
             }]
@@ -5798,7 +6072,7 @@
             "type": "string"
           },
           "external_id": {
-            "description": "The element's [external ID](https://docs.kontent.ai/link-to/references).\n",
+            "description": "External ID of the content element\n",
             "example": "my-seo-metadata",
             "type": "string"
           }
@@ -6066,30 +6340,6 @@
           },
           "elements": {
             "description": "Elements within the content type.\n\n**Note**: The order of the Element objects might not match the order in the UI.\n",
-            "example": [{
-              "maximum_text_length": null,
-              "name": "Name",
-              "guidelines": "Provide author's full name.",
-              "is_required": true,
-              "type": "text",
-              "id": "4af91e26-fa91-4ecf-9936-99d8622d0898",
-              "codename": "name"
-            }, {
-              "asset_count_limit": {
-                "value": 1,
-                "condition": "exactly"
-              },
-              "maximum_file_size": 262144,
-              "allowed_file_types": "adjustable",
-              "image_width_limit": null,
-              "image_height_limit": null,
-              "name": "Photo",
-              "guidelines": "Optionally, upload a photo of the author.",
-              "is_required": false,
-              "type": "asset",
-              "id": "30ca5bc8-4f2a-47b9-a9e7-0d13a2935e10",
-              "codename": "photo"
-            }],
             "items": {
               "oneOf": [{
                 "$ref": "#/components/schemas/AssetInType"
@@ -6122,12 +6372,11 @@
           },
           "external_id": {
             "description": "The content type's [external ID](https://docs.kontent.ai/link-to/references). **Note**: Only present if defined when [creating the content type](https://docs.kontent.ai/link-to/add_a_content_type) via API.\n",
-            "example": "my-author",
+            "example": "my-precious-content-type",
             "type": "string"
           },
           "content_groups": {
             "description": "The collection will be empty if the content type contains no content groups.\n",
-            "example": [],
             "items": {
               "$ref": "#/components/schemas/ContentGroup"
             },
@@ -6146,13 +6395,13 @@
             "type": "string"
           },
           "path": {
-            "description": "A string identifying where the new object or property should be added. The exact path depends on what you are trying to add and where. If you are trying to add a property to a given element, a `{path_reference}` is needed for that element.\n1.  To add a new element, set `path` to: `/elements`.\n2.  To add a new content group, set `path` to: `/content_groups`.\n3.  To add an allowed content type to a rich text or linked items element, set `path` to: `/elements/{path_reference}/allowed_content_types`.\n4.  To add an allowed element to a custom element, set `path` to: `/elements/{path_reference}/allowed_elements`.\n5.  To add a new multiple choice option, set `path` to: `/elements/{path_reference}/options`.\n6.  To add a block so it can be used in a rich text element, set `path` to: `/elements/{path_reference}/allowed_blocks`.\n",
+            "description": "A string identifying where the new object or property should be added. The exact path depends on what you are trying to add and where. If you are trying to add a property to a given element, a `{path_reference}` is needed for that element.\n1.  To add a new element, set `path` to: `/elements`.\n2.  To add a new content group, set `path` to: `/content_groups`.\n3.  To add an allowed content type to a rich text or linked items element, set `path` to: `/elements/{path_reference}/allowed_content_types`.\n4.  To add an allowed element to a custom element, set `path` to: `/elements/{path_reference}/allowed_elements`.\n5.  To add a new multiple choice option, set `path` to: `/elements/{path_reference}/options`.\n",
             "example": "/elements/codename:rich_text/allowed_content_types",
             "writeOnly": true,
             "type": "string"
           },
           "value": {
-            "description": "The object to add. The value depends on the selected `path`:\n1.  To add a new element, use a content element object.\n2.  To add a new content group, use a content group object.\n3.  To add an allowed content type to a rich text or linked items element, use a [reference](https://docs.kontent.ai/link-to/references) object that points to a specific content type.\n4.  To add an allowed element to a custom element, use a [reference](https://docs.kontent.ai/link-to/references) object that points to the specific element.\n5.  To add an option to a multiple choice element, use an option object.\n6.  To add a block so it can be used in a rich text element, use the allowed blocks value string.\n\n(Note that `value` can also be used together with the deprecated `property_name`).\n",
+            "description": "The object to add. The value depends on the selected `path`:\n1.  To add a new element, use a content element object.\n2.  To add a new content group, use a content group object.\n3.  To add an allowed content type to a rich text or linked items element, use a [reference](https://docs.kontent.ai/link-to/references) object that points to a specific content type.\n4.  To add an allowed element to a custom element, use a [reference](https://docs.kontent.ai/link-to/references) object that points to the specific element.\n5.  To add an option to a multiple choice element, use an option object.\n\n(Note that `value` can also be used together with the deprecated `property_name`).\n",
             "oneOf": [{
               "$ref": "#/components/schemas/AssetInType"
             }, {
@@ -6174,13 +6423,13 @@
             }, {
               "$ref": "#/components/schemas/Reference"
             }, {
+              "$ref": "#/components/schemas/RichTextInType"
+            }, {
               "$ref": "#/components/schemas/TaxonomyInType"
             }, {
               "$ref": "#/components/schemas/TextInType"
             }, {
               "$ref": "#/components/schemas/UrlSlugInType"
-            }, {
-              "$ref": "#/components/schemas/AllowedBlocksValue"
             }]
           },
           "before": {
@@ -6220,7 +6469,7 @@
             "type": "string"
           },
           "path": {
-            "description": "A string identifying the specific object or property that should be removed. The exact path depends on what you are trying to remove. In each case, a `{path_reference}` is needed for the given object.\n\nTo remove given objects:\n* For an element, set `path` to: `/elements/{path_reference}`.\n* For an allowed content type from a rich text or linked items element, set `path` to: `/elements/{path_reference}/allowed_content_types/{path_reference}`, where the first {path_reference} is to the rich text or linked items element and the second is to the allowed content type to be removed.\n* For an allowed element from a custom element, set `path` to: `/elements/{path_reference}/allowed_element/{path_reference}`, where the first {path_reference} is to the custom element and the second is to the allowed element to be removed.\n* For a multiple choice option, set `path` to: `/elements/{path_reference}/options/{path_reference}`, where the first {path_reference} is to the multiple choice element and the second is to the option to be removed.\n* For a content group, set `path` to: `/content_groups/{path_reference}`. **Note**: This will also remove all elements contained within the content group.\n* For a rich-text element limitation, set `path` to: `/elements/{path_reference}/allowed_blocks/{block}`, where {block} is the given type of limitation you want to remove.\n",
+            "description": "A string identifying the specific object or property that should be removed. The exact path depends on what you are trying to remove. In each case, a `{path_reference}` is needed for the given object.\n\nTo remove given objects:\n* For an element, set `path` to: `/elements/{path_reference}`.\n* For an allowed content type from a rich text or linked items element, set `path` to: `/elements/{path_reference}/allowed_content_types/{path_reference}`, where the first {path_reference} is to the rich text or linked items element and the second is to the allowed content type to be removed.\n* For an allowed element from a custom element, set `path` to: `/elements/{path_reference}/allowed_element/{path_reference}`, where the first {path_reference} is to the custom element and the second is to the allowed element to be removed.\n* For a multiple choice option, set `path` to: `/elements/{path_reference}/options/{path_reference}`, where the first {path_reference} is to the multiple choice element and the second is to the option to be removed.\n* For a content group, set `path` to: `/content_groups/{path_reference}`. **Note**: This will also remove all elements contained within the content group.\n",
             "example": "/elements/codename:multiple_choice_element/options/external_id:option_1",
             "writeOnly": true,
             "type": "string"
@@ -6252,7 +6501,7 @@
             "type": "string"
           },
           "path": {
-            "description": "A string identifying what property should be replaced. The exact path depends on what you are trying to replace. If you are trying to add a property to a given object, a `{path_reference}` is needed for that object.\n* To change the content type's name, set `path` to: `/name`.\n* To change the content type's codename, set `path` to: `/codename`.\n* To change the name of a content group, set `path` to: `/content_groups/{path_reference}/name`.\n* To change a given property of an element, set `path` to: `/elements/{path_reference}/{property_name}`, where the available values for `property_name` will depend on the specific element you are referencing.\n* To change a property of a multiple choice option, set `path` to: `/elements/{path_reference}/options/{path_reference}`, where the first {path_reference} is to the multiple choice element and the second is to the option you want to modify.\n\nFor all elements (including multiple choice options), you can specify the properties to be modified based on the [element type](#tag/Elements-in-content-types). You cannot modify the `external_id`, `id`, or `type` of the elements. It is also not possible to replace individual values for an object (such as the value of a limitation object) – you need to replace the entire object at once. You also cannot replace the allowed blocks for rich text elements; you need to add or remove the blocks one by one.\n",
+            "description": "A string identifying what property should be replaced. The exact path depends on what you are trying to replace. If you are trying to add a property to a given object, a `{path_reference}` is needed for that object.\n* To change the content type's name, set `path` to: `/name`.\n* To change the content type's codename, set `path` to: `/codename`.\n* To change the name of a content group, set `path` to: `/content_groups/{path_reference}/name`.\n* To change a given property of an element, set `path` to: `/elements/{path_reference}/{property_name}`, where the available values for `property_name` will depend on the specific element you are referencing.\n* To change a property of a multiple choice option, set `path` to: `/elements/{path_reference}/options/{path_reference}`, where the first {path_reference} is to the multiple choice element and the second is to the option you want to modify.\n\nFor all elements (including multiple choice options), you can specify the properties to be modified based on the [element type](#tag/Elements-in-content-types). You cannot modify the `external_id`, `id`, or `type` of the elements. It is also not possible to replace individual values for an object (such as the value of a limitation object) – you need to replace the entire object at once.\n",
             "example": "/elements/codename:cool_text/name",
             "writeOnly": true,
             "type": "string"
@@ -6296,7 +6545,6 @@
           "property_name": {
             "description": "<!--Callout type=Warning-->\n\n<p>This property is deprecated in favor of the <code>path</code>&nbsp;property.</p>\n\n<!--Callout-end-->\n\nThe property for which you want to replace the value.\n\nFor content types, you can specify the `name` and `codename` properties.\n\nFor elements, you can specify the following properties:\n* Asset – `allowed_file_types` (string), `asset_count_limit` (Count limitation object), `codename` (string), `guidelines` (string), `image_height_limit` (Count limitation object), `image_width_limit` (Count limitation object), `is_required` (boolean), `maximum_file_size` (integer), `name` (string)\n* Content type snippet – `snippet` ([reference](https://docs.kontent.ai/link-to/references) to a snippet)\n* Custom element – `codename` (string), `guidelines` (string), `is_required` (boolean), `name` (string), `json_parameters` (string), `source_url` (string)\n* Date & Time – `codename` (string), `guidelines` (string), `is_required` (boolean), `name` (string)\n* Guidelines – `guidelines` (string)\n* Linked items – `codename` (string), `guidelines` (string), `is_required` (boolean), `item_count_limit` (Count limitation object), `name` (string)\n* Multiple choice – `codename` (string), `guidelines` (string), `is_required` (boolean), `name` (string), `mode` (string)\n* Multiple choice option – `codename` (string), `name` (string)\n* Number – `codename` (string), `guidelines` (string), `is_required` (boolean), `name` (string)\n* Taxonomy – `codename` (string), `guidelines` (string), `is_required` (boolean), `taxonomy_group` ([reference](https://docs.kontent.ai/link-to/references) to a taxonomy group)\n* Text – `codename` (string), `guidelines` (string), `is_required` (boolean), `maximum_text_length` (integer), `name` (string)\n* Rich text – `allowed_image_types` (string), `codename` (string), `guidelines` (string), `is_required` (boolean), `image_height_limit` (Count limitation object), `image_width_limit` (Count limitation object), `maximum_image_size` (integer), `maximum_text_length` (integer), `name` (string)\n* URL slug – `codename` (string), `guidelines` (string), `is_required` (boolean), `name` (string), `depends_on` (Depends on object)\n",
             "example": "guidelines",
-            "deprecated": true,
             "enum": ["name", "guidelines", "snippet", "json_parameters", "source_url", "mode", "taxonomy_group", "depends_on"],
             "type": "string"
           }
@@ -6309,7 +6557,7 @@
         "properties": {
           "id": {
             "description": "Unique internal identifier of the content type snippet.\n",
-            "example": "baf884be-531f-441f-ae88-64205efdd0f6",
+            "example": "975bf280-fd91-488c-994c-2f04416e5ee3",
             "readOnly": true,
             "format": "uuid",
             "type": "string"
@@ -6337,7 +6585,6 @@
           },
           "elements": {
             "description": "Elements within the snippet.\n",
-            "example": "[\n     {\n       \"name\": \"Meta title\",\n       \"guidelines\": \"Length: 30–60 characters\",\n       \"type\": \"text\",\n       \"id\": \"09398b24-61ed-512e-5b5c-affd54a098e5\",\n       \"codename\": \"my_metadata__meta_title\"\n     },\n    {\n      \"name\": \"Meta description\",\n      \"guidelines\": \"Length: 70–150 characters\",\n      \"type\": \"text\",\n      \"id\": \"2e555cc1-1eae-520c-189e-28548904f529\",\n      \"codename\": \"my_metadata__meta_description\"\n    }\n  ]",
             "oneOf": [{
               "$ref": "#/components/schemas/AssetInType"
             }, {
@@ -6362,7 +6609,7 @@
           },
           "external_id": {
             "description": "The content type snippet's external ID. Only present if defined when [adding the snippet](https://docs.kontent.ai/link-to/add_a_content_type_snippet).\n",
-            "example": "my-valuable-metadata",
+            "example": "my-valuable-snippet-id",
             "type": "string"
           }
         },
@@ -6379,7 +6626,7 @@
           },
           "path": {
             "description": "A string identifying where the new object or property should be added. The exact path depends on what you are trying to add and where. If you are trying to add a property to a given element, a `{path_reference}` is needed for that element.\n1.  To add a new element, set `path` to: `/elements`.\n2.  To add an allowed content type to a rich text or linked items element, set `path` to: `/elements/{path_reference}/allowed_content_types`.\n3.  To add an allowed element to a custom element, set `path` to: `/elements/{path_reference}/allowed_elements`.\n4.  To add a new multiple choice option, set `path` to: `/elements/{path_reference}/options`.\n",
-            "example": "/elements/codename:snippet_codename__rich_text/allowed_content_types",
+            "example": "/elements/codename:rich_text/allowed_content_types",
             "writeOnly": true,
             "type": "string"
           },
@@ -6410,13 +6657,13 @@
             }]
           },
           "before": {
-            "description": "An *optional* [reference to the object](https://docs.kontent.ai/link-to/references) before which you want to add the new object.\n\nFor example, to add a content element or option before an existing element or option named \"Text\", you can set `before` to `{\"codename\": \"snippet_codename__text\"}`.\n\n**Note**: The `before` and `after` parameters are mutually exclusive.\n",
+            "description": "An *optional* [reference to the object](https://docs.kontent.ai/link-to/references) before which you want to add the new object.\n\nFor example, to add a content element or option before an existing element or option named \"Text\", you can set `before` to `{\"codename\": \"text\"}`.\n\n**Note**: The `before` and `after` parameters are mutually exclusive.\n",
             "allOf": [{
               "$ref": "#/components/schemas/Reference"
             }]
           },
           "after": {
-            "description": "An *optional* [reference to the object](https://docs.kontent.ai/link-to/references) after which you want to add the new object.\n\nFor example, to add a content element or option after an existing element or option named \"Text\", you can set `after` to `{\"codename\": \"snippet_codename__text\"}`.\n\n**Note**: The `before` and `after` parameters are mutually exclusive.\n",
+            "description": "An *optional* [reference to the object](https://docs.kontent.ai/link-to/references) after which you want to add the new object.\n\nFor example, to add a content element or option after an existing element or option named \"Text\", you can set `after` to `{\"codename\": \"text\"}`.\n\n**Note**: The `before` and `after` parameters are mutually exclusive.\n",
             "allOf": [{
               "$ref": "#/components/schemas/Reference"
             }]
@@ -6428,9 +6675,8 @@
             }]
           },
           "property_name": {
-            "description": "<!--Callout type=Warning-->\n\n<p>This property is deprecated in favor of the <code>path</code>&nbsp;property.</p>\n\n<!--Callout-end-->\n\nThe property into which you want to add a new object.\n* To add elements to a content type, the `property_name` must be `elements`.\n* To add an allowed content type to a rich text or linked items element, the `property_name` must be `allowed_content_types`.\n* To add an allowed element to a custom element, the `property_name` must be `allowed_elements`.\n* To add an option to a multiple choice element, the `property_name` must be `options`.\n",
+            "description": "<!--Callout type=Warning-->\n\n<p>This property is deprecated in favor of the <code>path</code>&nbsp;property.</p>\n\n<!--Callout-end-->\n\nThe property into which you want to add a new object.\n* To add elements to a content type, the `property_name` must be `elements`.\n* To add an allowed content type to a rich text or linked items element, the `property_name` must be `allowed_content_types`.\n* To add an allowed element to a custom element, the `property_name` must be `allowed_elements`\n* To add an option to a multiple choice element, the `property_name` must be `options`.\n",
             "example": "elements",
-            "deprecated": true,
             "enum": ["elements", "options"],
             "type": "string"
           }
@@ -6471,7 +6717,7 @@
             "type": "string"
           },
           "path": {
-            "description": "A string identifying what property should be replaced. The exact path depends on what you are trying to replace. If you are trying to add a property to a given object, a `{path_reference}` is needed for that object.\n* To change the content type snippet's name, set `path` to: `/name`.\n* To change the content type snippet's codename, set `path` to: `/codename`.\n* To change a given property of an element, set `path` to: `/elements/{path_reference}/{property_name}`, where the available values for `property_name` will depend on the specific element you are referencing.\n* To change a property of a multiple choice option, set `path` to: `/elements/{path_reference}/options/{path_reference}`, where the first {path_reference} is to the multiple choice element and the second is to the option you want to modify.\n\nFor all elements (including multiple choice options), you can specify the properties to be modified based on the [element type](#tag/Elements-in-content-types). You cannot modify the `external_id`, `id`, or `type` of the elements. It is also not possible to replace individual values for an object (such as the value of a limitation object) – you need to replace the entire object at once. You also cannot replace the allowed blocks for rich text elements; you need to add or remove the blocks one by one.\n\nFor content type snippets, you cannot modify content type snippet or URL slug elements.\n",
+            "description": "A string identifying what property should be replaced. The exact path depends on what you are trying to replace. If you are trying to add a property to a given object, a `{path_reference}` is needed for that object.\n* To change the content type snippet's name, set `path` to: `/name`.\n* To change the content type snippet's codename, set `path` to: `/codename`.\n* To change a given property of an element, set `path` to: `/elements/{path_reference}/{property_name}`, where the available values for `property_name` will depend on the specific element you are referencing.\n* To change a property of a multiple choice option, set `path` to: `/elements/{path_reference}/options/{path_reference}`, where the first {path_reference} is to the multiple choice element and the second is to the option you want to modify.\n\nFor all elements (including multiple choice options), you can specify the properties to be modified based on the [element type](#tag/Elements-in-content-types). You cannot modify the `external_id`, `id`, or `type` of the elements. It is also not possible to replace individual values for an object (such as the value of a limitation object) – you need to replace the entire object at once.\n\nFor content type snippets, you cannot modify content type snippet or URL slug elements.\n",
             "writeOnly": true,
             "type": "string"
           },
@@ -6511,7 +6757,6 @@
           "property_name": {
             "description": "<!--Callout type=Warning-->\n\n<p>This property is deprecated in favor of the <code>path</code>&nbsp;property.</p>\n\n<!--Callout-end-->\n\nThe property for which you want to replace the value.\n\nFor elements, you can specify the following properties:\n* Asset – `allowed_file_types` (string), `asset_count_limit` (Count limitation object), `codename` (string), `guidelines` (string), `image_height_limit` (Count limitation object), `image_width_limit` (Count limitation object), `is_required` (boolean), `maximum_file_size` (integer), `name` (string)\n* Custom element – `codename` (string), `guidelines` (string), `is_required` (boolean), `name` (string), `json_parameters` (string), `source_url` (string)\n* Date & Time – `codename` (string), `guidelines` (string), `is_required` (boolean), `name` (string)\n* Guidelines – `guidelines` (string)\n* Linked items – `codename` (string), `guidelines` (string), `is_required` (boolean), `item_count_limit` (Count limitation object), `name` (string)\n* Multiple choice – `codename` (string), `guidelines` (string), `is_required` (boolean), `name` (string), `mode` (string)\n* Multiple choice option – `codename` (string), `name` (string)\n* Number – `codename` (string), `guidelines` (string), `is_required` (boolean), `name` (string)\n* Taxonomy – `codename` (string), `guidelines` (string), `is_required` (boolean), `taxonomy_group` ([reference](https://docs.kontent.ai/link-to/references) to a taxonomy group)\n* Text – `codename` (string), `guidelines` (string), `is_required` (boolean), `maximum_text_length` (Length limitation object), `name` (string)\n* Rich text – `allowed_image_types` (string), `codename` (string), `guidelines` (string), `is_required` (boolean), `image_height_limit` (Count limitation object), `image_width_limit` (Count limitation object), `maximum_image_size` (integer), `maximum_text_length` (Length limitation object), `name` (string)\n",
             "example": "guidelines",
-            "deprecated": true,
             "type": "string"
           }
         },
@@ -6524,8 +6769,6 @@
           "codename": {
             "description": "The taxonomy term's codename. Unless you set it (such as while [creating a taxonomy group](https://docs.kontent.ai/link-to/add_a_taxonomy_group)), it is initially generated from the term's `name` and can later be [modified](https://docs.kontent.ai/link-to/modify_a_taxonomy_group).\n",
             "example": "barista",
-            "minLength": 1,
-            "maxLength": 210,
             "type": "string"
           },
           "external_id": {
@@ -6543,8 +6786,6 @@
           "name": {
             "description": "The taxonomy term's display name.\n",
             "example": "Barista",
-            "minLength": 1,
-            "maxLength": 200,
             "type": "string"
           },
           "terms": {
@@ -6565,8 +6806,6 @@
           "codename": {
             "description": "The taxonomy group's codename. Unless set while [creating a taxonomy group](https://docs.kontent.ai/link-to/add_a_taxonomy_group), it is [initially generated](#tag/References/rules-for-codenames) from the group's `name` and can later be [modified](https://docs.kontent.ai/link-to/modify_a_taxonomy_group).\n",
             "example": "personas",
-            "minLength": 1,
-            "maxLength": 60,
             "type": "string"
           },
           "external_id": {
@@ -6591,8 +6830,6 @@
           "name": {
             "description": "The taxonomy group's display name.\n",
             "example": "Personas",
-            "minLength": 1,
-            "maxLength": 50,
             "type": "string"
           },
           "terms": {
@@ -6707,6 +6944,7 @@
           },
           "type": {
             "description": "The type of the file reference.\n",
+            "example": "internal",
             "enum": ["internal"],
             "type": "string"
           }
@@ -6733,12 +6971,6 @@
         "properties": {
           "descriptions": {
             "description": "The asset's description for each active language.\n",
-            "example": [{
-              "language": {
-                "id": "00000000-0000-0000-0000-000000000000"
-              },
-              "description": "Alt text in default language for the asset."
-            }],
             "items": {
               "$ref": "#/components/schemas/AssetDescription"
             },
@@ -6762,12 +6994,13 @@
           "folder": {
             "description": "A [reference](https://docs.kontent.ai/link-to/references) to the folder containing the asset. Not present if the asset is not in a folder.\n",
             "example": {
-              "id": "8fe4ff47-0ca8-449d-bc63-c280efee44ea"
+              "id": "958001d8-2228-4373-b966-5262b5b96f71"
             },
             "required": ["id"],
             "properties": {
               "id": {
                 "description": "The referenced folder's ID.\n",
+                "example": "958001d8-2228-4373-b966-5262b5b96f71",
                 "type": "string"
               }
             },
@@ -6798,7 +7031,7 @@
           },
           "last_modified": {
             "description": "[ISO-8601](https://en.wikipedia.org/wiki/ISO_8601) formatted date and time of the last change to the asset.\n",
-            "example": "2019-09-12T08:29:36.1645977Z",
+            "example": "2017-09-12T08:29:36.1645977Z",
             "readOnly": true,
             "format": "date-time",
             "type": "string"
@@ -6812,7 +7045,7 @@
           },
           "title": {
             "description": "The asset's display name. The title can be specified when [adding assets](https://docs.kontent.ai/link-to/add_an_asset), [updating or upserting assets](https://docs.kontent.ai/link-to/upsert_an_asset). If not specified, the `title ` property is `null`.\n",
-            "example": "Coffee brewing techniques",
+            "example": "Coffee Brewing Techniques",
             "nullable": true,
             "type": "string"
           },
@@ -6930,6 +7163,17 @@
         }]
       },
       "AssetFolder": {
+        "example": {
+          "id": "958001d8-2228-4373-b966-5262b5b96f71",
+          "name": "Top level folder",
+          "external_id": "top-folder",
+          "folders": [{
+            "id": "9ca927b6-6e4d-4d6b-81e3-ec5e8f7772a0",
+            "name": "Second level folder",
+            "external_id": "second-folder",
+            "folders": []
+          }]
+        },
         "required": ["folders", "id", "name"],
         "properties": {
           "external_id": {
@@ -6959,7 +7203,7 @@
             "description": "The folder's name.\n",
             "example": "Café locations",
             "minLength": 1,
-            "maxLength": 200,
+            "maxLength": 250,
             "type": "string"
           }
         },
@@ -6967,20 +7211,6 @@
       },
       "AssetFolders": {
         "description": "All folders within a project.\n",
-        "example": {
-          "last_modified": "2019-11-07T09:25:44.0680996Z",
-          "folders": [{
-            "id": "958001d8-2228-4373-b966-5262b5b96f71",
-            "name": "Top level folder",
-            "external_id": "top-folder",
-            "folders": [{
-              "id": "9ca927b6-6e4d-4d6b-81e3-ec5e8f7772a0",
-              "name": "Second level folder",
-              "external_id": "second-folder",
-              "folders": []
-            }]
-          }]
-        },
         "required": ["folders", "last_modified"],
         "properties": {
           "folders": {
@@ -7115,13 +7345,13 @@
         "properties": {
           "id": {
             "description": "The ID of the project.\n",
-            "example": "975bf280-fd91-488c-994c-2f04416e5ee3",
+            "example": "99b79697-f2d2-4cee-8768-bd2617ad929e",
             "format": "uuid",
             "type": "string"
           },
           "name": {
             "description": "The display name of the project.\n",
-            "example": "Sample project",
+            "example": "My project",
             "type": "string"
           }
         },
@@ -7148,14 +7378,6 @@
       },
       "ElementIssue": {
         "description": "For each issue found in a specific language variant or content type, the `issues` array will contain a content element issue with metadata about the content element and an array of validation messages describing the problem.\n\nA note on terminology in messages: A \"content module\" is a content item referenced in *Linked items* or *Rich text* elements. See [Linked content and components](https://docs.kontent.ai/link-to/linked_content_and_components) for more details.\n",
-        "example": {
-          "element": {
-            "id": "23375e4a-2ed8-42bf-aa3a-dfb32e6a42ec",
-            "name": "Body copy",
-            "codename": "content"
-          },
-          "messages": ["Element 'Body copy' contains an image 'Screenshot.png' that doesn't match the set limits: maximum width = 1280px."]
-        },
         "required": ["element", "messages"],
         "properties": {
           "element": {
@@ -7295,6 +7517,28 @@
       },
       "Webhook": {
         "description": "The webhook object contains all information about a given webhook, including its target URL, secret key for authentication, and a collection of triggers.\n",
+        "example": {
+          "name": "Example",
+          "url": "https://example.com",
+          "secret": "secret",
+          "triggers": {
+            "delivery_api_content_changes": [{
+              "type": "content_item_variant",
+              "operations": ["publish", "unpublish"]
+            }, {
+              "type": "taxonomy",
+              "operations": ["archive", "restore", "upsert"]
+            }],
+            "workflow_step_changes": [{
+              "type": "content_item_variant",
+              "transitions_to": [{
+                "id": "b4363ccd-8f21-45fd-a840-5843d7b7f008"
+              }, {
+                "id": "88ac5e6e-1c5c-4638-96e1-0d61221ad5bf"
+              }]
+            }]
+          }
+        },
         "required": ["name", "secret", "triggers", "url"],
         "properties": {
           "last_modified": {
@@ -7313,14 +7557,14 @@
           },
           "name": {
             "description": "The webhook's display name.\n",
-            "example": "Example webhook",
+            "example": "Example",
             "minLength": 1,
             "maxLength": 200,
             "type": "string"
           },
           "url": {
             "description": "The URL to which the webhook notification will be sent.\n",
-            "example": "https://example.com/webhook",
+            "example": "https://example.com",
             "format": "url",
             "minLength": 1,
             "maxLength": 250,
@@ -7328,7 +7572,7 @@
           },
           "secret": {
             "description": "The webhook's secret key, used to authenticate that the webhook was sent by Kentico Kontent.\n",
-            "example": "secret_key",
+            "example": "secret",
             "minLength": 1,
             "type": "string"
           },
@@ -7366,6 +7610,14 @@
                 "type": "array"
               },
               "workflow_step_changes": {
+                "example": [{
+                  "type": "content_item_variant",
+                  "transitions_to": [{
+                    "id": "b4363ccd-8f21-45fd-a840-5843d7b7f008"
+                  }, {
+                    "id": "88ac5e6e-1c5c-4638-96e1-0d61221ad5bf"
+                  }]
+                }],
                 "items": {
                   "example": {
                     "type": "content_item_variant",

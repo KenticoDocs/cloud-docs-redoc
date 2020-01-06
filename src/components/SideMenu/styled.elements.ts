@@ -7,7 +7,7 @@ import styled, { css } from '../../styled-components';
 export const OperationBadge = styled.span.attrs((props: { type: string }) => ({
   className: `operation-type ${props.type}`,
 }))<{ type: string }>`
-  width: 32px;
+  width: 37px;
   display: inline-block;
   background-color: #333;
   background-repeat: no-repeat;
@@ -20,7 +20,8 @@ export const OperationBadge = styled.span.attrs((props: { type: string }) => ({
   text-decoration: none;
   margin: 0 0.5em 0 0;
   display: inline;
-  padding: 0.245em 0.675em;
+  padding: 0.25em 0.675em;
+  border-radius: 8px 8px 8px 2px;
 
   &.get {
     background-color: ${props => props.theme.colors.http.get};
@@ -113,7 +114,6 @@ export const MenuItemLabel = styled.label.attrs((props: MenuItemLabelType) => ({
   }),
 }))<MenuItemLabelType>`
   cursor: pointer;
-  color: #6B7C85;
   font-weight: ${props => (props.active ? '700' : '400')};
   margin: 0;
   padding: 0.375em 0 0.375em 1.5em;
@@ -124,6 +124,7 @@ export const MenuItemLabel = styled.label.attrs((props: MenuItemLabelType) => ({
   font-family: ${props => props.theme.typography.headings.fontFamily};
   ${props => menuItemDepth[props.depth]};
   background-color: transparent;
+  color: ${props => props.theme.menu.textColor};
 
   ${props => (props.deprecated && deprecatedCss) || ''};
 
@@ -143,7 +144,7 @@ export const MenuItemLabel = styled.label.attrs((props: MenuItemLabelType) => ({
   }
 
   &.-depth1 {
-    font-size: 1.125em;
+    font-size: 1em;
   }
 
   &.-depth2 {
@@ -152,6 +153,10 @@ export const MenuItemLabel = styled.label.attrs((props: MenuItemLabelType) => ({
 
   &.-depth3 {
     padding: 0.5em 0 0.375em 5em;
+  }
+
+  &.active {
+    color: #231F20;
   }
 
   ${ShelfIcon} {

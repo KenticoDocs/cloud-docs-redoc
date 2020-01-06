@@ -37,7 +37,6 @@ export const Tabs = styled(ReactTabs)`
 
       &:only-child {
         flex: none;
-        min-width: 100px;
       }
 
       &.tab-success {
@@ -61,8 +60,8 @@ export const Tabs = styled(ReactTabs)`
     background: ${({ theme }) => theme.codeSample.backgroundColor};
     & > div,
     & > pre {
-      padding: ${props => props.theme.spacing.unit * 1.25}px;
-      margin: 0;
+      padding: ${props => props.theme.spacing.unit * 3}px ${props => props.theme.spacing.unit * 5}px
+        ${props => props.theme.spacing.unit * 5}px;
     }
 
     & > div > pre {

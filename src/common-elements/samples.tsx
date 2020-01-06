@@ -2,7 +2,7 @@ import styled from '../styled-components';
 import { PrismDiv } from './PrismDiv';
 
 export const SampleControls = styled.div`
-  opacity: 0.4;
+  opacity: 1;
   transition: opacity 0.3s ease;
   text-align: right;
 
@@ -10,9 +10,12 @@ export const SampleControls = styled.div`
     display: inline-block;
     padding: 2px 10px;
     cursor: pointer;
+    color: #908e8f;
+    font-size: 0.875em;
+    border-radius: 16px;
 
     :hover {
-      background: rgba(255, 255, 255, 0.1);
+      background: #e8e8e8;
     }
   }
 `;

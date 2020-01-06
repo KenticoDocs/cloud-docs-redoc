@@ -26,12 +26,18 @@ const specUrl = 'test.json';
 
 let store;
 const options: RedocRawOptions = {
-  nativeScrollbars: false,
   disableSearch: true,
+  hideDownloadButton: true,
+  jsonSampleExpandLevel: 3,
   pathInMiddlePanel: true,
+  requiredPropsFirst: true,
+  sortPropsAlphabetically: true,
   theme: {
     spacing: {
       unit: 4,
+    },
+    codeSample: {
+      backgroundColor: 'transparent',
     },
     colors: {
       primary: {

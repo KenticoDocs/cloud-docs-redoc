@@ -98,7 +98,7 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
   pre {
     font-family: ${props => props.theme.typography.code.fontFamily};
     white-space: ${({ theme }) => (theme.typography.code.wrap ? 'pre-wrap' : 'pre')};
-    background-color: #263238;
+    background-color: transparent;
     color: white;
     padding: ${props => props.theme.spacing.unit * 4}px;
     overflow-x: auto;
@@ -173,35 +173,60 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
   }
 
   table {
-    display: block;
-    width: 100%;
+    display: inline-block;
+    width: auto;
     overflow: auto;
     word-break: normal;
     word-break: keep-all;
-    border-collapse: collapse;
+    border-collapse: separate;
     border-spacing: 0;
     margin-top: 1.5em;
     margin-bottom: 1.5em;
-  }
-
-  table tbody {
-    border-top: 0.125em solid #d3d2d2;
-    border-left: 0.125em solid #d3d2d2;
-  }
-
-  table tr {
+    border-top: 0.125em solid #d7d7d7;
+    border-left: 0.125em solid #d7d7d7;
+    border-radius: 1.5em 1.5em 0.675em 1.5em;
     background-color: #fff;
   }
 
-  table th,
-  table td {
-    padding: 0.5em 0.75em;
-    border-bottom: 0.125em solid #d3d2d2;
-    border-right: 0.125em solid #d3d2d2;
+  table td,
+  table th {
+    border-bottom: 0.125em solid #d7d7d7;
+    border-right: 0.125em solid #d7d7d7;
+    padding: 1.5em 1.5em;
+    box-sizing: border-box;
   }
 
-  table th,
-  table tr:first-child td {
+  table tr {
+    &:first-child {
+      td,
+      th {
+        background-color: #f3f3f3;
+
+        &:first-child {
+          border-radius: 1.5em 0 0 0;
+        }
+
+        &:last-child {
+          border-radius: 0 1.5em 0 0;
+        }
+      }
+    }
+
+    &:last-child {
+      td,
+      th {
+        &:first-child {
+          border-radius: 0 0 0 1.5em;
+        }
+
+        &:last-child {
+          border-radius: 0 0 0.675em 0;
+        }
+      }
+    }
+  }
+
+  table th {
     text-align: left;
     font-weight: 400;
     background-color: ${({ theme }) => theme.schema.nestedBackground};

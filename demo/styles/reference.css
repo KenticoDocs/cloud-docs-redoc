@@ -32,13 +32,12 @@ html {
   -ms-flex: 1;
   flex: 1;
   display: inline-block;
-  color: #7C909B;
-  background-color: #283033;
+  color: #231F20;
+  background-color: transparent;
   margin: 0;
   border: none;
   border-radius: 0;
-  font-weight: 700;
-  font-size: 1em;
+  font-size: .875em;
   cursor: pointer;
   padding: 0.375em 1em;
   -webkit-transition: background-color 0.25s, color 0.25s;

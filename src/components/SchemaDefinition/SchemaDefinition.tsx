@@ -83,7 +83,7 @@ const MediaSamplesWrap = styled.div`
   background: ${({ theme }) => theme.codeSample.backgroundColor};
   & > div,
   & > pre {
-    padding: ${props => props.theme.spacing.unit * 4}px;
+    padding: ${props => props.theme.spacing.unit * 5}px;
     margin: 0;
   }
 

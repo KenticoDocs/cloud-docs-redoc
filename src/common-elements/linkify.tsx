@@ -15,21 +15,22 @@ export const linkifyMixin = className => css`
     line-height: 1;
     width: 20px;
     display: inline-block;
-    opacity: 0.4;
-
-    &:hover {
-      opacity: 0.6;
-    }
+    opacity: 1;
   }
   ${className}:before, .linkify__StyledShareLink:before {
     content: '';
-    width: 15px;
-    height: 15px;
-    background-size: contain;
-    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTQwIiBoZWlnaHQ9Ijk0NSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KU29ycnksIHlvdXIgYnJvd3NlciBkb2VzIG5vdCBzdXBwb3J0IGlubGluZSBTVkcuCiA8Zz4KICA8dGl0bGU+YmFja2dyb3VuZDwvdGl0bGU+CiAgPHJlY3QgZmlsbD0ibm9uZSIgaWQ9ImNhbnZhc19iYWNrZ3JvdW5kIiBoZWlnaHQ9IjQwMiIgd2lkdGg9IjU4MiIgeT0iLTEiIHg9Ii0xIi8+CiA8L2c+CiA8Zz4KICA8dGl0bGU+TGF5ZXIgMTwvdGl0bGU+CiAgPHBhdGggc3Ryb2tlPSJudWxsIiB0cmFuc2Zvcm09InJvdGF0ZSgtMTgwIDUwMS4zNTI1Njk1ODAwNzgyLDQ3My4wNDA4NjMwMzcxMDkzKSAiIGlkPSJzdmdfMSIgZD0ibTQ0MS4wNzc5OTQsNjUwLjQwMDU1OGwwLjAxODgzNiwyOTUuNTk5NDY5bDI0MS4wNzk0ODgsMGwwLC03NjguNTU4NjE5bC01NDIuNDcxMjI5LDBsMCw0NzIuOTU5MTVsMzAxLjM3MjkwNSwwem0tMzAxLjM3MjkwNSw1OS4xMTk4OTRsMjQxLjExNzE2LDIzNi40Nzk1NzVsLTAuMDE4ODM2LC0yMzYuNDc5NTc1bC0yNDEuMDk4MzI0LDB6bTYwMi43NDU4MSwtNTkxLjE5ODkzOGwwLDcwOS40Mzg3MjZsMTIwLjU0OTE2MiwwbDAsLTgyNy42Nzg1MTNsLTYwMi43NDU4MSwwbDAsMTE4LjIzOTc4OGw0MjEuOTIyMDY3LDBsNjAuMjc0NTgxLDB6Ii8+CiA8L2c+PC9zdmc+');
+    font-size: 16px;
+    width: 1.5em;
+    height: 1.5em;
+    background-size: 1em 1em;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZjA1YTIyO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxMDtzdHJva2Utd2lkdGg6MnB4O308L3N0eWxlPjwvZGVmcz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzOTIuNCkiPjxwYXRoIGNsYXNzPSJhIiBkPSJNLTM4My40LDVoMTFhMi45NDYsMi45NDYsMCwwLDEsMywzVjIwYTIuOTQ2LDIuOTQ2LDAsMCwxLTMsM2gtMTRWOEEzLjAwOSwzLjAwOSwwLDAsMS0zODMuNCw1WiIvPjxwYXRoIGNsYXNzPSJhIiBkPSJNLTM3Ni40LDVWMWgtMTJhMi45NDYsMi45NDYsMCwwLDAtMywzVjE0YTIuOTQ2LDIuOTQ2LDAsMCwwLDMsM2gyIi8+PHBhdGggY2xhc3M9ImEiIGQ9Ik0tMzgyLjQsMTAuNWg5Ii8+PHBhdGggY2xhc3M9ImEiIGQ9Ik0tMzgyLjQsMTQuNWg5Ii8+PHBhdGggY2xhc3M9ImEiIGQ9Ik0tMzgyLjQsMTguNWg5Ii8+PC9nPjwvc3ZnPg==');
     visibility: hidden;
     display: inline-block;
     vertical-align: middle;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 0.5em;
+    background-color: #e8e8e8;
   }
 
   h1:hover

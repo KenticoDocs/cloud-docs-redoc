@@ -111,7 +111,7 @@ const options: RedocRawOptions = {
       linesColor: '#bcbbbb',
       typeNameColor: '#908E8F',
       typeTitleColor: '#F49300',
-      requireLabelColor: '#ED6A56',
+      requireLabelColor: '#B72929',
       labelsTextSize: '0.875em',
       nestedBackground: '#f3f3f3',
     },

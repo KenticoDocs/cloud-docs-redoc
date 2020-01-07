@@ -26,14 +26,6 @@ export const PrismDiv = styled.div`
     -moz-hyphens: none;
     -ms-hyphens: none;
     hyphens: none;
-
-    &::-webkit-scrollbar-track {
-      background-color: transparent;
-    }
-
-    &::-webkit-scrollbar {
-      background-color: transparent;
-    }
   }
 
   @media print {
@@ -57,55 +49,60 @@ export const PrismDiv = styled.div`
   .token.prolog,
   .token.doctype,
   .token.cdata {
-    color: #008000;
-    font-style: italic;
+    color: slategray;
   }
 
-  .token.namespace {
+  .token.punctuation {
+    color: #999;
+  }
+
+  .namespace {
     opacity: 0.7;
   }
 
-  .token.string {
-    color: #a31515;
-  }
-
-  .token.punctuation,
-  .token.operator {
-    color: #393a34; /* no highlight */
-  }
-
-  .token.url,
-  .token.symbol,
-  .token.number,
+  .token.property,
+  .token.tag,
   .token.boolean,
-  .token.variable,
+  .token.number,
   .token.constant,
-  .token.inserted {
-    color: #36acaa;
-  }
-
-  .token.atrule,
-  .token.keyword,
-  .token.attr-value,
-  .language-autohotkey .token.selector,
-  .language-json .token.boolean,
-  .language-json .token.number,
-  code[class*='language-css'] {
-    color: #0000ff;
-  }
-
-  .token.function {
-    color: #393a34;
-  }
-
-  .token.deleted,
-  .language-autohotkey .token.tag {
-    color: #9a050f;
+  .token.symbol,
+  .token.deleted {
+    color: #905;
   }
 
   .token.selector,
-  .language-autohotkey .token.keyword {
-    color: #00009f;
+  .token.attr-name,
+  .token.string,
+  .token.char,
+  .token.builtin,
+  .token.inserted {
+    color: #690;
+  }
+
+  .token.operator,
+  .token.entity,
+  .token.url,
+  .language-css .token.string,
+  .style .token.string {
+    color: #9a6e3a;
+    background: hsla(0, 0%, 100%, 0.5);
+  }
+
+  .token.atrule,
+  .token.attr-value,
+  .token.keyword {
+    color: #07a;
+  }
+
+  .token.function,
+  .token.class-name {
+    color: #dd4a68;
+  }
+
+  .token.regex,
+  .token.important,
+  .token.variable {
+    color: #e90;
   }
 
   .token.important,
@@ -117,46 +114,56 @@ export const PrismDiv = styled.div`
     font-style: italic;
   }
 
-  .token.class-name,
-  .language-json .token.property {
-    color: #2b91af;
-  }
-
-  .token.tag,
-  .token.selector {
-    color: #800000;
-  }
-
-  .token.attr-name,
-  .token.property,
-  .token.regex,
   .token.entity {
-    color: #ff0000;
+    cursor: help;
   }
 
-  .token.directive.tag .tag {
-    background: #ffff00;
-    color: #393a34;
+  pre[class*='language-'].line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+    padding-top: 4em;
+    margin-top: 0;
   }
 
-  /* overrides color-values for the Line Numbers plugin
- * http://prismjs.com/plugins/line-numbers/
- */
+  pre[class*='language-'].line-numbers > code {
+    position: relative;
+    white-space: inherit;
+  }
+
   .line-numbers .line-numbers-rows {
-    border-right-color: #a5a5a5;
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    font-size: 100%;
+    left: -3.8em;
+    width: 3em;
+    /* works for line-numbers below 1000 lines */
+    letter-spacing: -1px;
+    border-right: 1px solid #999;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .line-numbers-rows > span {
+    pointer-events: none;
+    display: block;
+    counter-increment: linenumber;
   }
 
   .line-numbers-rows > span:before {
-    color: #2b91af;
+    content: counter(linenumber);
+    color: #999;
+    display: block;
+    padding-right: 0.8em;
+    text-align: right;
   }
 
-  /* overrides color-values for the Line Highlight plugin
-* http://prismjs.com/plugins/line-highlight/
-*/
-  .line-highlight {
-    background: rgba(193, 222, 241, 0.2);
-    background: -webkit-linear-gradient(left, rgba(193, 222, 241, 0.2) 70%, rgba(221, 222, 241, 0));
-    background: linear-gradient(to right, rgba(193, 222, 241, 0.2) 70%, rgba(221, 222, 241, 0));
+  .clean-code {
+    display: none;
   }
 
   ${extensionsHook('Prism')};

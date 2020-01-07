@@ -102,7 +102,7 @@ body {
     }
 
     &::-webkit-scrollbar-track {
-      background-color: #e8e8e8;
+      background-color: #f5f5f5;
       border-radius: 4px;
     }
 
@@ -110,12 +110,12 @@ body {
       width: 8px;
       height: 8px;
       border-radius: 4px;
-      background-color: #908e8f;
+      background-color: #343131;
     }
 
     &::-webkit-scrollbar-thumb {
       border-radius: 4px;
-      background-color: #908e8f;
+      background-color: #343131;
     }
   }
 
@@ -127,7 +127,7 @@ body {
     //overflow: auto;
 
     &::-webkit-scrollbar-track {
-      background-color: #e8e8e8;
+      background-color: #f5f5f5;
       border-radius: 4px;
     }
 
@@ -135,12 +135,12 @@ body {
       width: 8px;
       height: 8px;
       border-radius: 4px;
-      background-color: #e8e8e8;
+      background-color: #f5f5f5;
     }
 
     &::-webkit-scrollbar-thumb {
       border-radius: 4px;
-      background-color: #908e8f;
+      background-color: #343131;
     }
 
     &>div,
@@ -158,7 +158,7 @@ body {
       }
 
       &>div[class*="MimeLabel"] {
-        padding: .5em 1.25em;
+        padding: .375em 1em;
         margin: .5em 0 0;
         color: #F05A22;
         border: 1px solid #F05A22;
@@ -545,7 +545,7 @@ body {
 }
 
 .infobar {
-  background-color: #283033;
+  background-color: transparent;
 
   &__languages {
     list-style-type: none;
@@ -553,11 +553,15 @@ body {
   }
 
   &__lang {
+    padding: .375em 1em !important;
+    color: #F05A22;
+    border: 1px solid #F05A22;
     line-height: 1.375em;
+    opacity: 1;
     display: inline-block;
-    padding: 0 0.5em !important;
-    border: 0.125em solid #343131;
-    color: #343131;
+    border-radius: 16px 16px 4px 16px;
+    font-size: .875em;
+    text-shadow: none;
 
     &:before {
       display: none;
@@ -618,9 +622,9 @@ figure {
   top: 0;
   left: 0;
   right: 0;
-  height: 3em;
+  height: 4em;
   justify-content: space-between;
-  padding: 0.6875em 1em;
+  padding: 1em;
   box-sizing: border-box;
   font-family: 'GT Walsheim Pro', Helvetica, Arial, sans-serif;
   display: flex;
@@ -628,7 +632,6 @@ figure {
 
 .language-selector {
   ul&__list {
-    background-color: #283033;
     font-size: 1em;
     list-style-type: none;
     padding: 0 !important;
@@ -648,28 +651,38 @@ figure {
   }
 
   a&__link {
-    font-weight: 700;
-    font-size: 1em;
+    font-weight: 400;
+    font-size: .875em;
     display: block;
     text-align: center;
     padding: 0.375em 1em;
-    color: #343131 !important;
-    background-color: #283033;
+    color: #231F20 !important;
     text-decoration: none !important;
     white-space: nowrap;
-    transition: background-color .25s, color .25s;
     line-height: 1.5em;
+    position: relative;
+    text-transform: uppercase;
 
-    &:hover {
-      background-color: #47545A;
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      height: 1px;
+      left: 1em;
+      right: 1em;
     }
 
-    &:hover {}
+    &:hover {
+      &:after {
+        background-color: #F05A22;
+      }
+    }
 
     &--active,
     &--active:hover {
-      background-color: #F3F3F3;
-      color: #283033 !important;
+      &:after {
+        background-color: #231F20;
+      }
     }
   }
 }
@@ -852,4 +865,36 @@ h3[class*="RightPanelHeader"] {
 [class*="SchemaDefinition__MediaSamplesWrap"] {
   border-radius: 36px 36px 12px 36px;
   border: 1px solid #D3D2D2;
+}
+
+[class*="tabs__Tabs"]>.react-tabs__tab-panel,
+[class*="MediaSamplesWrap"] {
+  background-color: transparent !important;
+}
+
+[class*="PropertyCell"].deprecated {
+  color: #231F20 !important;
+}
+
+[class*="shelfs__Badge"] {
+  margin: 2px 0;
+}
+
+.code-samples,
+.code-sample-standalone {
+  border-radius: 36px 36px 12px 36px;
+  border: 1px solid #D3D2D2;
+  padding: 20px;
+  margin: 0 0 1em;
+
+  pre[class*='language-'],
+  code[class*='language-'] {
+    border: none;
+    text-shadow: none !important;
+    margin: 0 !important;
+  }
+}
+
+.code-sample-standalone {
+  padding: 16px;
 }

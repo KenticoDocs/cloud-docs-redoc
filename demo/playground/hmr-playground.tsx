@@ -87,7 +87,6 @@ const options: RedocRawOptions = {
       fontWeightRegular: '300',
       headings: {
         fontFamily: 'GT Walsheim Pro, Helvetica, Arial, sans-serif',
-        fontSize: '1.875em',
         fontWeight: '400',
         lineHeight: '1.25em',
       },

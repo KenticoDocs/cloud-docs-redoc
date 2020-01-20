@@ -59,7 +59,7 @@ export const PatternLabel = styled(FieldLabel)`
   color: #3195a6;
   &::before,
   &::after {
-    font-weight: 700;
+    font-weight: 400;
   }
 
   &::before {

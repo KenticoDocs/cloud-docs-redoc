@@ -16,6 +16,12 @@ export const linkifyMixin = className => css`
     width: 20px;
     display: inline-block;
     opacity: 1;
+
+    &:hover {
+      &:before {
+        background-color: #e8e8e8;
+      }
+    }
   }
   ${className}:before, .linkify__StyledShareLink:before {
     content: '';
@@ -30,7 +36,6 @@ export const linkifyMixin = className => css`
     background-repeat: no-repeat;
     background-position: center center;
     border-radius: 0.5em;
-    background-color: #e8e8e8;
   }
 
   h1:hover

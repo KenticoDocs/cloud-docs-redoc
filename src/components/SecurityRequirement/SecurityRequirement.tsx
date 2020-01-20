@@ -27,7 +27,7 @@ const ScopeName = styled.code`
 const SecurityRequirementAndWrap = styled.span`
   &:after {
     content: ' AND ';
-    font-weight: 700;
+    font-weight: 400;
   }
 
   &:last-child:after {
@@ -40,11 +40,11 @@ const SecurityRequirementAndWrap = styled.span`
 const SecurityRequirementOrWrap = styled.span`
   &:before {
     content: '( ';
-    font-weight: 700;
+    font-weight: 400;
   }
   &:after {
     content: ' ) OR ';
-    font-weight: 700;
+    font-weight: 400;
   }
   &:last-child:after {
     content: ' )';

@@ -74,23 +74,26 @@ const options: RedocRawOptions = {
       },
     },
     typography: {
+      code: {
+        backgroundColor: '#f3f6f7',
+        color: '#E73430',
+        fontFamily: 'Inconsolata, monospace',
+        fontSize: '.875em',
+      },
       fontFamily: 'GT Walsheim Pro, Helvetica, Arial, sans-serif',
       fontSize: '1em',
-      fontWeightBold: '700',
+      fontWeightBold: '400',
+      fontWeightLight: '300',
+      fontWeightRegular: '300',
       headings: {
         fontFamily: 'GT Walsheim Pro, Helvetica, Arial, sans-serif',
-        fontWeight: '700',
+        fontSize: '1.875em',
+        fontWeight: '400',
         lineHeight: '1.25em',
       },
       links: {
         color: '#F05A22',
         hover: '#F05A22',
-      },
-      code: {
-        fontFamily: 'Inconsolata, monospace',
-        fontSize: '.875em',
-        color: '#E73430',
-        backgroundColor: '#f3f6f7',
       },
     },
     rightPanel: {

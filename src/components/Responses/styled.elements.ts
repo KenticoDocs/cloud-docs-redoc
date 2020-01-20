@@ -35,7 +35,7 @@ export const StyledResponseTitle = styled(ResponseTitle)`
 cursor: default;
 &::before {
   content: "—";
-  font-weight: 700;
+  font-weight: 400;
   width: 1.5em;
   text-align: center;
   display: inline-block;

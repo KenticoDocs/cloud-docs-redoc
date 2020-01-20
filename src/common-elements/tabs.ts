@@ -28,7 +28,7 @@ export const Tabs = styled(ReactTabs)`
       border-radius: 5px;
       min-width: 60px;
       font-size: 0.9em;
-      font-weight: 700;
+      font-weight: 400;
 
       &.react-tabs__tab--selected {
         color: ${props => props.theme.colors.text.primary};

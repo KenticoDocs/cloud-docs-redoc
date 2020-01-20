@@ -26,7 +26,7 @@ export const H1 = styled.h1`
 export const H2 = styled.h2`
   ${headerCommonMixin(2)};
   padding: 0.375em 0;
-  font-weight: 700;
+  font-weight: 400;
   ${extensionsHook('H2')};
 `;
 

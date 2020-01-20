@@ -15,7 +15,7 @@ export const OperationBadge = styled.span.attrs((props: { type: string }) => ({
   color: white;
   text-transform: uppercase;
   text-align: center;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1.675em;
   text-decoration: none;
   margin: 0 0.5em 0 0;

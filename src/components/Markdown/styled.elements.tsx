@@ -147,22 +147,23 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
   }
 
   ul {
-    padding: 0 0 1.125em;
+    padding: 0 0 1.125em 0.75em;
     margin: 0;
     list-style-type: none;
 
     & > li {
-      padding: 0 0 0.25em 1.125em;
+      padding: 0 0 0.25em 1.875em;
       position: relative;
 
       &:before {
         content: '';
-        width: 0.375em;
-        height: 0.375em;
+        width: 0.875em;
+        height: 0.4375em;
+        border-radius: 0.25em 0.25em 0.25em 0;
         background-color: #f05a22;
         position: absolute;
         left: 0;
-        top: 0.6em;
+        top: 0.4625em;
       }
     }
 

@@ -24,18 +24,20 @@ export const linkifyMixin = className => css`
     }
   }
   ${className}:before, .linkify__StyledShareLink:before {
-    content: '';
+    content: '#';
     font-size: 16px;
     width: 1.5em;
-    height: 1.5em;
+    text-align: center;
+    padding: 0.25em 0;
     background-size: 1em 1em;
-    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48ZGVmcz48c3R5bGU+LmF7ZmlsbDpub25lO3N0cm9rZTojZjA1YTIyO3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2UtbWl0ZXJsaW1pdDoxMDtzdHJva2Utd2lkdGg6MnB4O308L3N0eWxlPjwvZGVmcz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzOTIuNCkiPjxwYXRoIGNsYXNzPSJhIiBkPSJNLTM4My40LDVoMTFhMi45NDYsMi45NDYsMCwwLDEsMywzVjIwYTIuOTQ2LDIuOTQ2LDAsMCwxLTMsM2gtMTRWOEEzLjAwOSwzLjAwOSwwLDAsMS0zODMuNCw1WiIvPjxwYXRoIGNsYXNzPSJhIiBkPSJNLTM3Ni40LDVWMWgtMTJhMi45NDYsMi45NDYsMCwwLDAtMywzVjE0YTIuOTQ2LDIuOTQ2LDAsMCwwLDMsM2gyIi8+PHBhdGggY2xhc3M9ImEiIGQ9Ik0tMzgyLjQsMTAuNWg5Ii8+PHBhdGggY2xhc3M9ImEiIGQ9Ik0tMzgyLjQsMTQuNWg5Ii8+PHBhdGggY2xhc3M9ImEiIGQ9Ik0tMzgyLjQsMTguNWg5Ii8+PC9nPjwvc3ZnPg==');
     visibility: hidden;
     display: inline-block;
     vertical-align: middle;
     background-repeat: no-repeat;
     background-position: center center;
     border-radius: 0.5em;
+    color: #f05a22;
+    text-align: center;
   }
 
   h1:hover

@@ -37,8 +37,8 @@ export const PrismDiv = styled.div`
 
   /* Code blocks */
   pre[class*='language-'] {
-    padding-left: 3.8em;
-    padding-top: 4em;
+    padding-left: 2.8em;
+    padding-top: 2.5em;
     margin: 0 0 1em;
     overflow: auto;
     white-space: pre-wrap;
@@ -120,9 +120,9 @@ export const PrismDiv = styled.div`
 
   pre[class*='language-'].line-numbers {
     position: relative;
-    padding-left: 3.8em;
+    padding-left: 2.8em;
     counter-reset: linenumber;
-    padding-top: 4em;
+    padding-top: 2.5em;
     margin-top: 0;
   }
 

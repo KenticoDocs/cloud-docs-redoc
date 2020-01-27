@@ -24,7 +24,7 @@ deploy:
   skip_cleanup: true
   email: hello@milanlund.com
   tag: next
-  api_key: "$NPM_TOKEN",
+  api_key: "$NPM_TOKEN"
   edge: true
   on:
     tags: true

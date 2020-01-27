@@ -63,12 +63,15 @@ export const OperationBadge = styled.span.attrs((props: { type: string }) => ({
 export const MenuItemUl = styled.ul<{ expanded: boolean }>`
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  max-height: 1800px;
+  transition: max-height 0.25s ease-in;
 
   & & {
     font-size: 1em;
   }
 
-  ${props => (props.expanded ? '' : 'display: none;')};
+  ${props => (props.expanded ? '' : 'max-height: 0;transition: max-height 0.25s ease-out;')};
 `;
 
 export const MenuItemLi = styled.li<{ depth: number }>`

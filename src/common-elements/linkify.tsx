@@ -16,6 +16,8 @@ export const linkifyMixin = className => css`
     width: 20px;
     display: inline-block;
     opacity: 1;
+    top: 50%;
+    margin-top: -16px;
 
     &:hover {
       &:before {

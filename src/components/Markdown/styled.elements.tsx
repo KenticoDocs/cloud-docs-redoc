@@ -134,7 +134,7 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
 
   ol {
     padding: 0 0 1.125em 1.125em;
-    margin: 0;
+    margin: 0 0 0 .75em;
 
     & > li {
       padding: 0 0 0.25em;

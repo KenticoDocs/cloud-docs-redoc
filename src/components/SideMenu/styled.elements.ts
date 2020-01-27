@@ -114,7 +114,7 @@ export const MenuItemLabel = styled.label.attrs((props: MenuItemLabelType) => ({
   }),
 }))<MenuItemLabelType>`
   cursor: pointer;
-  font-weight: ${props => (props.active ? '700' : '400')};
+  font-weight: ${props => (props.active ? '400' : '300')};
   margin: 0;
   padding: 0.375em 0 0.375em 1.5em;
   line-height: 1.25em;
@@ -174,6 +174,7 @@ export const MenuItemTitle = styled.span<{ width?: string }>`
   width: ${props => (props.width ? props.width : 'auto')};
   overflow: hidden;
   text-overflow: ellipsis;
+  padding-left: 3px;
 `;
 
 export const RedocAttribution = styled.div`

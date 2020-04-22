@@ -134,7 +134,7 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
 
   ol {
     padding: 0 0 1.125em 1.125em;
-    margin: 0 0 0 .75em;
+    margin: 0 0 0 0.75em;
 
     & > li {
       padding: 0 0 0.25em;
@@ -185,7 +185,7 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
     margin-bottom: 1.5em;
     border-top: 0.125em solid #d7d7d7;
     border-left: 0.125em solid #d7d7d7;
-    border-radius: 1.5em 1.5em 0.675em 1.5em;
+    border-radius: 0.75em;
     background-color: #fff;
   }
 
@@ -193,7 +193,7 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
   table th {
     border-bottom: 0.125em solid #d7d7d7;
     border-right: 0.125em solid #d7d7d7;
-    padding: 1.5em 1.5em;
+    padding: 0.75em;
     box-sizing: border-box;
   }
 
@@ -204,11 +204,11 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
         background-color: #f3f3f3;
 
         &:first-child {
-          border-radius: 1.5em 0 0 0;
+          border-radius: 0.75em 0 0 0;
         }
 
         &:last-child {
-          border-radius: 0 1.5em 0 0;
+          border-radius: 0 0.75em 0 0;
         }
       }
     }
@@ -217,11 +217,11 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
       td,
       th {
         &:first-child {
-          border-radius: 0 0 0 1.5em;
+          border-radius: 0 0 0 0.75em;
         }
 
         &:last-child {
-          border-radius: 0 0 0.675em 0;
+          border-radius: 0 0 0.75em 0;
         }
       }
     }

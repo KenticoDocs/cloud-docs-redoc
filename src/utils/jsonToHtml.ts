@@ -12,11 +12,11 @@ export function jsonToHTML(json, maxExpandLevel) {
 function htmlEncode(t) {
   return t !== undefined
     ? t
-        .toString()
-        .replace(/&/g, '&amp;')
-        .replace(/"/g, '&quot;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
+      .toString()
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
     : '';
 }
 
@@ -54,7 +54,7 @@ function valueToHTML(value, maxExpandLevel: number) {
       output +=
         decorateWithSpan('"', 'token string') +
         '<a href="' +
-        value +
+        encodeURI(value) +
         '">' +
         htmlEncode(escapeForStringLiteral(value)) +
         '</a>' +

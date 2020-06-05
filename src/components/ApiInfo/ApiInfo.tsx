@@ -83,7 +83,7 @@ export class ApiInfo extends React.Component<ApiInfoProps> {
               <p>
                 Download OpenAPI specification:
                 <DownloadButton
-                  download={downloadFilename}
+                  download={downloadFilename || true}
                   target="_blank"
                   href={downloadLink}
                   onClick={this.handleDownloadClick}

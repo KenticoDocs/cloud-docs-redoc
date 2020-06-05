@@ -77,8 +77,8 @@ export class OperationModel implements IMenuItem {
       operationSpec.operationId !== undefined
         ? 'operation/' + operationSpec.operationId
         : parent !== undefined
-        ? parent.id + this.pointer
-        : this.pointer;
+          ? parent.id + this.pointer
+          : this.pointer;
 
     this.name = getOperationSummary(operationSpec);
     this.description = operationSpec.description;
@@ -159,6 +159,8 @@ export class OperationModel implements IMenuItem {
     if (this.options.requiredPropsFirst) {
       return sortByRequired(_parameters);
     }
+
+    return _parameters;
   }
 
   @memoize

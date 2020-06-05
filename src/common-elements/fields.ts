@@ -80,7 +80,6 @@ export const ExampleValue = styled(FieldLabel)`
     padding: 0 ${theme.spacing.unit}px;
     border: 1px solid ${transparentize(0.9, theme.colors.text.primary)};
     font-family: ${theme.typography.code.fontFamily};
-    color: ${theme.typography.code.color};
 }`};
   & + & {
     margin-left: 0;
@@ -99,6 +98,7 @@ export const ConstraintItem = styled(FieldLabel)`
     padding: 3px 8px;
     border: 1px solid #4863BE;
     border-radius: 16px 16px 16px 4px;
+    font-family: ${theme.typography.code.fontFamily};
 }`};
   & + & {
     margin-left: 0;

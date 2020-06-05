@@ -1,3 +1,4 @@
+// import { observe } from 'mobx';
 import { observer } from 'mobx-react';
 import * as React from 'react';
 
@@ -17,7 +18,7 @@ export interface MenuItemProps {
 
 @observer
 export class MenuItem extends React.Component<MenuItemProps> {
-  ref: Element | null;
+  ref = React.createRef<HTMLLabelElement>();
 
   activate = (evt: React.MouseEvent<HTMLElement>) => {
     this.props.onActivate!(this.props.item);
@@ -33,48 +34,43 @@ export class MenuItem extends React.Component<MenuItemProps> {
   }
 
   scrollIntoViewIfActive() {
-    if (this.props.item.active && this.ref) {
-      this.ref.scrollIntoViewIfNeeded();
+    if (this.props.item.active && this.ref.current) {
+      this.ref.current.scrollIntoViewIfNeeded();
     }
   }
 
-  saveRef = ref => {
-    this.ref = ref;
-  };
-
   render() {
     const { item, withoutChildren, status } = this.props;
-
     return (
       <MenuItemLi
         onClick={this.activate}
         depth={item.depth}
-        ref={this.saveRef}
         data-item-id={item.id}
       >
         {item.type === 'operation' ? (
           <OperationMenuItemContent {...this.props} item={item as OperationModel} status={status} />
         ) : (
-          <MenuItemLabel
-            depth={item.depth}
-            active={item.active}
-            type={item.type}
-            className={item.items.length > 0 ? 'has-subnav' : ''}
-          >
-            {(item.depth > 0 && item.items.length > 0 && (
-              <ShelfIcon
-                float={'left'}
-                direction={item.expanded ? 'down' : 'right'}
-                size={'1.5em'}
-              />
-            )) ||
-              null}
-            <MenuItemTitle title={item.name}>
-              {item.name}
-              {this.props.children}
-            </MenuItemTitle>
-          </MenuItemLabel>
-        )}
+            <MenuItemLabel
+              depth={item.depth}
+              active={item.active}
+              type={item.type}
+              ref={this.ref}
+              className={item.items.length > 0 ? 'has-subnav' : ''}
+            >
+              {(item.depth > 0 && item.items.length > 0 && (
+                <ShelfIcon
+                  float={'left'}
+                  direction={item.expanded ? 'down' : 'right'}
+                  size={'1.5em'}
+                />
+              )) ||
+                null}
+              <MenuItemTitle title={item.name}>
+                {item.name}
+                {this.props.children}
+              </MenuItemTitle>
+            </MenuItemLabel>
+          )}
         {!withoutChildren && item.items && item.items.length > 0 && (
           <MenuItems
             expanded={item.expanded}
@@ -95,10 +91,23 @@ export interface OperationMenuItemContentProps {
 
 @observer
 class OperationMenuItemContent extends React.Component<OperationMenuItemContentProps> {
+  ref = React.createRef<HTMLLabelElement>();
+
+  componentDidUpdate() {
+    if (this.props.item.active && this.ref.current) {
+      this.ref.current.scrollIntoViewIfNeeded();
+    }
+  }
+
   render() {
     const { item, status } = this.props;
     return (
-      <MenuItemLabel depth={item.depth} active={item.active} deprecated={item.deprecated}>
+      <MenuItemLabel
+        depth={item.depth}
+        active={item.active}
+        deprecated={item.deprecated}
+        ref={this.ref}
+      >
         <OperationBadge type={item.httpVerb}>{shortenHTTPVerb(item.httpVerb)}</OperationBadge>
         <MenuItemTitle width="calc(100% - 38px)">
           {item.name}

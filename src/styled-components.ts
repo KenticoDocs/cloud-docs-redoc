@@ -10,15 +10,13 @@ const {
   createGlobalStyle,
   keyframes,
   ThemeProvider,
-} = (styledComponents as any) as styledComponents.ThemedStyledComponentsModule<
-  ResolvedThemeInterface
->;
+} = styledComponents as styledComponents.ThemedStyledComponentsModule<ResolvedThemeInterface>;
 
 export const media = {
   lessThan(breakpoint, print?: boolean) {
     return (...args) => css`
       @media ${print ? 'print, ' : ''} screen and (max-width: ${props =>
-          props.theme.breakpoints[breakpoint]}) {
+        props.theme.breakpoints[breakpoint]}) {
         ${(css as any)(...args)};
       }
     `;
@@ -35,7 +33,7 @@ export const media = {
   between(firstBreakpoint, secondBreakpoint) {
     return (...args) => css`
       @media (min-width: ${props =>
-          props.theme.breakpoints[firstBreakpoint]}) and (max-width: ${props =>
+        props.theme.breakpoints[firstBreakpoint]}) and (max-width: ${props =>
           props.theme.breakpoints[secondBreakpoint]}) {
         ${(css as any)(...args)};
       }

@@ -1,9 +1,9 @@
 // @ts-ignore
-import Dropdown from 'react-dropdown';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import ReactDropdown from 'react-dropdown';
 
 import { transparentize } from 'polished';
 import styled from '../../styled-components';
-
 import { StyledDropdown } from '../../common-elements';
 
 export const MimeLabel = styled.div`

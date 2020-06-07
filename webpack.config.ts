@@ -5,7 +5,7 @@ import * as webpack from 'webpack';
 import * as path from 'path';
 
 const nodeExternals = require('webpack-node-externals')({
-  // bundle in moudules that need transpiling + non-js (e.g. css)
+  // bundle in modules that need transpiling + non-js (e.g. css)
   whitelist: [
     'swagger2openapi',
     /reftools/,
@@ -63,19 +63,19 @@ export default (env: { standalone?: boolean } = {}, { mode }) => ({
 
   externals: env.standalone
     ? {
-        esprima: 'esprima',
-        'node-fetch': 'null',
-        'node-fetch-h2': 'null',
-        yaml: 'null',
-        'safe-json-stringify': 'null',
-      }
+      esprima: 'esprima',
+      'node-fetch': 'null',
+      'node-fetch-h2': 'null',
+      yaml: 'null',
+      'safe-json-stringify': 'null',
+    }
     : (context, request, callback) => {
-        // ignore node-fetch dep of swagger2openapi as it is not used
-        if (/esprima|node-fetch|node-fetch-h2|yaml|safe-json-stringify$/i.test(request)) {
-          return callback(null, 'var undefined');
-        }
-        return nodeExternals(context, request, callback);
-      },
+      // ignore node-fetch dep of swagger2openapi as it is not used
+      if (/esprima|node-fetch|node-fetch-h2|yaml|safe-json-stringify$/i.test(request)) {
+        return callback(null, 'var undefined');
+      }
+      return nodeExternals(context, request, callback);
+    },
 
   module: {
     rules: [
@@ -105,7 +105,7 @@ export default (env: { standalone?: boolean } = {}, { mode }) => ({
                   'babel-plugin-styled-components',
                   {
                     minify: true,
-                    displayName: true,
+                    displayName: mode !== 'production',
                   },
                 ],
               ],

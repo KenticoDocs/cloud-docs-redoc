@@ -31,7 +31,7 @@ interface Options {
   redocOptions?: any;
 }
 
-const BUNDLES_DIR = dirname(require.resolve('kentico-cloud-redoc'));
+const BUNDLES_DIR = dirname(require.resolve('kentico-kontent-redoc'));
 
 /* tslint:disable-next-line */
 YargsParser.command(
@@ -250,13 +250,13 @@ async function getPageHTML(
       ssr
         ? 'hydrate(__redoc_state, container);'
         : `init("spec.json", ${JSON.stringify(redocOptions)}, container)`
-    };
+      };
 
     </script>`,
     redocHead: ssr
       ? (cdn
-          ? '<script src="https://unpkg.com/redoc@next/bundles/redoc.standalone.js"></script>'
-          : `<script>${redocStandaloneSrc}</script>`) + css
+        ? '<script src="https://unpkg.com/redoc@next/bundles/redoc.standalone.js"></script>'
+        : `<script>${redocStandaloneSrc}</script>`) + css
       : '<script src="redoc.standalone.js"></script>',
     title,
     templateOptions,

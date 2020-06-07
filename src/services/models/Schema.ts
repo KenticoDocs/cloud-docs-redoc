@@ -59,7 +59,7 @@ export class SchemaModel {
 
   rawSchema: OpenAPISchema;
   schema: MergedOpenAPISchema;
-  extensions?: Dict<any>;
+  extensions?: Record<string, any>;
 
   /**
    * @param isChild if schema discriminator Child
@@ -240,6 +240,15 @@ export class SchemaModel {
     }
 
     const mapping = discriminator.mapping || {};
+
+    // Defines if the mapping is exhaustive. This avoids having references
+    // that overlap with the mapping entries
+    let isLimitedToMapping = discriminator['x-explicitMappingOnly'] || false;
+    // if there are no mappings, assume non-exhaustive
+    if (Object.keys(mapping).length === 0) {
+      isLimitedToMapping = false;
+    }
+
     const explicitInversedMapping = {};
     for (const name in mapping) {
       const $ref = mapping[name];
@@ -252,7 +261,9 @@ export class SchemaModel {
       }
     }
 
-    const inversedMapping = { ...implicitInversedMapping, ...explicitInversedMapping };
+    const inversedMapping = isLimitedToMapping
+      ? { ...explicitInversedMapping }
+      : { ...implicitInversedMapping, ...explicitInversedMapping };
 
     let refs: Array<{ $ref; name }> = [];
 
@@ -283,7 +294,7 @@ export class SchemaModel {
 
         if (indexLeft < 0 && indexRight < 0) {
           // out of mapping, order by name
-          return left.name.localCompare(right.name);
+          return left.name.localeCompare(right.name);
         } else if (indexLeft < 0) {
           // the right is found, so mapping wins
           return 1;

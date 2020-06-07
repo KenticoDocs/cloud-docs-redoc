@@ -112,7 +112,7 @@ export class OpenAPIParser {
   };
 
   /**
-   * checks if the objectt is OpenAPI reference (containts $ref property)
+   * checks if the object is OpenAPI reference (contains $ref property)
    */
   isRef(obj: any): obj is OpenAPIRef {
     if (!obj) {
@@ -122,7 +122,7 @@ export class OpenAPIParser {
   }
 
   /**
-   * resets visited enpoints. should be run after
+   * resets visited endpoints. should be run after
    */
   resetVisited() {
     if (process.env.NODE_ENV !== 'production') {
@@ -146,9 +146,9 @@ export class OpenAPIParser {
   /**
    * Resolve given reference object or return as is if it is not a reference
    * @param obj object to dereference
-   * @param forceCircular whether to dereference even if it is cirular ref
+   * @param forceCircular whether to dereference even if it is circular ref
    */
-  deref<T extends object>(obj: OpenAPIRef | T, forceCircular: boolean = false): T {
+  deref<T extends object>(obj: OpenAPIRef | T, forceCircular = false): T {
     if (this.isRef(obj)) {
       const resolved = this.byRef<T>(obj.$ref)!;
       const visited = this._refCounter.visited(obj.$ref);
@@ -177,10 +177,10 @@ export class OpenAPIParser {
   }
 
   /**
-   * Merge allOf contsraints.
+   * Merge allOf constraints.
    * @param schema schema with allOF
    * @param $ref pointer of the schema
-   * @param forceCircular whether to dereference children even if it is a cirular ref
+   * @param forceCircular whether to dereference children even if it is a circular ref
    */
   mergeAllOf(
     schema: OpenAPISchema,
@@ -239,7 +239,9 @@ export class OpenAPIParser {
         receiver.type !== undefined &&
         subSchema.type !== undefined
       ) {
-        throw new Error(`Incompatible types in allOf at "${$ref}"`);
+        console.warn(
+          `Incompatible types in allOf at "${$ref}": "${receiver.type}" and "${subSchema.type}"`,
+        );
       }
 
       if (subSchema.type !== undefined) {
@@ -275,13 +277,13 @@ export class OpenAPIParser {
       }
 
       // merge rest of constraints
-      // TODO: do more intelegent merge
+      // TODO: do more intelligent merge
       receiver = { ...subSchema, ...receiver };
 
       if (subSchemaRef) {
         receiver.parentRefs!.push(subSchemaRef);
         if (receiver.title === undefined && isNamedDefinition(subSchemaRef)) {
-          // this is not so correct behaviour. comented out for now
+          // this is not so correct behaviour. commented out for now
           // ref: https://github.com/Redocly/redoc/issues/601
           // receiver.title = JsonPointer.baseName(subSchemaRef);
         }
@@ -296,8 +298,8 @@ export class OpenAPIParser {
    * returns map of definition pointer to definition name
    * @param $refs array of references to find derived from
    */
-  findDerived($refs: string[]): Dict<string[] | string> {
-    const res: Dict<string[]> = {};
+  findDerived($refs: string[]): Record<string, string[] | string> {
+    const res: Record<string, string[]> = {};
     const schemas = (this.spec.components && this.spec.components.schemas) || {};
     for (const defName in schemas) {
       const def = this.deref(schemas[defName]);

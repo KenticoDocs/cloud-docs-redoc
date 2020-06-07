@@ -30,7 +30,7 @@ function getDefaultStyleValue(parameterLocation: OpenAPIParameterLocation): Open
  */
 export class FieldModel {
   @observable
-  expanded: boolean = false;
+  expanded: boolean | undefined;
 
   schema: SchemaModel;
   name: string;
@@ -40,7 +40,7 @@ export class FieldModel {
   deprecated: boolean;
   in?: OpenAPIParameterLocation;
   kind: string;
-  extensions?: Dict<any>;
+  extensions?: Record<string, any>;
   explode: boolean;
   style?: OpenAPIParameterStyle;
 

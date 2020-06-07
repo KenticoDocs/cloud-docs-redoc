@@ -12,10 +12,11 @@ function throttle(func, wait) {
       context = args = null;
     }
   };
-  return function() {
+  return function () {
     const now = new Date().getTime();
     const remaining = wait - (now - previous);
     context = this;
+    // eslint-disable-next-line prefer-rest-params
     args = arguments;
     if (remaining <= 0 || remaining > wait) {
       if (timeout) {

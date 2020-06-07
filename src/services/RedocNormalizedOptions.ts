@@ -24,23 +24,27 @@ export interface RedocRawOptions {
   hideSingleRequestSampleTab?: boolean | string;
   menuToggle?: boolean | string;
   jsonSampleExpandLevel?: number | string | 'all';
+  hideSchemaTitles?: boolean | string;
+  payloadSampleIdx?: number;
+  expandSingleSchemaField?: boolean | string;
 
   unstable_ignoreMimeParameters?: boolean;
 
-  allowedMdComponents?: Dict<MDXComponentMeta>;
+  allowedMdComponents?: Record<string, MDXComponentMeta>;
 
   labels?: LabelsConfigRaw;
 
   enumSkipQuotes?: boolean | string;
+
   expandDefaultServerVariables?: boolean;
 }
 
-function argValueToBoolean(val?: string | boolean): boolean {
+function argValueToBoolean(val?: string | boolean, defaultValue?: boolean): boolean {
   if (val === undefined) {
-    return false;
+    return defaultValue || false;
   }
   if (typeof val === 'string') {
-    return true;
+    return val === 'false' ? false : true;
   }
   return val;
 }
@@ -108,11 +112,30 @@ export class RedocNormalizedOptions {
       return true;
     }
 
-    if (typeof value === 'string') {
-      return value.split(',').map(ext => ext.trim());
+    if (typeof value !== 'string') {
+      return value;
     }
 
-    return value;
+    switch (value) {
+      case 'true':
+        return true;
+      case 'false':
+        return false;
+      default:
+        return value.split(',').map(ext => ext.trim());
+    }
+  }
+
+  static normalizePayloadSampleIdx(value: RedocRawOptions['payloadSampleIdx']): number {
+    if (typeof value === 'number') {
+      return Math.max(0, value); // always greater or equal than 0
+    }
+
+    if (typeof value === 'string') {
+      return isFinite(value) ? parseInt(value, 10) : 0;
+    }
+
+    return 0;
   }
 
   private static normalizeJsonSampleExpandLevel(level?: number | string | 'all'): number {
@@ -143,16 +166,31 @@ export class RedocNormalizedOptions {
   menuToggle: boolean;
   jsonSampleExpandLevel: number;
   enumSkipQuotes: boolean;
+  hideSchemaTitles: boolean;
+  payloadSampleIdx: number;
+  expandSingleSchemaField: boolean;
 
   /* tslint:disable-next-line */
   unstable_ignoreMimeParameters: boolean;
-  allowedMdComponents: Dict<MDXComponentMeta>;
+  allowedMdComponents: Record<string, MDXComponentMeta>;
 
   expandDefaultServerVariables: boolean;
 
   constructor(raw: RedocRawOptions, defaults: RedocRawOptions = {}) {
     raw = { ...defaults, ...raw };
     const hook = raw.theme && raw.theme.extensionsHook;
+
+    // migrate from old theme
+    // if ((raw.theme as any)?.menu && !raw.theme?.sidebar) {
+    //   console.warn('Theme setting "menu" is deprecated. Rename to "sidebar"');
+    //   raw.theme!.sidebar = (raw.theme as any).menu;
+    // }
+
+    // if ((raw.theme as any)?.codeSample && !raw.theme?.codeBlock) {
+    //   console.warn('Theme setting "codeSample" is deprecated. Rename to "codeBlock"');
+    //   raw.theme!.codeBlock = (raw.theme as any).codeSample;
+    // }
+
     this.theme = resolveTheme(
       mergeObjects({} as any, defaultTheme, { ...raw.theme, extensionsHook: undefined }),
     );
@@ -176,12 +214,16 @@ export class RedocNormalizedOptions {
     this.onlyRequiredInSamples = argValueToBoolean(raw.onlyRequiredInSamples);
     this.showExtensions = RedocNormalizedOptions.normalizeShowExtensions(raw.showExtensions);
     this.hideSingleRequestSampleTab = argValueToBoolean(raw.hideSingleRequestSampleTab);
-    this.menuToggle = argValueToBoolean(raw.menuToggle);
+    this.menuToggle = argValueToBoolean(raw.menuToggle, true);
     this.jsonSampleExpandLevel = RedocNormalizedOptions.normalizeJsonSampleExpandLevel(
       raw.jsonSampleExpandLevel,
     );
     this.enumSkipQuotes = argValueToBoolean(raw.enumSkipQuotes);
+    this.hideSchemaTitles = argValueToBoolean(raw.hideSchemaTitles);
+    this.payloadSampleIdx = RedocNormalizedOptions.normalizePayloadSampleIdx(raw.payloadSampleIdx);
+    this.expandSingleSchemaField = argValueToBoolean(raw.expandSingleSchemaField);
 
+    // eslint-disable-next-line @typescript-eslint/camelcase
     this.unstable_ignoreMimeParameters = argValueToBoolean(raw.unstable_ignoreMimeParameters);
 
     this.allowedMdComponents = raw.allowedMdComponents || {};

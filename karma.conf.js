@@ -1,4 +1,4 @@
-module.exports = function(config) {
+module.exports = function (config) {
   const testWebpackConfig = require('./build/webpack.test.js');
   const travis = process.env.TRAVIS;
 

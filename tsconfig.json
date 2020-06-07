@@ -4,10 +4,10 @@
     "moduleResolution": "node",
     "target": "es5",
     "noImplicitAny": false,
-    "noUnusedParameters": false,
+    "noUnusedParameters": true,
     "noUnusedLocals": true,
     "strictNullChecks": true,
-    "sourceMap": false,
+    "sourceMap": true,
     "declaration": true,
     "noEmitHelpers": true,
     "importHelpers": true,
@@ -34,9 +34,11 @@
     "e2e/**"
   ],
   "include": [
+    "cli/index.ts",
     "./custom.d.ts",
     "./demo/playground/hmr-playground.tsx",
     "./src/**/*.ts?",
-    "demo/*.tsx"
+    "demo/*.tsx",
+    "src/empty.js"
   ]
 }

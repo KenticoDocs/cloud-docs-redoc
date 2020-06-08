@@ -11,6 +11,9 @@
 
 demo/dist/
 
+# Visual Studio
+.vs
+
 ### Node ###
 # Logs
 logs

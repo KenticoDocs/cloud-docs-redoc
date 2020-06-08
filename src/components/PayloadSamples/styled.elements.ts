@@ -7,8 +7,13 @@ import styled from '../../styled-components';
 import { StyledDropdown } from '../../common-elements';
 
 export const MimeLabel = styled.div`
+  padding: 0.9em;
+  background-color: ${({ theme }) => transparentize(0.6, theme.rightPanel.backgroundColor)};
   margin: 0 0 10px 0;
   display: block;
+  font-family: ${({ theme }) => theme.typography.headings.fontFamily};
+  font-size: 0.929em;
+  line-height: 1.5em;
 `;
 
 export const DropdownLabel = styled.span`
@@ -33,10 +38,14 @@ export const InvertedSimpleDropdown = styled(StyledDropdown)`
   margin: 0 0 10px 0;
   display: block;
   background-color: ${({ theme }) => transparentize(0.6, theme.rightPanel.backgroundColor)};
+  .Dropdown-placeholder {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
   .Dropdown-control {
     margin-top: 0;
   }
-
   .Dropdown-control,
   .Dropdown-control:hover {
     font-size: 1em;
@@ -53,6 +62,11 @@ export const InvertedSimpleDropdown = styled(StyledDropdown)`
   .Dropdown-menu {
     margin: 0;
     margin-top: 2px;
+    .Dropdown-option {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
   }
 `;
 

@@ -21,16 +21,21 @@ import { FieldDetail } from './FieldDetail';
 import { Badge } from '../../common-elements/';
 
 import { l } from '../../services/Labels';
+import { OptionsContext } from '../OptionsProvider';
 
 export class FieldDetails extends React.PureComponent<FieldProps> {
+  static contextType = OptionsContext;
   render() {
     const { showExamples, field, renderDiscriminatorSwitch } = this.props;
-    const { enumSkipQuotes } = this.context;
+    const { enumSkipQuotes, hideSchemaTitles } = this.context;
 
     const { schema, description, example, deprecated } = field;
     const rawDefault = !!enumSkipQuotes || field.in === 'header'; // having quotes around header field default values is confusing and inappropriate
 
+    const rawDefault = !!enumSkipQuotes || field.in === 'header'; // having quotes around header field default values is confusing and inappropriate
+
     let exampleField: JSX.Element | null = null;
+
     if (showExamples && example !== undefined) {
       const label = l('example') + ':';
       if (field.in && (field.style || field.serializationMime)) {
@@ -55,7 +60,7 @@ export class FieldDetails extends React.PureComponent<FieldProps> {
               &gt;{' '}
             </TypeFormat>
           )}
-          {/*{schema.title && <TypeTitle> ({schema.title}) </TypeTitle>}*/}
+          {schema.title && !hideSchemaTitles && <TypeTitle> ({schema.title}) </TypeTitle>}
           <ConstraintsView constraints={schema.constraints} />
           {schema.nullable && <NullableLabel> {l('nullable')} </NullableLabel>}
           {schema.pattern && <PatternLabel> {schema.pattern} </PatternLabel>}

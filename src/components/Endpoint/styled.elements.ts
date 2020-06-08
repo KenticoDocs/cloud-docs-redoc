@@ -18,7 +18,7 @@ export const EndpointInfo = styled.div<{ expanded?: boolean; inverted?: boolean 
   padding: 10px 30px 10px ${props => (props.inverted ? '10px' : '20px')};
   border-radius: ${props => (props.inverted ? '0' : '4px 4px 0 0')};
   background-color: ${props =>
-    props.inverted ? 'transparent' : props.theme.codeSample.backgroundColor};
+    props.inverted ? 'transparent' : props.theme.codeBlock.backgroundColor};
   display: flex;
   white-space: nowrap;
   align-items: center;
@@ -34,14 +34,14 @@ export const EndpointInfo = styled.div<{ expanded?: boolean; inverted?: boolean 
   }
 `;
 
-export const HttpVerb = styled.span.attrs((props: { type: string }) => ({
+export const HttpVerb = styled.span.attrs((props: { type: string; compact?: boolean }) => ({
   className: `http-verb ${props.type}`,
-}))<{ type: string }>`
+})) <{ type: string; compact?: boolean }>`
   font-size: 1em;
   line-height: 20px;
   background-color: ${(props: any) => props.theme.colors.http[props.type] || '#999999'};
   color: #ffffff;
-  padding: 6px 12px 4px;
+  padding: ${props => (props.compact ? '2px 8px' : '6px 12px 4px')};
   text-transform: uppercase;
   font-family: ${props => props.theme.typography.headings.fontFamily};
   margin: 0;

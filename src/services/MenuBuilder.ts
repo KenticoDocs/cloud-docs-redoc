@@ -1,8 +1,16 @@
-import { OpenAPIOperation, OpenAPIParameter, OpenAPISpec, OpenAPITag, Referenced } from '../types';
+import {
+  OpenAPIOperation,
+  OpenAPIParameter,
+  OpenAPISpec,
+  OpenAPITag,
+  Referenced,
+  OpenAPIServer,
+} from '../types';
 import {
   isOperationName,
   SECURITY_DEFINITIONS_COMPONENT_NAME,
   setSecuritySchemePrefix,
+  JsonPointer,
 } from '../utils';
 import { MarkdownRenderer } from './MarkdownRenderer';
 import { GroupModel, OperationModel } from './models';
@@ -15,12 +23,14 @@ export type TagInfo = OpenAPITag & {
 };
 
 export type ExtendedOpenAPIOperation = {
+  pointer: string;
   pathName: string;
   httpVerb: string;
   pathParameters: Array<Referenced<OpenAPIParameter>>;
+  pathServers: Array<OpenAPIServer> | undefined;
 } & OpenAPIOperation;
 
-export type TagsInfoMap = Dict<TagInfo>;
+export type TagsInfoMap = Record<string, TagInfo>;
 
 export interface TagGroup {
   name: string;
@@ -66,6 +76,13 @@ export class MenuBuilder {
     const renderer = new MarkdownRenderer(options);
     const headings = renderer.extractHeadings(description || '');
 
+    if (headings.length && parent && parent.description) {
+      parent.description = MarkdownRenderer.getTextBeforeHading(
+        parent.description,
+        headings[0].name,
+      );
+    }
+
     const mapHeadingsDeep = (_parent, items, depth = 1) =>
       items.map(heading => {
         const group = new GroupModel('section', heading, _parent);
@@ -88,7 +105,7 @@ export class MenuBuilder {
   }
 
   /**
-   * Returns array of OperationsGroup items for the tag groups (x-tagGroups vendor extenstion)
+   * Returns array of OperationsGroup items for the tag groups (x-tagGroups vendor extension)
    * @param tags value of `x-tagGroups` vendor extension
    */
   static getTagGroupsItems(
@@ -230,8 +247,10 @@ export class MenuBuilder {
           tag.operations.push({
             ...operationInfo,
             pathName,
+            pointer: JsonPointer.compile(['paths', pathName, operationName]),
             httpVerb: operationName,
             pathParameters: path.parameters || [],
+            pathServers: path.servers,
           });
         }
       }

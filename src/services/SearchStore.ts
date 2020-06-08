@@ -40,6 +40,11 @@ export class SearchStore<T> {
     this.searchWorker.add(title, body, meta);
   }
 
+  dispose() {
+    (this.searchWorker as any).terminate();
+    (this.searchWorker as any).dispose();
+  }
+
   search(q: string) {
     return this.searchWorker.search<T>(q);
   }

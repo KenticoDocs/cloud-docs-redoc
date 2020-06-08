@@ -22,8 +22,8 @@ function htmlEncode(t) {
     : '';
 }
 
-function escapeForStringLiteral(str: string) {
-  return str.replace(/([\\"])/g, '\\$1');
+function stringifyStringLiteral(str: string) {
+  return JSON.stringify(str).slice(1, -1);
 }
 
 function decorateWithSpan(value, className) {
@@ -58,11 +58,11 @@ function valueToHTML(value, maxExpandLevel: number) {
         '<a href="' +
         encodeURI(value) +
         '">' +
-        htmlEncode(escapeForStringLiteral(value)) +
+        htmlEncode(stringifyStringLiteral(value)) +
         '</a>' +
         decorateWithSpan('"', 'token string');
     } else {
-      output += decorateWithSpan('"' + escapeForStringLiteral(value) + '"', 'token string');
+      output += decorateWithSpan('"' + stringifyStringLiteral(value) + '"', 'token string');
     }
   } else if (valueType === 'boolean') {
     output += decorateWithSpan(value, 'token boolean');

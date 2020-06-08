@@ -21,11 +21,14 @@ export const linksCss = css`
   }
 `;
 
-export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
-  'div',
-  ResolvedThemeInterface,
-  { compact?: boolean; inline?: boolean }
->)`
+export const StyledMarkdownBlock = styled(
+  PrismDiv as StyledComponent<
+    'div',
+    ResolvedThemeInterface,
+    { compact?: boolean; inline?: boolean }
+  >,
+)`
+
   font-family: ${props => props.theme.typography.fontFamily};
   font-weight: ${props => props.theme.typography.fontWeightRegular};
   line-height: ${props => props.theme.typography.lineHeight};
@@ -97,8 +100,8 @@ export const StyledMarkdownBlock = styled(PrismDiv as StyledComponent<
 
   pre {
     font-family: ${props => props.theme.typography.code.fontFamily};
-    white-space: ${({ theme }) => (theme.typography.code.wrap ? 'pre-wrap' : 'pre')};
-    background-color: transparent;
+    white-space:${({ theme }) => (theme.typography.code.wrap ? 'pre-wrap' : 'pre')};
+    background-color: ${({ theme }) => theme.codeBlock.backgroundColor};
     color: white;
     padding: ${props => props.theme.spacing.unit * 4}px;
     overflow-x: auto;

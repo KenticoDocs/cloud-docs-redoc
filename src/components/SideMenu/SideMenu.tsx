@@ -2,16 +2,14 @@ import { observer } from 'mobx-react';
 import * as React from 'react';
 
 import { IMenuItem, MenuStore } from '../../services/MenuStore';
+import { OptionsContext } from '../OptionsProvider';
 import { MenuItems } from './MenuItems';
 
 import { PerfectScrollbarWrap } from '../../common-elements/perfect-scrollbar';
 
 @observer
-export class SideMenu extends React.Component<{
-  menu: MenuStore;
-  className?: string;
-  status?: string;
-}> {
+export class SideMenu extends React.Component<{ menu: MenuStore; className?: string; status?: string }> {
+  static contextType = OptionsContext;
   private _updateScroll?: () => void;
 
   render() {
@@ -27,6 +25,11 @@ export class SideMenu extends React.Component<{
         }}
       >
         <MenuItems items={store.items} onActivate={this.activate} root={true} status={status} />
+        <RedocAttribution>
+          <a target="_blank" rel="noopener noreferrer" href="https://github.com/Redocly/redoc">
+             Powered by ReDoc
+          </a>
+        </RedocAttribution>
       </PerfectScrollbarWrap>
     );
   }

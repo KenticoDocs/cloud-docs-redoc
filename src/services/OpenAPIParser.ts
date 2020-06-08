@@ -229,9 +229,9 @@ export class OpenAPIParser {
         };
       })
       .filter(child => child !== undefined) as Array<{
-        $ref: string | undefined;
-        schema: MergedOpenAPISchema;
-      }>;
+      $ref: string | undefined;
+      schema: MergedOpenAPISchema;
+    }>;
 
     for (const { $ref: subSchemaRef, schema: subSchema } of allOfSchemas) {
       if (

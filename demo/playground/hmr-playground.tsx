@@ -37,7 +37,7 @@ const options: RedocRawOptions = {
     spacing: {
       unit: 4,
     },
-    codeSample: {
+    codeBlock: {
       backgroundColor: 'transparent',
     },
     colors: {
@@ -101,7 +101,7 @@ const options: RedocRawOptions = {
       width: '40%',
       textColor: '#231F20',
     },
-    menu: {
+    sidebar: {
       width: '352px',
       textColor: '#908E8F',
       backgroundColor: '#fff',

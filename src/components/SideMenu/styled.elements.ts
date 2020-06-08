@@ -2,11 +2,11 @@ import * as classnames from 'classnames';
 import { darken } from 'polished';
 
 import { deprecatedCss, ShelfIcon } from '../../common-elements';
-import styled, { css, ResolvedThemeInterface } from '../../styled-components';
+import styled, { css, /* ResolvedThemeInterface */ } from '../../styled-components';
 
 export const OperationBadge = styled.span.attrs((props: { type: string }) => ({
   className: `operation-type ${props.type}`,
-}))<{ type: string }>`
+})) <{ type: string }>`
   width: 37px;
   display: inline-block;
   background-color: #333;
@@ -59,16 +59,6 @@ export const OperationBadge = styled.span.attrs((props: { type: string }) => ({
     background-color: ${props => props.theme.colors.http.head};
   }
 `;
-
-function menuItemActiveBg(depth, { theme }): string {
-  if (depth > 1) {
-    return darken(0.1, theme.menu.backgroundColor);
-  } else if (depth === 1) {
-    return darken(0.05, theme.menu.backgroundColor);
-  } else {
-    return '';
-  }
-}
 
 export const MenuItemUl = styled.ul<{ expanded: boolean }>`
   margin: 0;
@@ -125,7 +115,7 @@ export const MenuItemLabel = styled.label.attrs((props: MenuItemLabelType) => ({
   className: classnames('-depth' + props.depth, {
     active: props.active,
   }),
-}))<MenuItemLabelType>`
+})) <MenuItemLabelType>`
   cursor: pointer;
   font-weight: ${props => (props.active ? '400' : '300')};
   color: ${props =>

@@ -7,7 +7,7 @@ import {
   TypeFormat,
   TypeName,
   TypePrefix,
-  // TypeTitle,
+  TypeTitle,
 } from '../../common-elements/fields';
 import { serializeParameterValue } from '../../utils/openapi';
 import { ExternalDocumentation } from '../ExternalDocumentation/ExternalDocumentation';
@@ -30,8 +30,6 @@ export class FieldDetails extends React.PureComponent<FieldProps> {
     const { enumSkipQuotes, hideSchemaTitles } = this.context;
 
     const { schema, description, example, deprecated } = field;
-    const rawDefault = !!enumSkipQuotes || field.in === 'header'; // having quotes around header field default values is confusing and inappropriate
-
     const rawDefault = !!enumSkipQuotes || field.in === 'header'; // having quotes around header field default values is confusing and inappropriate
 
     let exampleField: JSX.Element | null = null;

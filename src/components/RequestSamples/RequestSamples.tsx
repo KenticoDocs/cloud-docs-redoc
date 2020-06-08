@@ -30,38 +30,37 @@ export class RequestSamples extends React.Component<RequestSamplesProps> {
 
           <Tabs defaultIndex={0}>
             <TabList hidden={hideTabList}>
-            {hasBodySample && <Tab key="payload" className="tab-click_payload" className="tab-click_payload"> Payload </Tab>}
               {samples.map(sample => (
-                  <Tab key={sample.lang + '_' + (sample.label || '')}
-                      className={(sample.label !== undefined
-                          ? 'tab-click_' + sample.label
-                          : 'tab-click_' + sample.lang
-                      )
-                          .toLowerCase()
-                          .replace(/ /g, '_')
-                          .replace(/\./g, '_')}
-                  >
+                <Tab key={sample.lang + '_' + (sample.label || '')}
+                  className={(sample.label !== undefined
+                    ? 'tab-click_' + sample.label
+                    : 'tab-click_' + sample.lang
+                  )
+                    .toLowerCase()
+                    .replace(/ /g, '_')
+                    .replace(/\./g, '_')}
+                >
                   {sample.label !== undefined ? sample.label : sample.lang}
                 </Tab>
               ))}
             </TabList>
             {samples.map(sample => (
-            <TabPanel key={sample.lang + '_' + (sample.label || '')}
+              <TabPanel key={sample.lang + '_' + (sample.label || '')}
                 className={(sample.label !== undefined
-                    ? 'tab-click_' + sample.label
-                    : 'tab-click_' + sample.lang
+                  ? 'tab-click_' + sample.label
+                  : 'tab-click_' + sample.lang
                 )
-                    .toLowerCase()
-                    .replace(/ /g, '_')
-                    .replace(/\./g, '_')}
-            >
+                  .toLowerCase()
+                  .replace(/ /g, '_')
+                  .replace(/\./g, '_')}
+              >
                 {isPayloadSample(sample) ? (
                   <div>
                     <PayloadSamples content={sample.requestBodyContent} />
                   </div>
                 ) : (
-                  <SourceCodeWithCopy lang={sample.lang} source={sample.source} />
-                )}
+                    <SourceCodeWithCopy lang={sample.lang} source={sample.source} />
+                  )}
               </TabPanel>
             ))}
           </Tabs>

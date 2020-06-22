@@ -27,7 +27,7 @@ const tsLoader = env => ({
   },
 });
 
-const babelLoader = mode => ({
+const babelLoader = () => ({
   loader: 'babel-loader',
   options: {
     generatorOpts: {
@@ -42,7 +42,7 @@ const babelLoader = mode => ({
         'babel-plugin-styled-components',
         {
           minify: true,
-          displayName: mode !== 'production',
+          displayName: true,
         },
       ],
     ]),
@@ -63,8 +63,8 @@ export default (env: { playground?: boolean; bench?: boolean } = {}, { mode }) =
       env.playground
         ? 'playground/hmr-playground.tsx'
         : env.bench
-          ? '../benchmark/index.tsx'
-          : 'index.tsx',
+        ? '../benchmark/index.tsx'
+        : 'index.tsx',
     ),
   ],
   output: {
@@ -86,8 +86,8 @@ export default (env: { playground?: boolean; bench?: boolean } = {}, { mode }) =
     alias:
       mode !== 'production'
         ? {
-          'react-dom': '@hot-loader/react-dom',
-        }
+            'react-dom': '@hot-loader/react-dom',
+          }
         : {},
   },
 
@@ -114,7 +114,7 @@ export default (env: { playground?: boolean; bench?: boolean } = {}, { mode }) =
         use: compact([
           mode !== 'production' ? babelHotLoader : undefined,
           tsLoader(env),
-          babelLoader(mode),
+          babelLoader(),
         ]),
         exclude: [/node_modules/],
       },
@@ -154,8 +154,8 @@ export default (env: { playground?: boolean; bench?: boolean } = {}, { mode }) =
       template: env.playground
         ? 'demo/playground/index.html'
         : env.bench
-          ? 'benchmark/index.html'
-          : 'demo/index.html',
+        ? 'benchmark/index.html'
+        : 'demo/index.html',
     }),
     new ForkTsCheckerWebpackPlugin(),
     ignore(/js-yaml\/dumper\.js$/),

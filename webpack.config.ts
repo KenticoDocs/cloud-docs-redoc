@@ -35,7 +35,7 @@ const BANNER = `ReDoc - OpenAPI/Swagger-generated API Reference Documentation
   Version: ${VERSION}
   Repo: https://github.com/Redocly/redoc`;
 
-export default (env: { standalone?: boolean } = {}, { mode }) => ({
+export default (env: { standalone?: boolean } = {}, {}) => ({
   entry: env.standalone ? ['./src/polyfills.ts', './src/standalone.tsx'] : './src/index.ts',
   output: {
     filename: env.standalone ? 'redoc.standalone.js' : 'redoc.lib.js',
@@ -63,19 +63,19 @@ export default (env: { standalone?: boolean } = {}, { mode }) => ({
 
   externals: env.standalone
     ? {
-      esprima: 'esprima',
-      'node-fetch': 'null',
-      'node-fetch-h2': 'null',
-      yaml: 'null',
-      'safe-json-stringify': 'null',
-    }
-    : (context, request, callback) => {
-      // ignore node-fetch dep of swagger2openapi as it is not used
-      if (/esprima|node-fetch|node-fetch-h2|yaml|safe-json-stringify$/i.test(request)) {
-        return callback(null, 'var undefined');
+        esprima: 'esprima',
+        'node-fetch': 'null',
+        'node-fetch-h2': 'null',
+        yaml: 'null',
+        'safe-json-stringify': 'null',
       }
-      return nodeExternals(context, request, callback);
-    },
+    : (context, request, callback) => {
+        // ignore node-fetch dep of swagger2openapi as it is not used
+        if (/esprima|node-fetch|node-fetch-h2|yaml|safe-json-stringify$/i.test(request)) {
+          return callback(null, 'var undefined');
+        }
+        return nodeExternals(context, request, callback);
+      },
 
   module: {
     rules: [
@@ -105,7 +105,7 @@ export default (env: { standalone?: boolean } = {}, { mode }) => ({
                   'babel-plugin-styled-components',
                   {
                     minify: true,
-                    displayName: mode !== 'production',
+                    displayName: true,
                   },
                 ],
               ],

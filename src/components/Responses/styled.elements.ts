@@ -5,7 +5,12 @@ import styled from '../../styled-components';
 import { ResponseTitle } from './ResponseTitle';
 
 export const StyledResponseTitle = styled(ResponseTitle)`
+  display: block;
+  border: 0;
+  width: 100%;
+  text-align: left;
   padding: 12px 10px;
+  border-radius: 2px;
   margin-bottom: 8px;
   line-height: 1.5em;
   cursor: pointer;
@@ -39,6 +44,9 @@ cursor: default;
   width: 1.5em;
   text-align: center;
   display: inline-block;
+}
+&:focus {
+  outline: 0;
 }
 `) ||
     ''};

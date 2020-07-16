@@ -52,11 +52,11 @@ const defaultTheme: ThemeInterface = {
     responses: {
       success: {
         color: ({ colors }) => colors.success.main,
-        backgroundColor: ({ colors }) => transparentize(0.9, colors.success.main),
+        backgroundColor: ({ colors }) => transparentize(0.93, colors.success.main),
       },
       error: {
         color: ({ colors }) => colors.error.main,
-        backgroundColor: ({ colors }) => transparentize(0.9, colors.error.main),
+        backgroundColor: ({ colors }) => transparentize(0.93, colors.error.main),
       },
       redirect: {
         color: ({ colors }) => colors.warning.main,

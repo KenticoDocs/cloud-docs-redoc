@@ -1,10 +1,10 @@
 {
-  "name": "kentico-kontent-docs-redoc",
-  "version": "3.0.17",
+  "name": "redoc",
+  "version": "2.0.0-rc.31",
   "description": "ReDoc",
   "repository": {
     "type": "git",
-    "url": "git://github.com/KenticoDocs/kontent-docs-redoc"
+    "url": "git://github.com/Redocly/redoc"
   },
   "engines": {
     "node": ">=6.9",
@@ -42,7 +42,7 @@
     "stats": "webpack --env.standalone --json --profile --mode=production > stats.json",
     "prettier": "prettier --write \"cli/index.ts\" \"src/**/*.{ts,tsx}\"",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 1",
-    "lint": "eslint ./src/**/*.{js,ts,tsx}",
+    "lint": "eslint 'src/**/*.{js,ts,tsx}'",
     "benchmark": "node ./benchmark/benchmark.js",
     "start:demo": "webpack-dev-server --hot --config demo/webpack.config.ts --mode=development",
     "compile:cli": "tsc custom.d.ts cli/index.ts --target es6 --module commonjs --types yargs",
@@ -82,7 +82,7 @@
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "@typescript-eslint/parser": "^2.24.0",
     "babel-loader": "8.0.6",
-    "babel-plugin-styled-components": "1.10.2",
+    "babel-plugin-styled-components": "^1.10.7",
     "beautify-benchmark": "^0.2.4",
     "bundlesize": "^0.18.0",
     "conventional-changelog-cli": "^2.0.31",
@@ -147,12 +147,12 @@
     "marked": "^0.7.0",
     "memoize-one": "~5.1.1",
     "mobx-react": "6.1.5",
-    "openapi-sampler": "1.0.0-beta.15",
+    "openapi-sampler": "^1.0.0-beta.16",
     "perfect-scrollbar": "^1.4.0",
     "polished": "^3.4.4",
     "prismjs": "^1.19.0",
     "prop-types": "^15.7.2",
-    "react-dropdown": "^1.7.0",
+    "react-dropdown-aria": "^2.0.6",
     "react-tabs": "^3.1.0",
     "slugify": "^1.4.0",
     "stickyfill": "^1.1.1",
@@ -160,10 +160,12 @@
     "tslib": "^1.11.1",
     "url-template": "^2.0.8"
   },
-  "bundlesize": [{
-    "path": "./bundles/redoc.standalone.js",
-    "maxSize": "300 kB"
-  }],
+  "bundlesize": [
+    {
+      "path": "./bundles/redoc.standalone.js",
+      "maxSize": "300 kB"
+    }
+  ],
   "jest": {
     "setupFilesAfterEnv": [
       "<rootDir>/src/setupTests.ts"

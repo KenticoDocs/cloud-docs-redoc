@@ -1,10 +1,10 @@
 {
-  "name": "redoc",
-  "version": "2.0.0-rc.31",
+  "name": "kentico-kontent-docs-redoc",
+  "version": "3.0.18",
   "description": "ReDoc",
   "repository": {
     "type": "git",
-    "url": "git://github.com/Redocly/redoc"
+    "url": "git://github.com/KenticoDocs/kontent-docs-redoc"
   },
   "engines": {
     "node": ">=6.9",

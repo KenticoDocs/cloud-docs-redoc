@@ -14,27 +14,14 @@ export const StyledResponseTitle = styled(ResponseTitle)`
   margin-bottom: 8px;
   line-height: 1.5em;
   cursor: pointer;
-  transition: 0.25s background-color;
-  color: ${props => props.theme.colors.responses[props.type].color};
-  background-color: ${props => props.theme.colors.responses[props.type].backgroundColor};
-  border-radius: 23px;
-  border: 1px solid ${props => props.theme.colors.responses[props.type].color};
 
-  &:hover {
-    background-color: ${props => props.theme.colors.responses[props.type].backgroundColorHover};
+  color: ${(props) => props.theme.colors.responses[props.type].color};
+  background-color: ${(props) => props.theme.colors.responses[props.type].backgroundColor};
+  &:focus {
+    outline: auto;
+    outline-color: ${(props) => props.theme.colors.responses[props.type].color};
   }
-
-  span {
-    p {
-      padding: 0;
-    }
-
-    ul {
-      padding: 1em 0.5em 0.5em 1.875em;
-    }
-  }
-
-  ${props =>
+  ${(props) =>
     (props.empty &&
       `
 cursor: default;
@@ -44,6 +31,7 @@ cursor: default;
   width: 1.5em;
   text-align: center;
   display: inline-block;
+  vertical-align: top;
 }
 &:focus {
   outline: 0;
@@ -62,4 +50,8 @@ export const HeadersCaption = styled(UnderlinedHeader.withComponent('caption'))`
   text-align: left;
   margin-top: 1em;
   caption-side: top;
+`;
+
+export const Code = styled.strong`
+  vertical-align: top;
 `;

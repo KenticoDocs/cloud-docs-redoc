@@ -1,4 +1,89 @@
-# [2.0.0-rc.32](https://github.com/Redocly/redoc/compare/v2.0.0-rc.31...v2.0.0-rc.32) (2020-07-21)
+# [2.0.0-rc.41](https://github.com/Redocly/redoc/compare/v2.0.0-rc.40...v2.0.0-rc.41) (2020-09-24)
+
+
+### Bug Fixes
+
+* display response code at the top after adding a line break ([#1374](https://github.com/Redocly/redoc/issues/1374)) ([c801b87](https://github.com/Redocly/redoc/commit/c801b87d2aea5e17d35093e2548e1f51f42b1ee3))
+* fix displaying response title ([#1376](https://github.com/Redocly/redoc/issues/1376)) ([f3e8ab4](https://github.com/Redocly/redoc/commit/f3e8ab4f8e5522c9ea1ddedb143e23c7d62f5807))
+* fix displaying top-level object without any properties ([a5468fb](https://github.com/Redocly/redoc/commit/a5468fb7bb99fcfe33724af939b1a589c1219052))
+* show long pattern and add toggle button ([#1375](https://github.com/Redocly/redoc/issues/1375)) ([a6b41aa](https://github.com/Redocly/redoc/commit/a6b41aa00b7592512fdaa7532d9f5d85238db29b))
+
+
+### Features
+
+* load external search index ([346b10f](https://github.com/Redocly/redoc/commit/346b10f1739d6b44066bdf1f6aac39d5ee3567d2))
+* support for ignoring specified named schemas ([9730c4e](https://github.com/Redocly/redoc/commit/9730c4ee1c274c5775966959b69c209c40034b11))
+
+
+
+# [2.0.0-rc.40](https://github.com/Redocly/redoc/compare/v2.0.0-rc.39...v2.0.0-rc.40) (2020-08-24)
+
+
+### Bug Fixes
+
+* invalid discriminator dropdown behaviour with enum ([be07197](https://github.com/Redocly/redoc/commit/be07197e6d1e85a3fd3e61189a36b288751c077d))
+
+
+
+# [2.0.0-rc.39](https://github.com/Redocly/redoc/compare/v2.0.0-rc.38...v2.0.0-rc.39) (2020-08-22)
+
+
+### Bug Fixes
+
+* fix broken dropdowns with SSR by using forked react-dropdown-aria ([c322639](https://github.com/Redocly/redoc/commit/c322639f7c3e7efbbd623ae83afb88faa91d9e67))
+* make callbacks expandable by keyboard ([#1354](https://github.com/Redocly/redoc/issues/1354)) ([46eee7b](https://github.com/Redocly/redoc/commit/46eee7b70c8ee9da0d8857a823c4df39a5f18b53))
+
+
+
+# [2.0.0-rc.38](https://github.com/Redocly/redoc/compare/v2.0.0-rc.37...v2.0.0-rc.38) (2020-08-20)
+
+
+### Bug Fixes
+
+* do not crash for invalid parameter.in value ([addf895](https://github.com/Redocly/redoc/commit/addf8956e33654a1586a8ac6ed7325519cd99da8)), closes [#1340](https://github.com/Redocly/redoc/issues/1340)
+* scale sideMenu labels according to computed font size ([#1356](https://github.com/Redocly/redoc/issues/1356)) ([fed9a06](https://github.com/Redocly/redoc/commit/fed9a061d59592ec17cedbe4fd392e1f74c21527))
+
+
+
+# [2.0.0-rc.37](https://github.com/Redocly/redoc/compare/v2.0.0-rc.36...v2.0.0-rc.37) (2020-08-14)
+
+
+### Features
+
+* add webhooks support ([#1304](https://github.com/Redocly/redoc/issues/1304)) ([41f81b4](https://github.com/Redocly/redoc/commit/41f81b4d96648fec6bf0c39799c0aa2dded48749))
+
+
+
+# [2.0.0-rc.36](https://github.com/Redocly/redoc/compare/v2.0.0-rc.35...v2.0.0-rc.36) (2020-08-04)
+
+
+### Bug Fixes
+
+* highlight json keys using different color ([#1287](https://github.com/Redocly/redoc/issues/1287)) ([c9596d4](https://github.com/Redocly/redoc/commit/c9596d4b6cd9dced9fdee77525e0da90960c562a))
+* make elements accessible by keyboard navigation tools ([#1339](https://github.com/Redocly/redoc/issues/1339)) ([2ce7189](https://github.com/Redocly/redoc/commit/2ce71895bc14f9189b4e6cbdb6d838898717823f))
+
+
+### Features
+
+* new option simpleOneOfTypeLabel ([7af2efe](https://github.com/Redocly/redoc/commit/7af2efe731cdb16ebe5de6cb3e96f80cceb7d98d))
+
+
+
+# [2.0.0-rc.35](https://github.com/Redocly/redoc/compare/v2.0.0-rc.34...v2.0.0-rc.35) (2020-07-24)
+
+### Bug Fixes
+
+* update EnumValues component ([#1324](https://github.com/Redocly/redoc/issues/1324)) ([de27ac0](https://github.com/Redocly/redoc/commit/de27ac03081d55967f5a479fb1352a83b8ceb8b2))
+
+
+
+# [2.0.0-rc.34](https://github.com/Redocly/redoc/compare/v2.0.0-rc.33...v2.0.0-rc.34) (2020-07-24)
+
+Same as rc.33 by mistake
+
+
+
+# [2.0.0-rc.33](https://github.com/Redocly/redoc/compare/v2.0.0-rc.31...v2.0.0-rc.33) (2020-07-21)
 
 
 ### Bug Fixes
@@ -19,6 +104,12 @@
 * add maxDisplayedEnumValues config and buttons for show/hide enums ([#1322](https://github.com/Redocly/redoc/issues/1322)) ([a2b018d](https://github.com/Redocly/redoc/commit/a2b018d393ee25fb8e9233f8123c29d14ab054c7))
 * array size info based on min max Items properties ([#1308](https://github.com/Redocly/redoc/issues/1308)) ([644e96a](https://github.com/Redocly/redoc/commit/644e96ae457047ce09f55aa1f14a42c41dbc1dc8))
 * new option sortEnumValuesAlphabetically ([#1321](https://github.com/Redocly/redoc/issues/1321)) ([a96a11a](https://github.com/Redocly/redoc/commit/a96a11a4dc8a509c6c3fba67dc4e065b66624e18))
+
+
+
+# [2.0.0-rc.32](https://github.com/Redocly/redoc/compare/v2.0.0-rc.31...v2.0.0-rc.32) (2020-07-21)
+
+Same as rc.31 by mistake
 
 
 

@@ -1,9 +1,8 @@
 import styled from '../styled-components';
+import { darken } from 'polished';
 
-export const OneOfList = styled.ul`
+export const OneOfList = styled.div`
   margin: 0 0 3px 0;
-  padding: 0;
-  list-style: none;
   display: inline-block;
 `;
 
@@ -15,20 +14,29 @@ export const OneOfLabel = styled.span`
 }
 `;
 
-export const OneOfButton = styled.li<{ active: boolean }>`
+export const OneOfButton = styled.button<{ active: boolean }>`
   display: inline-block;
   margin-right: 10px;
-  font-size: 0.875em;
+  margin-bottom: 5px;
+  font-size: 0.8em;
   cursor: pointer;
-  border: 2px solid #4863be;
-  padding: 6px 12px;
-  border-radius: 32px 32px 8px 32px;
+  border: 1px solid ${props => props.theme.colors.primary.main};
+  padding: 2px 10px;
+  line-height: 1.5em;
+  outline: none;
+  &:focus {
+    box-shadow: 0 0 0 1px ${props => props.theme.colors.primary.main};
+  }
 
   ${props => {
     if (props.active) {
       return `
       color: white;
-      background-color: #4863BE;
+      background-color: ${props.theme.colors.primary.main};
+      &:focus {
+        box-shadow: none;
+        background-color: ${darken(0.15, props.theme.colors.primary.main)};
+      }
       `;
     } else {
       return `

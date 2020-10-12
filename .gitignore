@@ -38,3 +38,4 @@ cli/index.js
 .ghpages-tmp
 stats.json
 yarn.lock
+.idea

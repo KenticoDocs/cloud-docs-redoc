@@ -58,6 +58,10 @@ export const OperationBadge = styled.span.attrs((props: { type: string }) => ({
   &.head {
     background-color: ${props => props.theme.colors.http.head};
   }
+
+  &.hook {
+    background-color: ${props => props.theme.colors.primary.main};
+  }
 `;
 
 export const MenuItemUl = styled.ul<{ expanded: boolean }>`

@@ -59,6 +59,11 @@ export const Badge = styled.span<{ type: string }>`
   border: 1px solid ${props => props.theme.colors[props.type].main};
   color: ${props => props.theme.colors[props.type].main};
   font-size: ${props => props.theme.typography.code.fontSize};
-  vertical-align: text-top;
-  border-radius: 16px 16px 16px 4px;
+  vertical-align: middle;
+  line-height: 1.6;
+  border-radius: 4px;
+  font-weight: ${({ theme }) => theme.typography.fontWeightBold};
+  + span[type] {
+    margin-left: 4px;
+  }
 `;

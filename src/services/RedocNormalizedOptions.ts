@@ -12,6 +12,7 @@ export interface RedocRawOptions {
   expandResponses?: string | 'all';
   requiredPropsFirst?: boolean | string;
   sortPropsAlphabetically?: boolean | string;
+  sortEnumValuesAlphabetically?: boolean | string;
   noAutoAuth?: boolean | string;
   nativeScrollbars?: boolean | string;
   pathInMiddlePanel?: boolean | string;
@@ -37,6 +38,7 @@ export interface RedocRawOptions {
   enumSkipQuotes?: boolean | string;
 
   expandDefaultServerVariables?: boolean;
+  maxDisplayedEnumValues?: number;
 }
 
 function argValueToBoolean(val?: string | boolean, defaultValue?: boolean): boolean {
@@ -47,6 +49,16 @@ function argValueToBoolean(val?: string | boolean, defaultValue?: boolean): bool
     return val === 'false' ? false : true;
   }
   return val;
+}
+
+function argValueToNumber(value: number | string | undefined): number | undefined {
+  if (typeof value === 'string') {
+    return parseInt(value, 10);
+  }
+
+  if (typeof value === 'number') {
+    return value;
+  }
 }
 
 export class RedocNormalizedOptions {
@@ -154,6 +166,7 @@ export class RedocNormalizedOptions {
   expandResponses: { [code: string]: boolean } | 'all';
   requiredPropsFirst: boolean;
   sortPropsAlphabetically: boolean;
+  sortEnumValuesAlphabetically: boolean;
   noAutoAuth: boolean;
   nativeScrollbars: boolean;
   pathInMiddlePanel: boolean;
@@ -175,6 +188,7 @@ export class RedocNormalizedOptions {
   allowedMdComponents: Record<string, MDXComponentMeta>;
 
   expandDefaultServerVariables: boolean;
+  maxDisplayedEnumValues?: number;
 
   constructor(raw: RedocRawOptions, defaults: RedocRawOptions = {}) {
     raw = { ...defaults, ...raw };
@@ -205,6 +219,7 @@ export class RedocNormalizedOptions {
     this.expandResponses = RedocNormalizedOptions.normalizeExpandResponses(raw.expandResponses);
     this.requiredPropsFirst = argValueToBoolean(raw.requiredPropsFirst);
     this.sortPropsAlphabetically = argValueToBoolean(raw.sortPropsAlphabetically);
+    this.sortEnumValuesAlphabetically = argValueToBoolean(raw.sortEnumValuesAlphabetically);
     this.noAutoAuth = argValueToBoolean(raw.noAutoAuth);
     this.nativeScrollbars = argValueToBoolean(raw.nativeScrollbars);
     this.pathInMiddlePanel = argValueToBoolean(raw.pathInMiddlePanel);
@@ -229,5 +244,6 @@ export class RedocNormalizedOptions {
     this.allowedMdComponents = raw.allowedMdComponents || {};
 
     this.expandDefaultServerVariables = argValueToBoolean(raw.expandDefaultServerVariables);
+    this.maxDisplayedEnumValues = argValueToNumber(raw.maxDisplayedEnumValues);
   }
 }

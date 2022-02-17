@@ -1,6 +1,6 @@
 {
   "name": "kentico-kontent-docs-redoc",
-  "version": "3.0.17",
+  "version": "3.0.23",
   "description": "ReDoc",
   "repository": {
     "type": "git",
@@ -160,10 +160,12 @@
     "tslib": "^1.11.1",
     "url-template": "^2.0.8"
   },
-  "bundlesize": [{
-    "path": "./bundles/redoc.standalone.js",
-    "maxSize": "300 kB"
-  }],
+  "bundlesize": [
+    {
+      "path": "./bundles/redoc.standalone.js",
+      "maxSize": "300 kB"
+    }
+  ],
   "jest": {
     "setupFilesAfterEnv": [
       "<rootDir>/src/setupTests.ts"
